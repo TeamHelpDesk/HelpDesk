@@ -26,6 +26,12 @@ The following **optional** features are implemented:
 - [ ] Full list of classes that offer tutoring services
 - [ ] Integration with Cornerstone (WashU academic help center)
 
+## Wireframe
+
+Here's a wireframe of the potential app layout:
+
+<img src='http://i.imgur.com/8YwAs2Q.jpg' title='Wireframe' width='' alt='Video Walkthrough' />
+
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
