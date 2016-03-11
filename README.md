@@ -32,6 +32,24 @@ Here's a wireframe of the potential app layout:
 
 <img src='http://i.imgur.com/8YwAs2Q.jpg' title='Wireframe' width='' alt='Video Walkthrough' />
 
+## Parse Server Details
+- User Table
+    -Default parse user table
+- Appointment Table
+    -Two users (Tutor and Student)
+    -Date
+    -Time
+    -Location
+    -Duration
+- Calendar Table
+    -Associated user
+    -Appointments
+    -Availble slots
+- Chat Table
+    -Users (2)
+    -Message
+    -Time Stamp
+
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
