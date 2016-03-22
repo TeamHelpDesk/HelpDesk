@@ -24,6 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://afternoon-shore-56186.herokuapp.com/parse"
             })
         )
+        /*
+        if PFUser.currentUser() != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
+            window?.rootViewController = vc
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName("logout", object: nil, queue: NSOperationQueue.mainQueue()){ (NSNotification) -> Void in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController()
+            self.window?.rootViewController = vc
+        }*/
         
         return true
     }
