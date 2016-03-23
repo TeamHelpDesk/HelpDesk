@@ -283,7 +283,7 @@
         <!--Item-->
         <scene sceneID="Cmf-uA-HtR">
             <objects>
-                <viewController storyboardIdentifier="classes" id="0zN-El-Sta" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="studentClasses" id="0zN-El-Sta" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IQY-s1-9mA"/>
                         <viewControllerLayoutGuide type="bottom" id="4BJ-75-fss"/>
@@ -322,7 +322,7 @@
         <!--Item-->
         <scene sceneID="WNa-uA-6Na">
             <objects>
-                <viewController storyboardIdentifier="chats" id="qpT-3W-88y" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chats" id="qpT-3W-88y" customClass="StudentAppointmentsViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dpy-OS-a3F"/>
                         <viewControllerLayoutGuide type="bottom" id="0Mf-FQ-fbg"/>
@@ -331,16 +331,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="139" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICy-2k-oo9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-VE-gqA">
+                                <rect key="frame" x="0.0" y="-6" width="320" height="525"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="139" id="790-my-bBH">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="139"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentAppointmentCell" id="cDz-pK-UbJ" customClass="StudentAppointmentsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="790-my-bBH" id="Z7s-9g-6e6">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="138"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cDz-pK-UbJ" id="837-AS-PVA">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNk-bb-R3N">
+                                                    <rect key="frame" x="156" y="14" width="33" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -349,6 +357,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="A3c-hC-2yt"/>
+                    <connections>
+                        <outlet property="tableView" destination="3hF-VE-gqA" id="AqB-eh-BjG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxt-zd-iw9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

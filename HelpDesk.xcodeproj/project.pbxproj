@@ -13,6 +13,8 @@
 		4CD670221C9249D600741696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD670211C9249D600741696 /* AppDelegate.swift */; };
 		4CD670291C9249D600741696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD670281C9249D600741696 /* Assets.xcassets */; };
 		4CD6702C1C9249D600741696 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6702A1C9249D600741696 /* LaunchScreen.storyboard */; };
+		FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */; };
+		FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		8362688405D5CD1A4DA4DD9A /* Pods_HelpDesk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelpDesk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C546A81528A840A6823665 /* Pods-HelpDesk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.release.xcconfig"; sourceTree = "<group>"; };
 		A3CE3DE6D00B42E62BC06AFE /* Pods-HelpDesk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.debug.xcconfig"; sourceTree = "<group>"; };
+		FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsViewController.swift; sourceTree = "<group>"; };
+		FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,8 @@
 		4C78706C1CA21512005A109D /* StudentViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */,
+				FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */,
 			);
 			name = StudentViewControllers;
 			sourceTree = "<group>";
@@ -234,6 +240,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */,
+				FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */,
 				4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */,
 				4CD670221C9249D600741696 /* AppDelegate.swift in Sources */,
 			);
