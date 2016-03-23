@@ -40,6 +40,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C78706B1CA21509005A109D /* TutorViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TutorViewControllers;
+			sourceTree = "<group>";
+		};
+		4C78706C1CA21512005A109D /* StudentViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = StudentViewControllers;
+			sourceTree = "<group>";
+		};
+		4C78706D1CA2151C005A109D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */,
+				4C78706C1CA21512005A109D /* StudentViewControllers */,
+				4C78706B1CA21509005A109D /* TutorViewControllers */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		4CD670151C9249D500741696 = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +85,12 @@
 		4CD670201C9249D500741696 /* HelpDesk */ = {
 			isa = PBXGroup;
 			children = (
+				4C78706D1CA2151C005A109D /* ViewControllers */,
 				4CD670211C9249D600741696 /* AppDelegate.swift */,
 				4CD670281C9249D600741696 /* Assets.xcassets */,
 				4C7870691CA20C6D005A109D /* Main.storyboard */,
 				4CD6702A1C9249D600741696 /* LaunchScreen.storyboard */,
 				4CD6702D1C9249D600741696 /* Info.plist */,
-				4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */,
 			);
 			path = HelpDesk;
 			sourceTree = "<group>";
