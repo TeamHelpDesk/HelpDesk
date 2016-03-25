@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import Parse
 
 class StudentAppointmentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var appointments : [PFObject]?
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+        loadAppointments()
         // Do any additional setup after loading the view.
     }
 
@@ -26,7 +29,7 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return appointments?.count ?? 0;
     }
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -34,11 +37,43 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("studentAppointmentCell", forIndexPath: indexPath) as! StudentAppointmentsTableViewCell
+        
+        cell.name = "Physics Tutoring with Zach"
+        cell.date = "Thursday March 24th 2016"
+        cell.hour = "1:30 p.m. to 3:30 p.m."
+        cell.location = "Bear's Den"
+        cell.refreshLabels()
+        
         return cell
         
         
     }
     
+    
+    func loadAppointments(){
+        let query = PFQuery(className: "Appointment")
+        query.limit = 20
+        query.orderByDescending("_created_at")
+        
+        print("Loading Posts")
+        // fetch data asynchronously
+        query.findObjectsInBackgroundWithBlock { (appointments: [PFObject]?, error: NSError?) -> Void in
+            if let appointments = appointments {
+                print("Found \(appointments.count) posts")
+                // do something with the array of object returned by the call
+                self.appointments = appointments
+                self.tableView.reloadData()
+                
+                
+            } else {
+                print("Error finding posts")
+                print(error?.localizedDescription)
+            }
+            
+            
+        }
+
+    }
 
     /*
     // MARK: - Navigation

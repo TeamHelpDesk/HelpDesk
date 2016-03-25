@@ -10,8 +10,27 @@ import UIKit
 
 class StudentAppointmentsTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var appointmentNameLabel: UILabel!
+    @IBOutlet weak var appointmentDateLabel: UILabel!
+    @IBOutlet weak var appointmentHourLabel: UILabel!
+    @IBOutlet weak var appointmentLocationLabel: UILabel!
+    
+    var name : String?
+    var date : String?
+    var hour : String?
+    var location : String?
+    
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
+        
+        appointmentNameLabel.text = name
+        appointmentDateLabel.text = date
+        appointmentHourLabel.text = hour
+        appointmentLocationLabel.text = location
+        
         // Initialization code
     }
 
@@ -20,5 +39,16 @@ class StudentAppointmentsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func refreshLabels() {
+        appointmentNameLabel.text = name
+        appointmentDateLabel.text = date
+        appointmentHourLabel.text = hour
+        appointmentLocationLabel.text = location
+    }
+    
+    
+    
+    
 
 }
