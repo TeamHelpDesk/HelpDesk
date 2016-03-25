@@ -10,6 +10,7 @@
 		24A056DA4D07163ECE04AEEE /* Pods_HelpDesk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362688405D5CD1A4DA4DD9A /* Pods_HelpDesk.framework */; };
 		4C78706A1CA20C6D005A109D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C7870691CA20C6D005A109D /* Main.storyboard */; };
 		4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */; };
+		4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */; };
 		4CD670221C9249D600741696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD670211C9249D600741696 /* AppDelegate.swift */; };
 		4CD670291C9249D600741696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD670281C9249D600741696 /* Assets.xcassets */; };
 		4CD6702C1C9249D600741696 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6702A1C9249D600741696 /* LaunchScreen.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		4C7870691CA20C6D005A109D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentMakerViewController.swift; sourceTree = "<group>"; };
 		4CD6701E1C9249D500741696 /* HelpDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD670211C9249D600741696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CD670281C9249D600741696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 		4C78706B1CA21509005A109D /* TutorViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */,
 			);
 			name = TutorViewControllers;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */,
 				FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */,
 				4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */,

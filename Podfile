@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'HelpDesk' do
     pod 'Parse'
+    pod 'ParseUI'
 end
 
