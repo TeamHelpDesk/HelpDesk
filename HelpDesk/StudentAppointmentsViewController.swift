@@ -41,12 +41,17 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("studentAppointmentCell", forIndexPath: indexPath) as! StudentAppointmentsTableViewCell
         
         let appointment = appointments![indexPath.row]
+        
         let tutor = appointment["tutor"] as! String
+        let time = appointment["time"] as! String
+        let index = time.characters.indexOf(",")
+        
+        
+        cell.appLocation = appointment["location"] as! String
         cell.appName = "Tutoring with \(tutor)"
-        let time = appointment["time"] as? String
-        cell.appDate = time
-        cell.appTime = time
-        cell.appLocation = appointment["location"] as? String
+       
+        cell.appDate = time.substringToIndex(index!)
+        cell.appTime = time.substringFromIndex(index!.advancedBy(2))
         cell.refreshContent()
         return cell
         

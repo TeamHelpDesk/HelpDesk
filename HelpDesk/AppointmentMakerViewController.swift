@@ -54,6 +54,8 @@ class AppointmentMakerViewController: UIViewController {
         post["tutor"] = tutor!.username as String!
         post["student"] = student!.username as String!
         post["topics"] = topics
+        post["duration"] = "120"
+        post["subject"] = "physics"
             
         // Save object (following function will save the object in Parse asynchronously)
         post.saveInBackgroundWithBlock(completion)
@@ -65,7 +67,7 @@ class AppointmentMakerViewController: UIViewController {
             if success {
                 print("success uploading appointment")
             } else {
-                print("Error Uploading image")
+                print(error?.description)
             }
         }
     }
