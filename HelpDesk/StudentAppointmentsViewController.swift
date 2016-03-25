@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import Parse
 
 class StudentAppointmentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    
+    var appointments : [PFObject]?
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        loadAppointments()
 
         // Do any additional setup after loading the view.
     }
@@ -26,7 +31,7 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return appointments?.count ?? 0;
     }
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -34,8 +39,42 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("studentAppointmentCell", forIndexPath: indexPath) as! StudentAppointmentsTableViewCell
+        
+        let appointment = appointments![indexPath.row]
+        let tutor = appointment["tutor"] as! String
+        cell.appName = "Tutoring with \(tutor)"
+        let time = appointment["time"] as? String
+        cell.appDate = time
+        cell.appTime = time
+        cell.appLocation = appointment["location"] as? String
+        cell.refreshContent()
         return cell
         
+        
+    }
+    
+    func loadAppointments(){
+        let query = PFQuery(className: "Appointment")
+        query.limit = 20
+        query.orderByDescending("_created_at")
+        
+        print("Loading Posts")
+        // fetch data asynchronously
+        query.findObjectsInBackgroundWithBlock { (appointments: [PFObject]?, error: NSError?) -> Void in
+            if let appointments = appointments {
+                print("Found \(appointments.count) posts")
+                // do something with the array of object returned by the call
+                self.appointments = appointments
+                self.tableView.reloadData()
+                
+                
+            } else {
+                print("Error finding posts")
+                print(error?.localizedDescription)
+            }
+            
+            
+        }
         
     }
     
