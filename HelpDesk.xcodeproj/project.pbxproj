@@ -7,18 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		24A056DA4D07163ECE04AEEE /* Pods_HelpDesk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362688405D5CD1A4DA4DD9A /* Pods_HelpDesk.framework */; };
 		4C78706A1CA20C6D005A109D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C7870691CA20C6D005A109D /* Main.storyboard */; };
 		4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */; };
 		4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */; };
 		4CD670221C9249D600741696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD670211C9249D600741696 /* AppDelegate.swift */; };
 		4CD670291C9249D600741696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD670281C9249D600741696 /* Assets.xcassets */; };
 		4CD6702C1C9249D600741696 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6702A1C9249D600741696 /* LaunchScreen.storyboard */; };
+		E5EC35BD392A63B900CBDA2B /* Pods_HelpDesk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A927D09E192FD8FE34820E0 /* Pods_HelpDesk.framework */; };
+		F25A8B8C1CA53435000CED30 /* TutorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B8B1CA53435000CED30 /* TutorListViewController.swift */; };
+		F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B8D1CA53447000CED30 /* ChatViewController.swift */; };
+		F25A8B911CA53496000CED30 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B901CA53496000CED30 /* Message.swift */; };
+		F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B921CA534EC000CED30 /* TutorCell.swift */; };
+		F25A8B951CA5350F000CED30 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B941CA5350F000CED30 /* TextCell.swift */; };
 		FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */; };
 		FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		233D2DE2D0DA7A8D6F8B6588 /* Pods-HelpDesk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.release.xcconfig"; sourceTree = "<group>"; };
 		4C7870691CA20C6D005A109D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentMakerViewController.swift; sourceTree = "<group>"; };
@@ -27,9 +33,13 @@
 		4CD670281C9249D600741696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CD6702B1C9249D600741696 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CD6702D1C9249D600741696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8362688405D5CD1A4DA4DD9A /* Pods_HelpDesk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelpDesk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88C546A81528A840A6823665 /* Pods-HelpDesk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.release.xcconfig"; sourceTree = "<group>"; };
-		A3CE3DE6D00B42E62BC06AFE /* Pods-HelpDesk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.debug.xcconfig"; sourceTree = "<group>"; };
+		8A927D09E192FD8FE34820E0 /* Pods_HelpDesk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelpDesk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF0AC212BF5962AB27CF18B3 /* Pods-HelpDesk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.debug.xcconfig"; sourceTree = "<group>"; };
+		F25A8B8B1CA53435000CED30 /* TutorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListViewController.swift; sourceTree = "<group>"; };
+		F25A8B8D1CA53447000CED30 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F25A8B901CA53496000CED30 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F25A8B921CA534EC000CED30 /* TutorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorCell.swift; sourceTree = "<group>"; };
+		F25A8B941CA5350F000CED30 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsViewController.swift; sourceTree = "<group>"; };
 		FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,13 +49,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24A056DA4D07163ECE04AEEE /* Pods_HelpDesk.framework in Frameworks */,
+				E5EC35BD392A63B900CBDA2B /* Pods_HelpDesk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		468EC153274A534ED14F993E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF0AC212BF5962AB27CF18B3 /* Pods-HelpDesk.debug.xcconfig */,
+				233D2DE2D0DA7A8D6F8B6588 /* Pods-HelpDesk.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4C78706B1CA21509005A109D /* TutorViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +78,10 @@
 			children = (
 				FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */,
 				FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */,
+				F25A8B8B1CA53435000CED30 /* TutorListViewController.swift */,
+				F25A8B8D1CA53447000CED30 /* ChatViewController.swift */,
+				F25A8B921CA534EC000CED30 /* TutorCell.swift */,
+				F25A8B941CA5350F000CED30 /* TextCell.swift */,
 			);
 			name = StudentViewControllers;
 			sourceTree = "<group>";
@@ -78,8 +101,8 @@
 			children = (
 				4CD670201C9249D500741696 /* HelpDesk */,
 				4CD6701F1C9249D500741696 /* Products */,
-				ACC5193894215383821D05E4 /* Pods */,
-				861B293A6F2E49A61E1110B0 /* Frameworks */,
+				468EC153274A534ED14F993E /* Pods */,
+				A5D46A98B27F584CB361A29C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +117,7 @@
 		4CD670201C9249D500741696 /* HelpDesk */ = {
 			isa = PBXGroup;
 			children = (
+				F25A8B8F1CA53483000CED30 /* Models */,
 				4C78706D1CA2151C005A109D /* ViewControllers */,
 				4CD670211C9249D600741696 /* AppDelegate.swift */,
 				4CD670281C9249D600741696 /* Assets.xcassets */,
@@ -104,21 +128,20 @@
 			path = HelpDesk;
 			sourceTree = "<group>";
 		};
-		861B293A6F2E49A61E1110B0 /* Frameworks */ = {
+		A5D46A98B27F584CB361A29C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8362688405D5CD1A4DA4DD9A /* Pods_HelpDesk.framework */,
+				8A927D09E192FD8FE34820E0 /* Pods_HelpDesk.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ACC5193894215383821D05E4 /* Pods */ = {
+		F25A8B8F1CA53483000CED30 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A3CE3DE6D00B42E62BC06AFE /* Pods-HelpDesk.debug.xcconfig */,
-				88C546A81528A840A6823665 /* Pods-HelpDesk.release.xcconfig */,
+				F25A8B901CA53496000CED30 /* Message.swift */,
 			);
-			name = Pods;
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,12 +151,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CD670301C9249D600741696 /* Build configuration list for PBXNativeTarget "HelpDesk" */;
 			buildPhases = (
-				B7007567C2EC0A1F99C51787 /* Check Pods Manifest.lock */,
+				64086A691B501207897752C3 /* 📦 Check Pods Manifest.lock */,
 				4CD6701A1C9249D500741696 /* Sources */,
 				4CD6701B1C9249D500741696 /* Frameworks */,
 				4CD6701C1C9249D500741696 /* Resources */,
-				F63177B1AFF5E23415F496DA /* Embed Pods Frameworks */,
-				95FBD2411367B74F5F27FF1F /* Copy Pods Resources */,
+				BB83AD05096B04F5AAB04DA6 /* 📦 Embed Pods Frameworks */,
+				F46C531187E999C79DA4CE2D /* 📦 Copy Pods Resources */,
+				CF949CC1680891A7B5AC12C8 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,6 +180,7 @@
 				TargetAttributes = {
 					4CD6701D1C9249D500741696 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 67XUB76L58;
 					};
 				};
 			};
@@ -191,29 +216,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		95FBD2411367B74F5F27FF1F /* Copy Pods Resources */ = {
+		64086A691B501207897752C3 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7007567C2EC0A1F99C51787 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +231,22 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F63177B1AFF5E23415F496DA /* Embed Pods Frameworks */ = {
+		BB83AD05096B04F5AAB04DA6 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF949CC1680891A7B5AC12C8 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -236,6 +261,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F46C531187E999C79DA4CE2D /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -243,9 +283,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25A8B951CA5350F000CED30 /* TextCell.swift in Sources */,
+				F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */,
 				4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */,
+				F25A8B8C1CA53435000CED30 /* TutorListViewController.swift in Sources */,
 				FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */,
+				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */,
+				F25A8B911CA53496000CED30 /* Message.swift in Sources */,
 				4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */,
 				4CD670221C9249D600741696 /* AppDelegate.swift in Sources */,
 			);
@@ -348,25 +393,31 @@
 		};
 		4CD670311C9249D600741696 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3CE3DE6D00B42E62BC06AFE /* Pods-HelpDesk.debug.xcconfig */;
+			baseConfigurationReference = CF0AC212BF5962AB27CF18B3 /* Pods-HelpDesk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HelpDesk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmadans.HelpDesk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		4CD670321C9249D600741696 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88C546A81528A840A6823665 /* Pods-HelpDesk.release.xcconfig */;
+			baseConfigurationReference = 233D2DE2D0DA7A8D6F8B6588 /* Pods-HelpDesk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HelpDesk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmadans.HelpDesk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
