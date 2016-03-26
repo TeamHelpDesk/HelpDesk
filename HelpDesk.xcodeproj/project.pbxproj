@@ -21,6 +21,7 @@
 		F25A8B951CA5350F000CED30 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B941CA5350F000CED30 /* TextCell.swift */; };
 		FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */; };
 		FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */; };
+		FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9011311CA602AC000FEE95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		F25A8B941CA5350F000CED30 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsViewController.swift; sourceTree = "<group>"; };
 		FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsTableViewCell.swift; sourceTree = "<group>"; };
+		FC9011311CA602AC000FEE95 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */,
 				4C78706C1CA21512005A109D /* StudentViewControllers */,
 				4C78706B1CA21509005A109D /* TutorViewControllers */,
+				FC9011311CA602AC000FEE95 /* HomeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */,
 				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */,
+				FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */,
 				F25A8B911CA53496000CED30 /* Message.swift in Sources */,
 				4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */,
 				4CD670221C9249D600741696 /* AppDelegate.swift in Sources */,

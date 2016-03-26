@@ -30,6 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateViewControllerWithIdentifier("homeNav") 
             window?.rootViewController = vc
         }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName("UserDidLogout", object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController()
+            self.window?.rootViewController = vc
+            
+        }
+        
+        
+        
         /*
         NSNotificationCenter.defaultCenter().addObserverForName("logout", object: nil, queue: NSOperationQueue.mainQueue()){ (NSNotification) -> Void in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
