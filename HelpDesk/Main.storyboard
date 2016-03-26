@@ -59,8 +59,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="b9A-Hp-13Z"/>
                     <connections>
-                        <outlet property="passwordField" destination="8hV-UU-VN2" id="HQm-ob-Tta"/>
-                        <outlet property="usernameField" destination="fD4-K2-uEQ" id="vhJ-2t-dna"/>
+                        <outlet property="passwordField" destination="kmX-M4-fMn" id="CU9-F1-ahy"/>
+                        <outlet property="usernameField" destination="JQB-HW-8GO" id="hi2-2W-Cg3"/>
                         <segue destination="9Ve-Vd-Onf" kind="modal" identifier="loginSegue" id="dY1-81-TZJ"/>
                     </connections>
                 </viewController>

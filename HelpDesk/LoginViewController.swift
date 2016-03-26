@@ -11,11 +11,14 @@ import Parse
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var usernameField: UILabel!
-    @IBOutlet weak var passwordField: UILabel!
+    @IBOutlet weak var usernameField: UITextField!
+
+    @IBOutlet weak var passwordField: UITextField!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        PFUser.logOut()
 
         // Do any additional setup after loading the view.
     }
@@ -26,9 +29,15 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onLogin(sender: AnyObject) {
+        
+        print("The username field contains: \(usernameField.text)")
         PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!){ (user: PFUser?, error: NSError?) -> Void in
             if(user != nil){
                 self.performSegueWithIdentifier("loginSegue", sender: nil)
+                print("You logged in with username \(self.usernameField.text)")
+            }
+            else{
+              print(error?.localizedDescription)
             }
             
         }
