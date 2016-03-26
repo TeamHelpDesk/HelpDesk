@@ -325,7 +325,7 @@
         <!--Item-->
         <scene sceneID="34D-7R-c0L">
             <objects>
-                <viewController storyboardIdentifier="appointments" id="9Qu-jW-ovz" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appointments" id="9Qu-jW-ovz" customClass="StudentTutorsViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dAj-Sm-ByT"/>
                         <viewControllerLayoutGuide type="bottom" id="gZo-go-7W5"/>
@@ -338,13 +338,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="113" id="uZB-oD-Id2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentTutorCell" rowHeight="113" id="uZB-oD-Id2" customClass="StudentTutorTableViewCell" customModule="HelpDesk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZB-oD-Id2" id="KRk-i3-UN6">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cA-LT-Ha7">
+                                                    <rect key="frame" x="14" y="16" width="80" height="80"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoB-1v-nTE">
+                                                    <rect key="frame" x="102" y="16" width="210" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no9-1E-dMR">
+                                                    <rect key="frame" x="102" y="72" width="210" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="XoB-1v-nTE" id="Bjh-bP-GzE"/>
+                                            <outlet property="profileImageView" destination="0cA-LT-Ha7" id="28M-gb-eMz"/>
+                                            <outlet property="subjectLabel" destination="no9-1E-dMR" id="xvM-pJ-zdP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -352,6 +374,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="sTO-ry-cBY"/>
+                    <connections>
+                        <outlet property="tableView" destination="Ut4-1S-0vi" id="Z8M-5h-efB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmP-nr-t3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

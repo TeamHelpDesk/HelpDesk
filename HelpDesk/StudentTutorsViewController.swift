@@ -1,26 +1,26 @@
 //
-//  StudentAppointmentsViewController.swift
+//  StudentTutorsViewController.swift
 //  HelpDesk
 //
-//  Created by Zach Glick on 3/22/16.
+//  Created by Zach Glick on 3/25/16.
 //  Copyright © 2016 TeamHelpDesk. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class StudentAppointmentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class StudentTutorsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var appointments : [PFObject]?
-    
+    var tutors : [PFObject]?
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
         
-        loadAppointments()
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        loadTutors()
 
         // Do any additional setup after loading the view.
     }
@@ -29,47 +29,39 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appointments?.count ?? 0;
+        return tutors?.count ?? 0;
     }
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("studentAppointmentCell", forIndexPath: indexPath) as! StudentAppointmentsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("studentTutorCell", forIndexPath: indexPath) as! StudentTutorTableViewCell
         
-        let appointment = appointments![indexPath.row]
+        let tutor = tutors![indexPath.row]
         
-        let tutor = appointment["tutor"] as! String
-        let time = appointment["time"] as! String
-        let index = time.characters.indexOf(",")
-        
-        
-        cell.appLocation = appointment["location"] as! String
-        cell.appName = "Tutoring with \(tutor)"
-       
-        cell.appDate = time.substringToIndex(index!) ?? "<Missing Date>"
-        cell.appTime = time.substringFromIndex(index!.advancedBy(2)) ?? "<Missing Time>"
+        cell.name = tutor["name"] as! String
+        cell.subject = tutor["subject"] as! String
+
         cell.refreshContent()
         return cell
         
         
     }
     
-    func loadAppointments(){
-        let query = PFQuery(className: "Appointment")
+    func loadTutors(){
+        let query = PFQuery(className: "tutor_list")
         query.limit = 20
-        query.orderByDescending("_created_at")
+        //query.orderByDescending("_created_at")
         
-        print("Loading Posts")
+        print("Loading Tutors")
         // fetch data asynchronously
-        query.findObjectsInBackgroundWithBlock { (appointments: [PFObject]?, error: NSError?) -> Void in
-            if let appointments = appointments {
-                print("Found \(appointments.count) posts")
+        query.findObjectsInBackgroundWithBlock { (tutors: [PFObject]?, error: NSError?) -> Void in
+            if let tutors = tutors {
+                print("Found \(tutors.count) tutors")
                 // do something with the array of object returned by the call
-                self.appointments = appointments
+                self.tutors = tutors
                 self.tableView.reloadData()
                 
                 
@@ -82,7 +74,6 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
         }
         
     }
-    
 
     /*
     // MARK: - Navigation
