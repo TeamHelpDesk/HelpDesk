@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		4C78706A1CA20C6D005A109D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C7870691CA20C6D005A109D /* Main.storyboard */; };
 		4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */; };
+		4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */; };
+		4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */; };
+		4CB6D9981CAB494C00060BBC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9971CAB494C00060BBC /* User.swift */; };
+		4CB6D99C1CAB58EA00060BBC /* TutorTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D99B1CAB58EA00060BBC /* TutorTabBarViewController.swift */; };
+		4CB6D99E1CAB58FD00060BBC /* StudentTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D99D1CAB58FD00060BBC /* StudentTabBarViewController.swift */; };
+		4CB6D9A31CADE6D200060BBC /* NotifcationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9A21CADE6D200060BBC /* NotifcationsTableViewCell.swift */; };
+		4CB6D9A51CADE73C00060BBC /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */; };
 		4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */; };
 		4CD670221C9249D600741696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD670211C9249D600741696 /* AppDelegate.swift */; };
 		4CD670291C9249D600741696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD670281C9249D600741696 /* Assets.xcassets */; };
@@ -30,6 +37,13 @@
 		233D2DE2D0DA7A8D6F8B6588 /* Pods-HelpDesk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.release.xcconfig"; sourceTree = "<group>"; };
 		4C7870691CA20C6D005A109D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifcationsDetailViewController.swift; sourceTree = "<group>"; };
+		4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4CB6D9971CAB494C00060BBC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4CB6D99B1CAB58EA00060BBC /* TutorTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorTabBarViewController.swift; sourceTree = "<group>"; };
+		4CB6D99D1CAB58FD00060BBC /* StudentTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTabBarViewController.swift; sourceTree = "<group>"; };
+		4CB6D9A21CADE6D200060BBC /* NotifcationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifcationsTableViewCell.swift; sourceTree = "<group>"; };
+		4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentMakerViewController.swift; sourceTree = "<group>"; };
 		4CD6701E1C9249D500741696 /* HelpDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD670211C9249D600741696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,38 +85,77 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		4C78706B1CA21509005A109D /* TutorViewControllers */ = {
+		4C78706D1CA2151C005A109D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */,
+				4C93C7B41CADF38A00BD2A6F /* EarlyViews */,
+				4C93C7B31CADF36400BD2A6F /* StudentTutorInteract */,
+				4C93C7B21CADF34600BD2A6F /* Chat */,
+				4C93C7B11CADF31800BD2A6F /* TabBarViewControllers */,
+				4C93C7B01CADF2F000BD2A6F /* Appointments */,
+				4C93C7AD1CADEEB500BD2A6F /* Notifications */,
 			);
-			name = TutorViewControllers;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		4C78706C1CA21512005A109D /* StudentViewControllers */ = {
+		4C93C7AD1CADEEB500BD2A6F /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */,
+				4CB6D9A21CADE6D200060BBC /* NotifcationsTableViewCell.swift */,
+				4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		4C93C7B01CADF2F000BD2A6F /* Appointments */ = {
 			isa = PBXGroup;
 			children = (
 				FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */,
 				FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */,
-				F25A8B8B1CA53435000CED30 /* TutorListViewController.swift */,
-				F25A8B8D1CA53447000CED30 /* ChatViewController.swift */,
-				F25A8B921CA534EC000CED30 /* TutorCell.swift */,
-				F25A8B941CA5350F000CED30 /* TextCell.swift */,
-				FC134AD71CA6216100D9AC5D /* StudentTutorsViewController.swift */,
-				FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */,
+				4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */,
 			);
-			name = StudentViewControllers;
+			name = Appointments;
 			sourceTree = "<group>";
 		};
-		4C78706D1CA2151C005A109D /* ViewControllers */ = {
+		4C93C7B11CADF31800BD2A6F /* TabBarViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */,
-				4C78706C1CA21512005A109D /* StudentViewControllers */,
-				4C78706B1CA21509005A109D /* TutorViewControllers */,
-				FC9011311CA602AC000FEE95 /* HomeViewController.swift */,
+				4CB6D99B1CAB58EA00060BBC /* TutorTabBarViewController.swift */,
+				4CB6D99D1CAB58FD00060BBC /* StudentTabBarViewController.swift */,
 			);
-			name = ViewControllers;
+			name = TabBarViewControllers;
+			sourceTree = "<group>";
+		};
+		4C93C7B21CADF34600BD2A6F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F25A8B8D1CA53447000CED30 /* ChatViewController.swift */,
+				F25A8B941CA5350F000CED30 /* TextCell.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		4C93C7B31CADF36400BD2A6F /* StudentTutorInteract */ = {
+			isa = PBXGroup;
+			children = (
+				FC134AD71CA6216100D9AC5D /* StudentTutorsViewController.swift */,
+				FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */,
+				F25A8B8B1CA53435000CED30 /* TutorListViewController.swift */,
+				F25A8B921CA534EC000CED30 /* TutorCell.swift */,
+			);
+			name = StudentTutorInteract;
+			sourceTree = "<group>";
+		};
+		4C93C7B41CADF38A00BD2A6F /* EarlyViews */ = {
+			isa = PBXGroup;
+			children = (
+				4CB6D9971CAB494C00060BBC /* User.swift */,
+				4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */,
+				FC9011311CA602AC000FEE95 /* HomeViewController.swift */,
+				4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */,
+			);
+			name = EarlyViews;
 			sourceTree = "<group>";
 		};
 		4CD670151C9249D500741696 = {
@@ -292,14 +345,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CB6D9A51CADE73C00060BBC /* NotificationsViewController.swift in Sources */,
 				F25A8B951CA5350F000CED30 /* TextCell.swift in Sources */,
 				F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */,
+				4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */,
+				4CB6D99C1CAB58EA00060BBC /* TutorTabBarViewController.swift in Sources */,
+				4CB6D9A31CADE6D200060BBC /* NotifcationsTableViewCell.swift in Sources */,
 				4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */,
 				F25A8B8C1CA53435000CED30 /* TutorListViewController.swift in Sources */,
 				FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */,
 				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
+				4CB6D99E1CAB58FD00060BBC /* StudentTabBarViewController.swift in Sources */,
+				4CB6D9981CAB494C00060BBC /* User.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */,
 				FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */,
+				4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */,
 				F25A8B911CA53496000CED30 /* Message.swift in Sources */,
 				FC134ADA1CA6219D00D9AC5D /* StudentTutorTableViewCell.swift in Sources */,
 				FC134AD81CA6216100D9AC5D /* StudentTutorsViewController.swift in Sources */,

@@ -21,6 +21,7 @@ class StudentAppointmentsTableViewCell: UITableViewCell {
     var appLocation: String?
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

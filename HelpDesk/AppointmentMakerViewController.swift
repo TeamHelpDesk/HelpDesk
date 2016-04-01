@@ -15,11 +15,16 @@ class AppointmentMakerViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var locField: UITextField!
     @IBOutlet weak var topicsField: UITextView!
+    var isTutor:Bool!
     var strDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       /* if (isTutor == true){
+            print("I'm a tutor")
+        } else {
+            print("I'm a student")
+        }*/
         // Do any additional setup after loading the view.
     }
 
@@ -44,15 +49,15 @@ class AppointmentMakerViewController: UIViewController {
         print(strDate)
     }
     
-    func postAppointment(time: String?, location: String?, tutor: PFUser?, student: PFUser?, topics: String?, withCompletion completion: PFBooleanResultBlock?) {
+    func postAppointmentRequest(time: String?, location: String?, sender: PFUser?, recipient: PFUser?, topics: String?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
-        let post = PFObject(className: "Appointment")
+        let post = PFObject(className: "AppointmentRequests")
         
         // Add relevant fields to the object
         post["time"] =  time
         post["location"] = location // Pointer column type that points to PFUser
-        post["tutor"] = tutor!.username as String!
-        post["student"] = student!.username as String!
+        post["sender"] = sender!.username as String!
+        post["recipient"] = recipient!.username as String!
         post["topics"] = topics
         post["duration"] = "120"
         post["subject"] = "physics"
@@ -63,7 +68,7 @@ class AppointmentMakerViewController: UIViewController {
 
     
     @IBAction func onSubmit(sender: AnyObject) {
-        postAppointment(strDate, location: locField.text, tutor: PFUser.currentUser(), student: PFUser.currentUser(), topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
+        postAppointmentRequest(strDate, location: locField.text, sender: PFUser.currentUser(), recipient: PFUser.currentUser(), topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
             if success {
                 print("success uploading appointment")
             } else {
@@ -72,14 +77,5 @@ class AppointmentMakerViewController: UIViewController {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -43,21 +43,6 @@ class LoginViewController: UIViewController {
         }
     }
 
-    @IBAction func onSignup(sender: AnyObject) {
-        let newUser = PFUser()
-        newUser.username = usernameField.text
-        newUser.password = passwordField.text
-        newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            if success {
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
-            } else {
-                print(error?.localizedDescription)
-                if error?.code == 202{
-                    print("Username is Taken")
-                }
-            }
-        }
-    }
     /*
     // MARK: - Navigation
 

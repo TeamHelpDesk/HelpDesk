@@ -13,10 +13,12 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
 
     
     var appointments : [PFObject]?
+    var isTutor: Bool!
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -46,8 +48,7 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
         let time = appointment["time"] as! String
         let index = time.characters.indexOf(",")
         
-        
-        cell.appLocation = appointment["location"] as! String
+        cell.appLocation = appointment["location"] as? String
         cell.appName = "Tutoring with \(tutor)"
        
         cell.appDate = time.substringToIndex(index!) ?? "<Missing Date>"
@@ -82,16 +83,16 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
         }
         
     }
-    
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "studentMakeAppointment"){
+            let nextView = segue.destinationViewController as? AppointmentMakerViewController
+            nextView!.isTutor = self.isTutor
+        }
     }
-    */
+
 
 }

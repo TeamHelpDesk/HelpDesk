@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class HomeViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,14 +28,29 @@ class HomeViewController: UIViewController {
         
     }
 
-    /*
+    @IBAction func onStudent(sender: AnyObject) {
+
+        
+    }
+    
+    @IBAction func onTutor(sender: AnyObject) {
+
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "studentSegue"){
+            let vc = storyboard!.instantiateViewControllerWithIdentifier("Appointments") as? StudentAppointmentsViewController
+            vc?.isTutor = false
+            print("student!")
+        }
+        if(segue.identifier == "tutorSegue"){
+            let vc = storyboard!.instantiateViewControllerWithIdentifier("Appointments") as? StudentAppointmentsViewController
+            vc?.isTutor = true
+                        print("tutor!")
+        }
     }
-    */
+
 
 }
