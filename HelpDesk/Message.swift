@@ -11,29 +11,47 @@ import Parse
 
 class Message: NSObject {
     
-    //    //var user: User?
-    //    var text: String?
-    //    var createdAtString: String?
-    //    var createdAt: NSDate?
-    //
-    //    init(dictionary: NSDictionary) {
-    //        //user = User(dictionary: dictionary["user"] as! NSDictionary)
-    //        text = dictionary["text"] as? String
-    //        createdAtString = dictionary["created_at"] as? String
-    //        let formatter = NSDateFormatter()
-    //        formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-    //        createdAt = formatter.dateFromString(createdAtString!)
-    //    }
+    //var createdAtString: String?
+    //var createdAt: NSDate?
     
-    class func sendMessage(text: String?, receiver: PFUser, withCompletion completion: PFBooleanResultBlock?) {
+//    init(text: String?, receiver: PFUser) {
+//        // Create Parse object PFObject
+//        let message = PFObject(className: "Message") as PFObject
+//        
+//        // Add relevant fields to the object
+//        message["text"] = text
+//        message["sender"] = PFUser.currentUser()
+//        message["receiver"] = receiver
+//        
+//        
+//            //user = User(dictionary: dictionary["user"] as! NSDictionary)
+//            //text = dictionary["text"] as? String
+//            //createdAtString = dictionary["created_at"] as? String
+//            //let formatter = NSDateFormatter()
+//            //formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
+//            //createdAt = formatter.dateFromString(createdAtString!)
+//        }
+    
+    class func saveMessage(text: String?, receiver: PFUser, count: Int) -> PFObject {
         // Create Parse object PFObject
-        let message = PFObject(className: "Message")
+        let message = PFObject(className: "Message") as PFObject
         
         // Add relevant fields to the object
         message["text"] = text
         message["sender"] = PFUser.currentUser()
         message["receiver"] = receiver
+        message["count"] = count
         
+        return message
+        //user = User(dictionary: dictionary["user"] as! NSDictionary)
+        //text = dictionary["text"] as? String
+        //createdAtString = dictionary["created_at"] as? String
+        //let formatter = NSDateFormatter()
+        //formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
+        //createdAt = formatter.dateFromString(createdAtString!)
+    }
+    
+    class func sendMessage(message: PFObject, withCompletion completion: PFBooleanResultBlock?) {
         // Save object (following function will save the object in Parse asynchronously)
         message.saveEventually(completion)
     }

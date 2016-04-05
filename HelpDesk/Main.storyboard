@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -479,8 +479,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="y8q-ah-pnQ" secondAttribute="bottom" constant="8" id="BqV-bL-ESL"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y8q-ah-pnQ" secondAttribute="trailing" constant="8" id="tBq-c1-DsF"/>
-                                                <constraint firstItem="y8q-ah-pnQ" firstAttribute="leading" secondItem="n32-df-4dI" secondAttribute="leading" constant="8" id="vRq-wG-8DQ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y8q-ah-pnQ" secondAttribute="trailing" constant="8" identifier="right" id="tBq-c1-DsF"/>
+                                                <constraint firstItem="y8q-ah-pnQ" firstAttribute="leading" secondItem="n32-df-4dI" secondAttribute="leading" constant="8" identifier="left" id="vRq-wG-8DQ"/>
                                                 <constraint firstItem="y8q-ah-pnQ" firstAttribute="top" secondItem="n32-df-4dI" secondAttribute="top" constant="8" id="w2i-FB-brM"/>
                                             </constraints>
                                         </tableViewCellContentView>

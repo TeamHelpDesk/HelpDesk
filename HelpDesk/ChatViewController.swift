@@ -15,10 +15,18 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var textField: UITextField!
     var messages: [PFObject]?
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
+    var outgoingCount: Int? = 0
+    var incomingCount: Int? = 0
+    
+    var firstQuery: PFQuery?
+    var oCountQuery: PFQuery?
+    var iCountQuery: PFQuery?
     
     // construct PFQuery
-    var query : PFQuery?
-    var receiver : PFUser?
+    var query: PFQuery?
+    var contact: PFUser?
+    //let user: PFUser = PFUser.currentUser()!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +34,90 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+        
         let predicate1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
-        let predicate2 = NSPredicate(format: "%K = %@", "sender", receiver!)
-        let predicate3 = NSPredicate(format: "%K = %@", "receiver", receiver!)
+        let predicate2 = NSPredicate(format: "%K = %@", "sender", contact!)
+        
+        let predicate3 = NSPredicate(format: "%K = %@", "receiver", contact!)
         let predicate4 = NSPredicate(format: "%K = %@", "sender", PFUser.currentUser()!)
+        
         let cPredicate1 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
         let cPredicate2 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate3, predicate4])
+        
         let cPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [cPredicate1, cPredicate2])
         
-        query = PFQuery(className: "Message", predicate: cPredicate)
+        firstQuery = PFQuery(className: "Message", predicate: cPredicate)
+        iCountQuery = PFQuery(className: "Message", predicate: cPredicate1)
+        oCountQuery = PFQuery(className: "Message", predicate: cPredicate2)
+        
+        firstQuery!.includeKey("receiver")
+        firstQuery!.orderByAscending("createdAt")
+        firstQuery!.limit = 100
+        
+        iCountQuery!.orderByDescending("createdAt")
+        iCountQuery!.limit = 1
+        oCountQuery!.orderByDescending("createdAt")
+        oCountQuery!.limit = 1
+        
+//         fetch data asynchronously
+        firstQuery!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                self.messages = messages! as [PFObject]
+                self.tableView.reloadData()
+            } else {
+                // handle error
+                print(error?.localizedDescription)
+            }
+        }
+        
+        //self.countQuery?.cancel()
+        // fetch data asynchronously
+        oCountQuery!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                self.outgoingCount = 1
+                if messages!.count != 0 {
+                    self.outgoingCount = messages?.first!["count"] as? Int
+                    self.outgoingCount = self.outgoingCount! + 1
+                }
+            } else {
+                self.outgoingCount = 1
+                // handle error
+                print(error?.localizedDescription)
+            }
+            
+        }
+        iCountQuery!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                self.incomingCount = 0
+                if messages!.count != 0 {
+                    self.incomingCount = messages?.first!["count"] as? Int
+                }
+            } else {
+                self.incomingCount = 0
+                // handle error
+                print(error?.localizedDescription)
+            }
+            
+        }
+        
+        //let predicate = NSPredicate(format: "%K > %@", "count", incomingCount!)
+        //let cPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [cP1!, predicate])
+        query = PFQuery(className: "Message", predicate: cPredicate1)
         //        query?.whereKey("receiver", equalTo: PFUser.currentUser()!)
         //        query?.whereKey("sender", equalTo: receiver!)
         //        query?.whereKey("receiver", equalTo: receiver!)
         //        query?.whereKey("sender", equalTo: PFUser.currentUser()!)
         query!.orderByAscending("createdAt")
-        //query!.includeKey("sender")
         query!.limit = 15
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-        onTimer()
+        query!.includeKey("receiver")
         
-        NSTimer.scheduledTimerWithTimeInterval(6, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        //onTimer()
+        
+        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         
         // Do any additional setup after loading the view.
     }
@@ -69,16 +141,29 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func onTimer() {
+        
+        self.query?.cancel()
+        query?.whereKey("count", greaterThan: incomingCount!)
+        print(self.incomingCount)
         // fetch data asynchronously
         query!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
-                self.messages = messages! as [PFObject]
+                if self.messages == nil {
+                    self.messages = messages! as [PFObject]
+                } else {
+                    self.messages!.appendContentsOf(messages! as [PFObject])
+                }
+                if messages!.count != 0 {
+                    self.incomingCount = messages?.last!["count"] as? Int
+                }
+                //
                 self.tableView.reloadData()
-                
+                self.query?.cancel()
             } else {
+                self.query?.cancel()
                 // handle error
-                print(error?.localizedDescription)
+                print("\(error?.localizedDescription) something wrong with timer")
             }
         }
         // Add code to be run periodically
@@ -86,7 +171,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func onSend(sender: AnyObject) {
         if textField.text != "" {
-            Message.sendMessage(textField.text, receiver: receiver!, withCompletion: nil)
+            self.query?.cancel()
+            let message = Message.saveMessage(textField.text, receiver: contact!, count: outgoingCount!)
+            outgoingCount = outgoingCount! + 1
+            messages?.append(message)
+            Message.sendMessage(message, withCompletion: nil)
+            tableView.reloadData()
             textField.text = ""
         }
     }
@@ -107,13 +197,26 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return 0
         }
     }
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let message = messages![indexPath.row]
+        if message["createdAt"] == nil {
+            print("hey")
+        }
+    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! TextCell
         cell.message = messages![indexPath.row] as PFObject
-        
+        if cell.message["receiver"].username == PFUser.currentUser()!.username {
+            cell.backgroundColor = UIColor.greenColor()
+            cell.messageLabel.textColor = UIColor.brownColor()
+            cell.messageLabel.textAlignment = NSTextAlignment.Right
+        } else {
+            cell.backgroundColor = UIColor.clearColor()
+            cell.messageLabel.textColor = UIColor.blackColor()
+            cell.messageLabel.textAlignment = NSTextAlignment.Left
+        }
         return cell
     }
     

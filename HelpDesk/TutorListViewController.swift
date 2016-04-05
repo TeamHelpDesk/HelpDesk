@@ -19,7 +19,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     var userQuery : PFQuery?
     var query : PFQuery?
     
-    var sender : PFUser?
+    var contact : PFUser?
     
     override func viewWillAppear(animated: Bool) {
         tableView.delegate = self
@@ -28,7 +28,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         //        tableView.estimatedRowHeight = 120
         userQuery = PFUser.query()
         userQuery?.whereKey("username", notEqualTo: (PFUser.currentUser()?.username)!)
-        userQuery!.limit = 5
+        userQuery!.limit = 20
         userQuery!.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.users = users! as? [PFUser]
@@ -107,9 +107,9 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepareForSegue(rSegue: UIStoryboardSegue, sender: AnyObject?) {
         if let cell = sender as? UITableViewCell {
             let indexPath = tableView.indexPathForCell(cell)
-            self.sender = users![indexPath!.row]
+            self.contact = users![indexPath!.row]
             let chatViewController = rSegue.destinationViewController as! ChatViewController
-            chatViewController.receiver = self.sender
+            chatViewController.contact = self.contact
         }
         //        statusViewController.text.text = idLabel.text! as String
     }
