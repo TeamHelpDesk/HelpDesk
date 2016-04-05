@@ -20,7 +20,10 @@ class NotifcationsDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        eventTitleLabel.text = "Tutoring session with \(notification["sender"])"
+        timeLabel.text = notification["time"] as? String
+        locationLabel.text = notification["location"] as? String
+        topicsLabel.text = notification["topics"] as? String
         // Do any additional setup after loading the view.
     }
 
@@ -29,8 +32,31 @@ class NotifcationsDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onAccept(sender: AnyObject) {
+    func postAppointment(time: String?, location: String?, tutor: String?, student: String?, topics: String?, duration: Int?, subject: String?, withCompletion completion: PFBooleanResultBlock?) {
+        // Create Parse object PFObject
+        let post = PFObject(className: "Appointment")
+        
+        // Add relevant fields to the object
+        post["time"] =  time
+        post["location"] = location // Pointer column type that points to PFUser
+        post["sender"] = tutor
+        post["recipient"] = student
+        post["topics"] = topics
+        post["duration"] = duration
+        post["subject"] = subject
+        
+        // Save object (following function will save the object in Parse asynchronously)
+        post.saveInBackgroundWithBlock(completion)
+    }
     
+    @IBAction func onAccept(sender: AnyObject) {
+        postAppointment(notification["time"] as? String, location: notification["location"] as! String!, tutor: notification["sender"] as? String, student: notification["recip?ent"] as? String, topics: notification["topics"] as? String, duration: notification["duration"] as? Int, subject: notification["subject"] as? String) { (success: Bool, error: NSError?) -> Void in
+            if success {
+                print("success uploading appointment")
+            } else {
+                print(error?.description)
+            }
+        }
     }
 
     @IBAction func onDecline(sender: AnyObject) {
