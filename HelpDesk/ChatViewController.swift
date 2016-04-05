@@ -209,13 +209,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! TextCell
         cell.message = messages![indexPath.row] as PFObject
         if cell.message["receiver"].username == PFUser.currentUser()!.username {
-            cell.backgroundColor = UIColor.greenColor()
-            cell.messageLabel.textColor = UIColor.brownColor()
-            cell.messageLabel.textAlignment = NSTextAlignment.Right
-        } else {
             cell.backgroundColor = UIColor.clearColor()
             cell.messageLabel.textColor = UIColor.blackColor()
             cell.messageLabel.textAlignment = NSTextAlignment.Left
+        } else {
+            cell.backgroundColor = UIColor.greenColor()
+            cell.messageLabel.textColor = UIColor.brownColor()
+            cell.messageLabel.textAlignment = NSTextAlignment.Right
+            
         }
         return cell
     }
