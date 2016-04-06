@@ -199,8 +199,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let message = messages![indexPath.row]
-        if message["createdAt"] == nil {
-            print("hey")
+        if message.createdAt != nil {
+            print(message.createdAt)
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
