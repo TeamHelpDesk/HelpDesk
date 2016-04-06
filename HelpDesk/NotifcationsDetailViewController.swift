@@ -17,6 +17,10 @@ class NotifcationsDetailViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var topicsLabel: UILabel!
+    var student: String!
+    var tutor: String!
+    var duration: Int!
+    var subject: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,13 @@ class NotifcationsDetailViewController: UIViewController {
         timeLabel.text = notification["time"] as? String
         locationLabel.text = notification["location"] as? String
         topicsLabel.text = notification["topics"] as? String
+        student = notification["sender"] as? String
+        tutor = notification["recipient"] as? String
+        duration = notification["duration"] as? Int
+        subject = notification["subject"] as? String
+        print(tutor)
+        print(duration)
+        print(subject)
         // Do any additional setup after loading the view.
     }
 
@@ -50,7 +61,7 @@ class NotifcationsDetailViewController: UIViewController {
     }
     
     @IBAction func onAccept(sender: AnyObject) {
-        postAppointment(notification["time"] as? String, location: notification["location"] as! String!, tutor: notification["sender"] as? String, student: notification["recip?ent"] as? String, topics: notification["topics"] as? String, duration: notification["duration"] as? Int, subject: notification["subject"] as? String) { (success: Bool, error: NSError?) -> Void in
+        postAppointment(timeLabel.text, location: locationLabel.text, tutor: self.tutor, student: self.student, topics: self.tutor, duration: self.duration, subject: self.subject) { (success: Bool, error: NSError?) -> Void in
             if success {
                 print("success uploading appointment")
             } else {
