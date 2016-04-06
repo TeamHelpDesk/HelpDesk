@@ -30,6 +30,8 @@
 		FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */; };
 		FC134AD81CA6216100D9AC5D /* StudentTutorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC134AD71CA6216100D9AC5D /* StudentTutorsViewController.swift */; };
 		FC134ADA1CA6219D00D9AC5D /* StudentTutorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */; };
+		FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */; };
+		FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */; };
 		FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9011311CA602AC000FEE95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsTableViewCell.swift; sourceTree = "<group>"; };
 		FC134AD71CA6216100D9AC5D /* StudentTutorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTutorsViewController.swift; sourceTree = "<group>"; };
 		FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTutorTableViewCell.swift; sourceTree = "<group>"; };
+		FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsViewController.swift; sourceTree = "<group>"; };
+		FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		FC9011311CA602AC000FEE95 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +92,7 @@
 		4C78706D1CA2151C005A109D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FC3B955A1CB54519008B6A09 /* Requests */,
 				4C93C7B41CADF38A00BD2A6F /* EarlyViews */,
 				4C93C7B31CADF36400BD2A6F /* StudentTutorInteract */,
 				4C93C7B21CADF34600BD2A6F /* Chat */,
@@ -204,6 +209,15 @@
 				F25A8B901CA53496000CED30 /* Message.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		FC3B955A1CB54519008B6A09 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */,
+				FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */,
+			);
+			name = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +361,7 @@
 			files = (
 				4CB6D9A51CADE73C00060BBC /* NotificationsViewController.swift in Sources */,
 				F25A8B951CA5350F000CED30 /* TextCell.swift in Sources */,
+				FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */,
 				F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */,
 				4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */,
 				4CB6D99C1CAB58EA00060BBC /* TutorTabBarViewController.swift in Sources */,
@@ -358,6 +373,7 @@
 				4CB6D99E1CAB58FD00060BBC /* StudentTabBarViewController.swift in Sources */,
 				4CB6D9981CAB494C00060BBC /* User.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */,
+				FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */,
 				FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */,
 				4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */,
 				F25A8B911CA53496000CED30 /* Message.swift in Sources */,

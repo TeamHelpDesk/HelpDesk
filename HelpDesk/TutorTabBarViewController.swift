@@ -15,7 +15,9 @@ class TutorTabBarViewController: UITabBarController {
         
         let tabItems = self.tabBar.items! as [UITabBarItem]
         let tabItem0 = tabItems[0] as UITabBarItem
+        let tabItem1 = tabItems[1] as UITabBarItem
         tabItem0.title = "Appointments"
+        tabItem1.title = "Requests"
 
 
         // Do any additional setup after loading the view.

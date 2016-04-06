@@ -275,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQH-6G-QTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="2801"/>
+            <point key="canvasLocation" x="1740" y="2801"/>
         </scene>
         <!--Choose Student-->
         <scene sceneID="bsi-zm-tfV">
@@ -296,10 +296,10 @@
             </objects>
             <point key="canvasLocation" x="1208" y="3502"/>
         </scene>
-        <!--tabBarController-->
+        <!--Tutor-->
         <scene sceneID="Thh-b0-rQs">
             <objects>
-                <tabBarController storyboardIdentifier="tutorTabs" title="tabBarController" id="mD2-Ac-KD5" customClass="TutorTabBarViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tutorTabs" title="Tutor" id="mD2-Ac-KD5" customClass="TutorTabBarViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Tutor" id="FF9-tw-Nxt"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Kqn-Je-UDl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -308,6 +308,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="qpT-3W-88y" kind="relationship" relationship="viewControllers" id="6AD-cj-cPc"/>
+                        <segue destination="QS8-Bl-HBX" kind="relationship" relationship="viewControllers" id="ycG-Iy-YrN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6MB-EV-ywJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -390,7 +391,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmP-nr-t3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706" y="2801"/>
+            <point key="canvasLocation" x="1238" y="2801"/>
+        </scene>
+        <!--Requests-->
+        <scene sceneID="J8g-GB-3BN">
+            <objects>
+                <viewController storyboardIdentifier="Requests" title="Requests" id="QS8-Bl-HBX" customClass="tutorRequestsViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fqr-n2-lW6"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Em-45-Tjs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Bf-aF-QFW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="89" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-9h-KGA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tutorRequestCell" rowHeight="89" id="PLs-hr-RUE" customClass="tutorRequestsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PLs-hr-RUE" id="lS6-Bn-THH">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxr-cg-aLP">
+                                                    <rect key="frame" x="89" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTL-LZ-cD0">
+                                                    <rect key="frame" x="89" y="47" width="59" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OdA-FP-XOm">
+                                                    <rect key="frame" x="3" y="6" width="78" height="76"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="wt4-4O-k58"/>
+                    <connections>
+                        <outlet property="tableView" destination="Nf1-9h-KGA" id="fQi-V5-kSu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSH-aZ-42d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2223" y="2049"/>
         </scene>
         <!--Item-->
         <scene sceneID="Cmf-uA-HtR">
@@ -445,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3T-PQ-9f0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="2833"/>
+            <point key="canvasLocation" x="814" y="2833"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="P9V-dq-ObK">
@@ -787,7 +843,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9X-cI-DEj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1592" y="2801"/>
+            <point key="canvasLocation" x="2124" y="2801"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lg3-hp-R65">
@@ -810,6 +866,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6AD-cj-cPc"/>
+        <segue reference="ljO-nu-qNj"/>
     </inferredMetricsTieBreakers>
 </document>
