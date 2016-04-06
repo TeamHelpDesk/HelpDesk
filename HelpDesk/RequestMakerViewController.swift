@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class RequestMakerViewController: UIViewController {
 
+    
+    var className : String?
+    
+    @IBOutlet weak var messageField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +26,30 @@ class RequestMakerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onSubmit(sender: AnyObject) {
+        
+        postAppointmentRequest(self.className, message: messageField.text, sender: PFUser.currentUser(), recipient: PFUser.currentUser()) { (success: Bool, error: NSError?) -> Void in
+            if success {
+                print("success uploading request")
+            } else {
+                print(error?.description)
+            }
+        }
+    }
+    
+    func postAppointmentRequest(className: String?, message: String?, sender: PFUser?, recipient: PFUser?, completion: PFBooleanResultBlock?) {
+        // Create Parse object PFObject
+        let post = PFObject(className: "TutorRequests")
+        
+        // Add relevant fields to the object
+        post["className"] =  className ?? "(No class selected)"
+        post["message"] =  message ?? "(No message)"
+        post["studentName"] = sender!.username as String!
+        post["recipient"] = recipient!.username as String!
+        
+        // Save object (following function will save the object in Parse asynchronously)
+        post.saveInBackgroundWithBlock(completion)
+    }
 
     /*
     // MARK: - Navigation

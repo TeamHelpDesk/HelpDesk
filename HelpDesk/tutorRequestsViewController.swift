@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import Parse
 
 class tutorRequestsViewController: UIViewController, UITableViewDelegate,
 UITableViewDataSource{
 
+    var requests : [PFObject]?
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+        loadRequests()
         // Do any additional setup after loading the view.
     }
 
@@ -27,7 +30,7 @@ UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return requests?.count ?? 0;
     }
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -39,8 +42,48 @@ UITableViewDataSource{
         let cell = tableView.dequeueReusableCellWithIdentifier("tutorRequestCell", forIndexPath: indexPath) as! tutorRequestsTableViewCell
         
  
+        let request = requests![indexPath.row]
+            
+        let className = request["className"] as! String
+        let message = request["message"] as! String
+        let studentName = request["studentName"] as! String
+
+            
+        cell.className = className
+        cell.message = message
+        cell.studentName = studentName
+ 
+        cell.refreshContent()
+        
+            
         return cell
         
+        
+    }
+    
+    
+    func loadRequests(){
+        let query = PFQuery(className: "TutorRequests")
+        query.limit = 20
+        query.orderByDescending("_created_at")
+        
+        print("Loading Requests")
+        // fetch data asynchronously
+        query.findObjectsInBackgroundWithBlock { (requests: [PFObject]?, error: NSError?) -> Void in
+            if let requests = requests {
+                print("Found \(requests.count) Requests")
+                // do something with the array of object returned by the call
+                self.requests = requests
+                self.tableView.reloadData()
+                
+                
+            } else {
+                print("Error finding requests")
+                print(error?.localizedDescription)
+            }
+            
+            
+        }
         
     }
     /*
