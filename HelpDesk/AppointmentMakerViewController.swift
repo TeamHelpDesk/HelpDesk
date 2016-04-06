@@ -20,11 +20,14 @@ class AppointmentMakerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       /* if (isTutor == true){
+        if (isTutor == true){
             print("I'm a tutor")
-        } else {
+        } else if(isTutor == false){
             print("I'm a student")
-        }*/
+        }
+        else {
+            print("I'm not a teacher or student")
+        }
         // Do any additional setup after loading the view.
     }
 

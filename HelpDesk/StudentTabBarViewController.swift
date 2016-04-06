@@ -10,6 +10,8 @@ import UIKit
 
 class StudentTabBarViewController: UITabBarController {
 
+    //var isTutor : Bool
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +46,8 @@ class StudentTabBarViewController: UITabBarController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let nextView = segue.destinationViewController as? StudentAppointmentsViewController
-        nextView!.isTutor = false
+        //let nextView = segue.destinationViewController as? StudentAppointmentsViewController
+        //nextView!.isTutor = false
     }
 
 

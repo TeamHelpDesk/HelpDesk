@@ -23,6 +23,18 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
         tableView.dataSource = self
         
         loadAppointments()
+        
+        if self.tabBarController is StudentTabBarViewController {
+            print("Has student tab bar")
+            isTutor = false
+        }
+        else if self.tabBarController is TutorTabBarViewController{
+            print("Has tutor tab bar")
+            isTutor = true
+        }
+        else {
+            print(String(self.tabBarController))
+        }
 
         // Do any additional setup after loading the view.
     }

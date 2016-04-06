@@ -43,12 +43,16 @@ class HomeViewController: UIViewController {
         if(segue.identifier == "studentSegue"){
             let vc = storyboard!.instantiateViewControllerWithIdentifier("Appointments") as? StudentAppointmentsViewController
             vc?.isTutor = false
-            print("student!")
+            
+            let realVC = segue.destinationViewController as! StudentTabBarViewController   
+            //realVC.isTutor = false;
+            
+            //print("student!")
         }
         if(segue.identifier == "tutorSegue"){
             let vc = storyboard!.instantiateViewControllerWithIdentifier("Appointments") as? StudentAppointmentsViewController
             vc?.isTutor = true
-                        print("tutor!")
+                        //print("tutor!")
         }
     }
 
