@@ -32,6 +32,7 @@
 		FC134ADA1CA6219D00D9AC5D /* StudentTutorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */; };
 		FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */; };
 		FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */; };
+		FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */; };
 		FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9011311CA602AC000FEE95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTutorTableViewCell.swift; sourceTree = "<group>"; };
 		FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsViewController.swift; sourceTree = "<group>"; };
 		FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsTableViewCell.swift; sourceTree = "<group>"; };
+		FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMakerViewController.swift; sourceTree = "<group>"; };
 		FC9011311CA602AC000FEE95 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +218,7 @@
 			children = (
 				FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */,
 				FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */,
+				FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */,
 				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
 				4CB6D99E1CAB58FD00060BBC /* StudentTabBarViewController.swift in Sources */,
+				FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */,
 				4CB6D9981CAB494C00060BBC /* User.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */,
 				FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */,
