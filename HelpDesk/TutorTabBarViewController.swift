@@ -12,6 +12,11 @@ class TutorTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tabItems = self.tabBar.items! as [UITabBarItem]
+        let tabItem0 = tabItems[0] as UITabBarItem
+        tabItem0.title = "Appointments"
+
 
         // Do any additional setup after loading the view.
     }

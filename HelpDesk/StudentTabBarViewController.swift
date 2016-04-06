@@ -12,6 +12,17 @@ class StudentTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tabItems = self.tabBar.items! as [UITabBarItem]
+        let tabItem0 = tabItems[0] as UITabBarItem
+        let tabItem1 = tabItems[1] as UITabBarItem
+        let tabItem2 = tabItems[2] as UITabBarItem
+        let tabItem3 = tabItems[3] as UITabBarItem
+        tabItem0.title = "Appointments"
+        tabItem1.title = "Tutors"
+        tabItem2.title = "Messages"
+        tabItem3.title = "Notifications"
+        
 
         // Do any additional setup after loading the view.
     }
@@ -19,6 +30,12 @@ class StudentTabBarViewController: UITabBarController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
     }
     
 

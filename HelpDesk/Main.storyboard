@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -299,7 +299,7 @@
         <!--tabBarController-->
         <scene sceneID="Thh-b0-rQs">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarController" title="tabBarController" id="mD2-Ac-KD5" customClass="TutorTabBarViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tutorTabs" title="tabBarController" id="mD2-Ac-KD5" customClass="TutorTabBarViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Tutor" id="FF9-tw-Nxt"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Kqn-Je-UDl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -647,7 +647,7 @@
         <!--Student-->
         <scene sceneID="jpg-SA-f3b">
             <objects>
-                <tabBarController storyboardIdentifier="studentTabs" automaticallyAdjustsScrollViewInsets="NO" id="YEE-50-jMf" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="studentTabs" automaticallyAdjustsScrollViewInsets="NO" id="YEE-50-jMf" customClass="StudentTabBarViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Student" id="y0c-7p-FVW"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Okt-ro-xPP">
@@ -810,6 +810,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ljO-nu-qNj"/>
+        <segue reference="6AD-cj-cPc"/>
     </inferredMetricsTieBreakers>
 </document>

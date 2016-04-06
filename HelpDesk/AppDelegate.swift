@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
+        
+        
         /*
         NSNotificationCenter.defaultCenter().addObserverForName("logout", object: nil, queue: NSOperationQueue.mainQueue()){ (NSNotification) -> Void in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
