@@ -43,15 +43,15 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         
         cell.notification = self.notifications![indexPath.row]
         
-        let sender = cell.notification["sender"] as! String
+        //let sender = cell.notification["sender"] as! String
         
-        cell.titleLabel.text = "Appointment request from \(sender)"
+        cell.titleLabel.text = cell.notification["message"] as? String
         
         return cell
     }
     
     func loadNotifications(){
-        let query = PFQuery(className: "AppointmentRequests")
+        let query = PFQuery(className: "Notifications")
         query.limit = 20
         query.orderByDescending("_created_at")
         // fetch data asynchronously

@@ -24,17 +24,22 @@ class NotifcationsDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventTitleLabel.text = "Tutoring session with \(notification["sender"])"
-        timeLabel.text = notification["time"] as? String
-        locationLabel.text = notification["location"] as? String
-        topicsLabel.text = notification["topics"] as? String
-        student = notification["sender"] as? String
-        tutor = notification["recipient"] as? String
-        duration = notification["duration"] as? Int
-        subject = notification["subject"] as? String
-        print(tutor)
-        print(duration)
-        print(subject)
+        if(notification["type"] as? String == "appointment"){
+            eventTitleLabel.text = "Tutoring session with \(notification["sender"])"
+            timeLabel.text = notification["time"] as? String
+            locationLabel.text = notification["location"] as? String
+            topicsLabel.text = notification["topics"] as? String
+            student = notification["sender"] as? String
+            tutor = notification["recipient"] as? String
+            duration = notification["duration"] as? Int
+            subject = notification["subject"] as? String
+        }
+        else{
+            eventTitleLabel.text = notification["message"] as? String
+            timeLabel.text = ""
+            locationLabel.text = ""
+            topicsLabel.text = ""
+        }
         // Do any additional setup after loading the view.
     }
 

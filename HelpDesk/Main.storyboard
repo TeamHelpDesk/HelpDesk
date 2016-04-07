@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -878,15 +878,15 @@
                                 <rect key="frame" x="20" y="102" width="280" height="30"/>
                                 <state key="normal" title="Make New Appointment"/>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-VE-gqA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="210" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-VE-gqA">
                                 <rect key="frame" x="0.0" y="110" width="320" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="studentAppointmentCell" rowHeight="125" id="cDz-pK-UbJ" customClass="StudentAppointmentsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="125"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="studentAppointmentCell" rowHeight="210" id="cDz-pK-UbJ" customClass="StudentAppointmentsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cDz-pK-UbJ" id="837-AS-PVA">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="124"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ugh-Cf-P3k">
@@ -916,6 +916,20 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55G-JY-ZBy">
+                                                    <rect key="frame" x="96" y="124" width="114" height="30"/>
+                                                    <state key="normal" title="I'm Running Late"/>
+                                                    <connections>
+                                                        <action selector="onLate:" destination="cDz-pK-UbJ" eventType="touchUpInside" id="SKg-Ks-qtP"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5F-jB-R6U">
+                                                    <rect key="frame" x="96" y="156" width="140" height="30"/>
+                                                    <state key="normal" title="Cancel Appointment"/>
+                                                    <connections>
+                                                        <action selector="onCancel:" destination="cDz-pK-UbJ" eventType="touchUpInside" id="v9g-Fw-PYc"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>

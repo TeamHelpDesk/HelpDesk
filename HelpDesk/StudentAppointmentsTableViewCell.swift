@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class StudentAppointmentsTableViewCell: UITableViewCell {
 
@@ -27,6 +28,39 @@ class StudentAppointmentsTableViewCell: UITableViewCell {
         // Initialization code
         refreshContent()
         
+    }
+    
+    @IBAction func onLate(sender: AnyObject) {
+        postNotif("late", message: "\(PFUser.currentUser()?.username!) is running late" ) { (success: Bool, error: NSError?) -> Void in
+            if success {
+                print("success sending late")
+            } else {
+                print(error?.description)
+            }
+        }
+    }
+
+    @IBAction func onCancel(sender: AnyObject) {
+        postNotif("cancel", message: "\(PFUser.currentUser()?.username!) cancelled their appointment" ) { (success: Bool, error: NSError?) -> Void in
+            if success {
+                print("success sending late")
+            } else {
+                print(error?.description)
+            }
+        }
+    }
+    
+    
+    func postNotif(type: String?, message: String?, withCompletion completion: PFBooleanResultBlock?) {
+        // Create Parse object PFObject
+        let post = PFObject(className: "Notifications")
+        
+        // Add relevant fields to the object
+        post["message"] = message
+        post["type"] = type
+        
+        // Save object (following function will save the object in Parse asynchronously)
+        post.saveInBackgroundWithBlock(completion)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -54,7 +54,7 @@ class AppointmentMakerViewController: UIViewController {
     
     func postAppointmentRequest(time: String?, location: String?, sender: PFUser?, recipient: PFUser?, topics: String?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
-        let post = PFObject(className: "AppointmentRequests")
+        let post = PFObject(className: "Notifications")
         
         // Add relevant fields to the object
         post["time"] =  time
@@ -64,6 +64,8 @@ class AppointmentMakerViewController: UIViewController {
         post["topics"] = topics
         post["duration"] = "120"
         post["subject"] = "physics"
+        post["message"] = "Appointment request from \(sender!.username)"
+        post["type"] = "appointment"
             
         // Save object (following function will save the object in Parse asynchronously)
         post.saveInBackgroundWithBlock(completion)
