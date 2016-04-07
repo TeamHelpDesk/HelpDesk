@@ -10,7 +10,7 @@ The following **required** functionality is completed:
 
 - [X] Users can sign up and login with email and password
 - [X] Users can use the app as either a student or a tutor
-- [ ] Students can make a request to the WashU School of Engineering for a tutors
+- [X] Students can make a request to the WashU School of Engineering for a tutors
 - [ ] When assigned, students and tutors are directly connected to each other
 - [X] Tutors and students can message eachother directly.
 - [X] Tutors and students can use an appointment making tool to decide on meet up times, locations (using mobile maps), and topics.

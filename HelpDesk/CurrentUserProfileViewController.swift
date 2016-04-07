@@ -23,7 +23,8 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
     
-        if let picFile = PFUser.currentUser()!["profPicture"] as? PFFile {
+        let user = PFUser.currentUser() as! PFObject
+        if let picFile = user["profPicture"] as? PFFile {
             picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                 if (error == nil) {
                     self.profilePic.image = UIImage(data:imageData!)
@@ -57,6 +58,7 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         if let image = image {
             // get image data and check if that is not nil
             if let imageData = UIImagePNGRepresentation(image) {
+                print("made PFFile")
                 return PFFile(name: "image.png", data: imageData)
             }
         }
