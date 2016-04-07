@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

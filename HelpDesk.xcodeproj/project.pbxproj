@@ -33,6 +33,7 @@
 		FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */; };
 		FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */; };
 		FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */; };
+		FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */; };
 		FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9011311CA602AC000FEE95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsViewController.swift; sourceTree = "<group>"; };
 		FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMakerViewController.swift; sourceTree = "<group>"; };
+		FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileViewController.swift; sourceTree = "<group>"; };
 		FC9011311CA602AC000FEE95 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 		4C78706D1CA2151C005A109D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FC3B95611CB5F1EB008B6A09 /* Profiles */,
 				FC3B955A1CB54519008B6A09 /* Requests */,
 				4C93C7B41CADF38A00BD2A6F /* EarlyViews */,
 				4C93C7B31CADF36400BD2A6F /* StudentTutorInteract */,
@@ -157,7 +160,6 @@
 		4C93C7B41CADF38A00BD2A6F /* EarlyViews */ = {
 			isa = PBXGroup;
 			children = (
-				4CB6D9971CAB494C00060BBC /* User.swift */,
 				4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */,
 				FC9011311CA602AC000FEE95 /* HomeViewController.swift */,
 				4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */,
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				F25A8B901CA53496000CED30 /* Message.swift */,
+				4CB6D9971CAB494C00060BBC /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -221,6 +224,14 @@
 				FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */,
 			);
 			name = Requests;
+			sourceTree = "<group>";
+		};
+		FC3B95611CB5F1EB008B6A09 /* Profiles */ = {
+			isa = PBXGroup;
+			children = (
+				FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */,
+			);
+			name = Profiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +376,7 @@
 				4CB6D9A51CADE73C00060BBC /* NotificationsViewController.swift in Sources */,
 				F25A8B951CA5350F000CED30 /* TextCell.swift in Sources */,
 				FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */,
+				FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */,
 				F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */,
 				4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */,
 				4CB6D99C1CAB58EA00060BBC /* TutorTabBarViewController.swift in Sources */,

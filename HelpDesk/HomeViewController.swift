@@ -41,17 +41,15 @@ class HomeViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "studentSegue"){
-            let vc = storyboard!.instantiateViewControllerWithIdentifier("Appointments") as? StudentAppointmentsViewController
-            vc?.isTutor = false
-            
-            let realVC = segue.destinationViewController as! StudentTabBarViewController   
-            //realVC.isTutor = false;
+            //let vc = storyboard!.instantiateViewControllerWithIdentifier("Appointments") as? StudentAppointmentsViewController
+            //vc?.isTutor = false
+
             
             //print("student!")
         }
         if(segue.identifier == "tutorSegue"){
-            let vc = storyboard!.instantiateViewControllerWithIdentifier("Appointments") as? StudentAppointmentsViewController
-            vc?.isTutor = true
+            //let vc = storyboard!.instantiateViewControllerWithIdentifier("Appointments") as? StudentAppointmentsViewController
+            //vc?.isTutor = true
                         //print("tutor!")
         }
     }
