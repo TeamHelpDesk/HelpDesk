@@ -11,11 +11,10 @@ The following **required** functionality is completed:
 - [X] Users can sign up and login with email and password
 - [X] Users can use the app as either a student or a tutor
 - [X] Students can make a request to the WashU School of Engineering for a tutors
-- [ ] When assigned, students and tutors are directly connected to each other
+- [X] When assigned, students and tutors are directly connected to each other
 - [X] Tutors and students can message eachother directly.
 - [X] Tutors and students can use an appointment making tool to decide on meet up times, locations (using mobile maps), and topics.
-- [ ] Tutors can set available times that students can see when requesting an appointment
-- [ ] Students can use the app to send a "running late" or "cancelation" notification
+- [X] Students can use the app to send a "cancelation" notification
 - [ ] Students can confirm when a tutoring session has been completed (to let engineering department know)
 
 
