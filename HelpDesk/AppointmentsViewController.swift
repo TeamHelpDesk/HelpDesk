@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class StudentAppointmentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AppointmentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     var appointments : [PFObject]?
@@ -23,18 +23,6 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
         tableView.dataSource = self
         
         loadAppointments()
-        
-        if self.tabBarController is StudentTabBarViewController {
-            print("Has student tab bar")
-            isTutor = false
-        }
-        else if self.tabBarController is TutorTabBarViewController{
-            print("Has tutor tab bar")
-            isTutor = true
-        }
-        else {
-            print(String(self.tabBarController))
-        }
 
         // Do any additional setup after loading the view.
     }
@@ -52,7 +40,7 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("studentAppointmentCell", forIndexPath: indexPath) as! StudentAppointmentsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("studentAppointmentCell", forIndexPath: indexPath) as! AppointmentsTableViewCell
         
         let appointment = appointments![indexPath.row]
         
@@ -84,23 +72,18 @@ class StudentAppointmentsViewController: UIViewController, UITableViewDataSource
                 // do something with the array of object returned by the call
                 self.appointments = appointments
                 self.tableView.reloadData()
-                
-                
             } else {
                 print("Error finding posts")
                 print(error?.localizedDescription)
             }
-            
-            
         }
-        
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "studentMakeAppointment"){
+        if(segue.identifier == "makeAppointment"){
             let nextView = segue.destinationViewController as? AppointmentMakerViewController
             nextView!.isTutor = self.isTutor
         }

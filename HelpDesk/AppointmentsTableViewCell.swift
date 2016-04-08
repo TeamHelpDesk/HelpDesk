@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class StudentAppointmentsTableViewCell: UITableViewCell {
+class AppointmentsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var appDateLabel: UILabel!
@@ -30,16 +30,6 @@ class StudentAppointmentsTableViewCell: UITableViewCell {
         
     }
     
-    @IBAction func onLate(sender: AnyObject) {
-        postNotif("late", message: "\(PFUser.currentUser()?.username!) is running late" ) { (success: Bool, error: NSError?) -> Void in
-            if success {
-                print("success sending late")
-            } else {
-                print(error?.description)
-            }
-        }
-    }
-
     @IBAction func onCancel(sender: AnyObject) {
         postNotif("cancel", message: "\(PFUser.currentUser()?.username!) cancelled their appointment" ) { (success: Bool, error: NSError?) -> Void in
             if success {

@@ -12,8 +12,7 @@
 		4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */; };
 		4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */; };
 		4CB6D9981CAB494C00060BBC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9971CAB494C00060BBC /* User.swift */; };
-		4CB6D99C1CAB58EA00060BBC /* TutorTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D99B1CAB58EA00060BBC /* TutorTabBarViewController.swift */; };
-		4CB6D99E1CAB58FD00060BBC /* StudentTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D99D1CAB58FD00060BBC /* StudentTabBarViewController.swift */; };
+		4CB6D99E1CAB58FD00060BBC /* UserTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D99D1CAB58FD00060BBC /* UserTabBarViewController.swift */; };
 		4CB6D9A31CADE6D200060BBC /* NotifcationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9A21CADE6D200060BBC /* NotifcationsTableViewCell.swift */; };
 		4CB6D9A51CADE73C00060BBC /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */; };
 		4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */; };
@@ -26,15 +25,12 @@
 		F25A8B911CA53496000CED30 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B901CA53496000CED30 /* Message.swift */; };
 		F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B921CA534EC000CED30 /* TutorCell.swift */; };
 		F25A8B951CA5350F000CED30 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B941CA5350F000CED30 /* TextCell.swift */; };
-		FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */; };
-		FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */; };
-		FC134AD81CA6216100D9AC5D /* StudentTutorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC134AD71CA6216100D9AC5D /* StudentTutorsViewController.swift */; };
-		FC134ADA1CA6219D00D9AC5D /* StudentTutorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */; };
+		FC044AB31CA21765001E4CD0 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB21CA21765001E4CD0 /* AppointmentsViewController.swift */; };
+		FC044AB51CA217E0001E4CD0 /* AppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC044AB41CA217E0001E4CD0 /* AppointmentsTableViewCell.swift */; };
 		FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */; };
 		FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */; };
 		FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */; };
 		FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */; };
-		FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9011311CA602AC000FEE95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +40,7 @@
 		4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifcationsDetailViewController.swift; sourceTree = "<group>"; };
 		4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4CB6D9971CAB494C00060BBC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		4CB6D99B1CAB58EA00060BBC /* TutorTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorTabBarViewController.swift; sourceTree = "<group>"; };
-		4CB6D99D1CAB58FD00060BBC /* StudentTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTabBarViewController.swift; sourceTree = "<group>"; };
+		4CB6D99D1CAB58FD00060BBC /* UserTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTabBarViewController.swift; sourceTree = "<group>"; };
 		4CB6D9A21CADE6D200060BBC /* NotifcationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifcationsTableViewCell.swift; sourceTree = "<group>"; };
 		4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentMakerViewController.swift; sourceTree = "<group>"; };
@@ -61,15 +56,12 @@
 		F25A8B901CA53496000CED30 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F25A8B921CA534EC000CED30 /* TutorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorCell.swift; sourceTree = "<group>"; };
 		F25A8B941CA5350F000CED30 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
-		FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsViewController.swift; sourceTree = "<group>"; };
-		FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAppointmentsTableViewCell.swift; sourceTree = "<group>"; };
-		FC134AD71CA6216100D9AC5D /* StudentTutorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTutorsViewController.swift; sourceTree = "<group>"; };
-		FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTutorTableViewCell.swift; sourceTree = "<group>"; };
+		FC044AB21CA21765001E4CD0 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
+		FC044AB41CA217E0001E4CD0 /* AppointmentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsTableViewCell.swift; sourceTree = "<group>"; };
 		FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsViewController.swift; sourceTree = "<group>"; };
 		FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMakerViewController.swift; sourceTree = "<group>"; };
 		FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileViewController.swift; sourceTree = "<group>"; };
-		FC9011311CA602AC000FEE95 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +113,8 @@
 		4C93C7B01CADF2F000BD2A6F /* Appointments */ = {
 			isa = PBXGroup;
 			children = (
-				FC044AB21CA21765001E4CD0 /* StudentAppointmentsViewController.swift */,
-				FC044AB41CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift */,
+				FC044AB21CA21765001E4CD0 /* AppointmentsViewController.swift */,
+				FC044AB41CA217E0001E4CD0 /* AppointmentsTableViewCell.swift */,
 				4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */,
 			);
 			name = Appointments;
@@ -131,8 +123,7 @@
 		4C93C7B11CADF31800BD2A6F /* TabBarViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4CB6D99B1CAB58EA00060BBC /* TutorTabBarViewController.swift */,
-				4CB6D99D1CAB58FD00060BBC /* StudentTabBarViewController.swift */,
+				4CB6D99D1CAB58FD00060BBC /* UserTabBarViewController.swift */,
 			);
 			name = TabBarViewControllers;
 			sourceTree = "<group>";
@@ -149,8 +140,6 @@
 		4C93C7B31CADF36400BD2A6F /* StudentTutorInteract */ = {
 			isa = PBXGroup;
 			children = (
-				FC134AD71CA6216100D9AC5D /* StudentTutorsViewController.swift */,
-				FC134AD91CA6219D00D9AC5D /* StudentTutorTableViewCell.swift */,
 				F25A8B8B1CA53435000CED30 /* TutorListViewController.swift */,
 				F25A8B921CA534EC000CED30 /* TutorCell.swift */,
 			);
@@ -161,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */,
-				FC9011311CA602AC000FEE95 /* HomeViewController.swift */,
 				4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */,
 			);
 			name = EarlyViews;
@@ -379,22 +367,18 @@
 				FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */,
 				F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */,
 				4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */,
-				4CB6D99C1CAB58EA00060BBC /* TutorTabBarViewController.swift in Sources */,
 				4CB6D9A31CADE6D200060BBC /* NotifcationsTableViewCell.swift in Sources */,
 				4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */,
 				F25A8B8C1CA53435000CED30 /* TutorListViewController.swift in Sources */,
-				FC044AB31CA21765001E4CD0 /* StudentAppointmentsViewController.swift in Sources */,
+				FC044AB31CA21765001E4CD0 /* AppointmentsViewController.swift in Sources */,
 				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
-				4CB6D99E1CAB58FD00060BBC /* StudentTabBarViewController.swift in Sources */,
+				4CB6D99E1CAB58FD00060BBC /* UserTabBarViewController.swift in Sources */,
 				FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */,
 				4CB6D9981CAB494C00060BBC /* User.swift in Sources */,
-				FC044AB51CA217E0001E4CD0 /* StudentAppointmentsTableViewCell.swift in Sources */,
+				FC044AB51CA217E0001E4CD0 /* AppointmentsTableViewCell.swift in Sources */,
 				FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */,
-				FC9011321CA602AC000FEE95 /* HomeViewController.swift in Sources */,
 				4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */,
 				F25A8B911CA53496000CED30 /* Message.swift in Sources */,
-				FC134ADA1CA6219D00D9AC5D /* StudentTutorTableViewCell.swift in Sources */,
-				FC134AD81CA6216100D9AC5D /* StudentTutorsViewController.swift in Sources */,
 				4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */,
 				4CD670221C9249D600741696 /* AppDelegate.swift in Sources */,
 			);
