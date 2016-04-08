@@ -12,6 +12,8 @@ import ParseUI
 
 class HelpDeskUser: NSObject {
     
+    static let sharedInstance = HelpDeskUser()
+    
     var user: PFUser!
     
     var isTutor: Bool!
@@ -23,24 +25,46 @@ class HelpDeskUser: NSObject {
     
     override init() {
         super.init()
+        self.user = PFUser.currentUser()
         refreshData()
         
     }
     
     func refreshData(){
+        
         self.user = PFUser.currentUser()
         if let user = user{
-            
-            self.username = user["username"] as! String
-            self.isTutor = user["isTutor"] as! Bool
+            self.username = user["username"] as? String
+            self.isTutor = user["isTutor"] as? Bool
             self.tutors = user["tutors"] as? [PFUser]
             self.students = user["students"] as? [PFUser]
             self.tutoredClasses = user["tutoredClasses"] as? [PFObject]
         }
-        else {
-            print("Error in \"User.swift\". Tried to refreshData but no current PFUser")
+        
+    }
+    
+    func logout(){
+        
+        PFUser.logOut()
+        refreshData()
+        
+    }
+    
+    
+    static var _currentUser: HelpDeskUser?
+    static let userDidLogoutNotification = "UserDidLogout"
+    
+    class var currentUser: HelpDeskUser?{
+        get{
+
+            return _currentUser;
+        }
+        set(helpdeskuser){
+            _currentUser = helpdeskuser
         }
     }
+    
+    
     
 }
 

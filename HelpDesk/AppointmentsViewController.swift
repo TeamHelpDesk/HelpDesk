@@ -22,6 +22,10 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         tableView.delegate = self
         tableView.dataSource = self
         
+        let theCurrentUser = HelpDeskUser()
+        print(theCurrentUser.username)
+        print(HelpDeskUser.sharedInstance.username)
+        
         loadAppointments()
 
         // Do any additional setup after loading the view.

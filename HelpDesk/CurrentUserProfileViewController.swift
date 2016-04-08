@@ -80,6 +80,9 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         
         
     }
+    @IBAction func onLogout(sender: AnyObject) {
+        HelpDeskUser.sharedInstance.logout()
+    }
     /*
     // MARK: - Navigation
 
