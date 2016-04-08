@@ -51,15 +51,15 @@ Here's a wireframe of the potential app layout:
 
 ## Video Walkthrough 
 
-Here's a walkthrough of implemented user stories:
+Here's an updated walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/CBT6cWZ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/CBT6cWZ.gif' title='Video Walkthrough 2' width='' alt='Video Walkthrough 3' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+Here's an updated walkthrough of implemented user stories:
 
-## Notes
+title='Video Walkthrough' width='' title='Video Walkthrough 3' alt='Video Walkthrough'/>
 
-Describe any challenges encountered while building the app.
+GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## License
 
