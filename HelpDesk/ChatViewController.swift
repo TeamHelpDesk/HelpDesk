@@ -52,6 +52,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         oCountQuery = PFQuery(className: "Message", predicate: cPredicate2)
         
         firstQuery!.includeKey("receiver")
+        firstQuery!.includeKey("isSeen")
         firstQuery!.orderByAscending("createdAt")
         firstQuery!.limit = 100
         
@@ -119,7 +120,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         query!.orderByAscending("createdAt")
         query!.limit = 15
         query!.includeKey("receiver")
-        
+        query!.includeKey("isSeen")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
         //onTimer()
         
@@ -210,10 +211,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! TextCell
         cell.timeLabel.hidden = false
-        if cell.isSeen! && cell.receiver == contact {
+        if cell.isSeen == true && cell.receiver == contact {
             cell.seenLabel.text = "Seen"
-        } else if !cell.isSeen! && cell.receiver == contact {
+            cell.seenLabel.hidden = false
+        } else if cell.isSeen == false && cell.receiver! == contact! {
             cell.seenLabel.text = "Delivered"
+            cell.seenLabel.hidden = false
         }
     
     }

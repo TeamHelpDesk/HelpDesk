@@ -33,10 +33,10 @@ class Message: NSObject {
         
         // Add relevant fields to the object
         message["text"] = text
-        message["sender"] = PFUser.currentUser()
-        message["receiver"] = receiver
-        message["count"] = count
-        message["isSeen"] = false
+        message["sender"] = PFUser.currentUser()! as PFUser
+        message["receiver"] = receiver as PFUser
+        message["count"] = count as Int
+        message["isSeen"] = false as Bool
  
         return message
         //user = User(dictionary: dictionary["user"] as! NSDictionary)
