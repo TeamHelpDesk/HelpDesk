@@ -11,7 +11,7 @@
 		4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */; };
 		4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */; };
 		4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */; };
-		4CB6D9981CAB494C00060BBC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9971CAB494C00060BBC /* User.swift */; };
+		4CB6D9981CAB494C00060BBC /* HelpDeskUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9971CAB494C00060BBC /* HelpDeskUser.swift */; };
 		4CB6D99E1CAB58FD00060BBC /* UserTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D99D1CAB58FD00060BBC /* UserTabBarViewController.swift */; };
 		4CB6D9A31CADE6D200060BBC /* NotifcationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9A21CADE6D200060BBC /* NotifcationsTableViewCell.swift */; };
 		4CB6D9A51CADE73C00060BBC /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */; };
@@ -39,7 +39,7 @@
 		4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifcationsDetailViewController.swift; sourceTree = "<group>"; };
 		4C93C7B51CADF79D00BD2A6F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		4CB6D9971CAB494C00060BBC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4CB6D9971CAB494C00060BBC /* HelpDeskUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpDeskUser.swift; sourceTree = "<group>"; };
 		4CB6D99D1CAB58FD00060BBC /* UserTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTabBarViewController.swift; sourceTree = "<group>"; };
 		4CB6D9A21CADE6D200060BBC /* NotifcationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifcationsTableViewCell.swift; sourceTree = "<group>"; };
 		4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				F25A8B901CA53496000CED30 /* Message.swift */,
-				4CB6D9971CAB494C00060BBC /* User.swift */,
+				4CB6D9971CAB494C00060BBC /* HelpDeskUser.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -374,7 +374,7 @@
 				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
 				4CB6D99E1CAB58FD00060BBC /* UserTabBarViewController.swift in Sources */,
 				FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */,
-				4CB6D9981CAB494C00060BBC /* User.swift in Sources */,
+				4CB6D9981CAB494C00060BBC /* HelpDeskUser.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* AppointmentsTableViewCell.swift in Sources */,
 				FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */,
 				4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */,
