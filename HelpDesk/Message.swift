@@ -11,10 +11,9 @@ import Parse
 
 class Message: NSObject {
     
-    //var createdAtString: String?
-    //var createdAt: NSDate?
+
     
-//    init(text: String?, receiver: PFUser) {
+//    init() {
 //        // Create Parse object PFObject
 //        let message = PFObject(className: "Message") as PFObject
 //        
@@ -26,22 +25,19 @@ class Message: NSObject {
 //        
 //            //user = User(dictionary: dictionary["user"] as! NSDictionary)
 //            //text = dictionary["text"] as? String
-//            //createdAtString = dictionary["created_at"] as? String
-//            //let formatter = NSDateFormatter()
-//            //formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
-//            //createdAt = formatter.dateFromString(createdAtString!)
 //        }
-    
+
     class func saveMessage(text: String?, receiver: PFUser, count: Int) -> PFObject {
         // Create Parse object PFObject
         let message = PFObject(className: "Message") as PFObject
         
         // Add relevant fields to the object
         message["text"] = text
-        message["sender"] = PFUser.currentUser()
-        message["receiver"] = receiver
-        message["count"] = count
-        
+        message["sender"] = PFUser.currentUser()! as PFUser
+        message["receiver"] = receiver as PFUser
+        message["count"] = count as Int
+        message["isSeen"] = false as Bool
+ 
         return message
         //user = User(dictionary: dictionary["user"] as! NSDictionary)
         //text = dictionary["text"] as? String

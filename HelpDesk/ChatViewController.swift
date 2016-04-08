@@ -11,6 +11,7 @@ import Parse
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
     var messages: [PFObject]?
@@ -34,7 +35,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-        
+
         let predicate1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
         let predicate2 = NSPredicate(format: "%K = %@", "sender", contact!)
         
@@ -51,6 +52,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         oCountQuery = PFQuery(className: "Message", predicate: cPredicate2)
         
         firstQuery!.includeKey("receiver")
+        firstQuery!.includeKey("isSeen")
         firstQuery!.orderByAscending("createdAt")
         firstQuery!.limit = 100
         
@@ -63,7 +65,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         firstQuery!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
-                self.messages = messages! as [PFObject]
+                if messages!.count != 0 {
+                    self.messages = messages! as [PFObject]
+                    
+//                    let indexPath = NSIndexPath(index: (self.messages?.indexOf(self.messages!.last!))!)
+//                    self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
+                }
                 self.tableView.reloadData()
             } else {
                 // handle error
@@ -113,7 +120,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         query!.orderByAscending("createdAt")
         query!.limit = 15
         query!.includeKey("receiver")
-        
+        query!.includeKey("isSeen")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
         //onTimer()
         
@@ -156,6 +163,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 if messages!.count != 0 {
                     self.incomingCount = messages?.last!["count"] as? Int
+//                    let indexPath = NSIndexPath(index: (self.messages?.indexOf(self.messages!.last!))!)
+//                    self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
                 }
                 //
                 self.tableView.reloadData()
@@ -175,8 +184,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let message = Message.saveMessage(textField.text, receiver: contact!, count: outgoingCount!)
             outgoingCount = outgoingCount! + 1
             messages?.append(message)
+            self.tableView.reloadData()
             Message.sendMessage(message, withCompletion: nil)
-            tableView.reloadData()
+//            let indexPath = NSIndexPath(index: (self.messages?.indexOf(self.messages!.last!))!)
+//            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
             textField.text = ""
         }
     }
@@ -198,24 +209,32 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let message = messages![indexPath.row]
-        if message["createdAt"] == nil {
-            print("hey")
+        let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! TextCell
+        cell.timeLabel.hidden = false
+        if cell.isSeen == true && cell.receiver == contact {
+            cell.seenLabel.text = "Seen"
+            cell.seenLabel.hidden = false
+        } else if cell.isSeen == false && cell.receiver! == contact! {
+            cell.seenLabel.text = "Delivered"
+            cell.seenLabel.hidden = false
         }
+    
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+        
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! TextCell
         cell.message = messages![indexPath.row] as PFObject
         if cell.message["receiver"].username == PFUser.currentUser()!.username {
-            cell.backgroundColor = UIColor.greenColor()
-            cell.messageLabel.textColor = UIColor.brownColor()
-            cell.messageLabel.textAlignment = NSTextAlignment.Right
-        } else {
             cell.backgroundColor = UIColor.clearColor()
             cell.messageLabel.textColor = UIColor.blackColor()
             cell.messageLabel.textAlignment = NSTextAlignment.Left
+        } else {
+            cell.message["isSeen"] = true
+            cell.backgroundColor = UIColor.greenColor()
+            cell.messageLabel.textColor = UIColor.brownColor()
+            cell.messageLabel.textAlignment = NSTextAlignment.Right
+            
         }
         return cell
     }
