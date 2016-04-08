@@ -57,7 +57,7 @@ Here's an updated walkthrough of implemented user stories:
 
 Here's an updated walkthrough of implemented user stories:
 
-title='Video Walkthrough' width='' title='Video Walkthrough 3' alt='Video Walkthrough'/>
+<img src='http://i.imgur.com/fjqbTL4.gif' title='Video Walkthrough' width='' title='Video Walkthrough 3' alt='Video Walkthrough'/>
 
 GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
