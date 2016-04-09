@@ -14,7 +14,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
-    var messages: [PFObject]?
+    var messages: [PFObject]!
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     var outgoingCount: Int? = 0
     var incomingCount: Int? = 0
@@ -151,7 +151,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.query?.cancel()
         query?.whereKey("count", greaterThan: incomingCount!)
-        print(self.incomingCount)
         // fetch data asynchronously
         query!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
             
@@ -164,7 +163,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 if messages!.count != 0 {
                     self.incomingCount = messages?.last!["count"] as? Int
 //                    let indexPath = NSIndexPath(index: (self.messages?.indexOf(self.messages!.last!))!)
-//                    self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
                 }
                 //
                 self.tableView.reloadData()
@@ -210,13 +208,17 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! TextCell
+        cell.message = messages![indexPath.row] as PFObject
         cell.timeLabel.hidden = false
-        if cell.isSeen == true && cell.receiver == contact {
+        //print(cell.message.valueForKey("isSeen"))
+        if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
             cell.seenLabel.text = "Seen"
             cell.seenLabel.hidden = false
-        } else if cell.isSeen == false && cell.receiver! == contact! {
+            print("im here?")
+        } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("receiver")!.username == contact!.username {
             cell.seenLabel.text = "Delivered"
             cell.seenLabel.hidden = false
+            print("not here")
         }
     
     }
@@ -225,17 +227,23 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! TextCell
         cell.message = messages![indexPath.row] as PFObject
-        if cell.message["receiver"].username == PFUser.currentUser()!.username {
+        if cell.message.valueForKey("receiver")?.username == PFUser.currentUser()!.username {
             cell.backgroundColor = UIColor.clearColor()
             cell.messageLabel.textColor = UIColor.blackColor()
             cell.messageLabel.textAlignment = NSTextAlignment.Left
+            if cell.message.valueForKey("isSeen") as! Bool == false {
+                //self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
+                cell.message.setValue(true, forKey: "isSeen")
+                //cell.message["isSeen"] = true
+                cell.message.saveEventually()
+            }
+            
         } else {
-            cell.message["isSeen"] = true
             cell.backgroundColor = UIColor.greenColor()
             cell.messageLabel.textColor = UIColor.brownColor()
             cell.messageLabel.textAlignment = NSTextAlignment.Right
-            
         }
+        
         return cell
     }
     

@@ -29,7 +29,7 @@ class Message: NSObject {
 
     class func saveMessage(text: String?, receiver: PFUser, count: Int) -> PFObject {
         // Create Parse object PFObject
-        let message = PFObject(className: "Message") as PFObject
+        let message = PFObject(className: "Message") 
         
         // Add relevant fields to the object
         message["text"] = text
