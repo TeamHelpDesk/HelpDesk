@@ -22,9 +22,59 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         tableView.delegate = self
         tableView.dataSource = self
         
-        let theCurrentUser = HelpDeskUser()
-        print(theCurrentUser.username)
-        print(HelpDeskUser.sharedInstance.username)
+        //Code to test the the HelpDeskUser Object (Delete when it works for sure)
+        //let helpdeskuser = HelpDeskUser()
+        //print(helpdeskuser.username)
+        //print(HelpDeskUser.sharedInstance.username)
+        
+        /*
+        var userQuery : PFQuery?
+        userQuery = PFUser.query()
+        userQuery?.includeKey("username")
+        userQuery?.whereKey("username", notEqualTo: (HelpDeskUser.sharedInstance.username)!)
+        userQuery!.limit = 20
+        userQuery!.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                let users = users! as? [PFUser]
+                for user in users! {
+                    
+                    HelpDeskUser.sharedInstance.addTutor(user)
+                }
+            } else {
+                // handle error
+                print(error?.localizedDescription)
+            }
+        }
+        */
+        
+        
+        /*var userQuery : PFQuery?
+        userQuery = PFUser.query()
+        userQuery?.whereKey("username", equalTo: "Username")
+        userQuery!.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                let users = users! as? [PFUser]
+                for user in users! {
+                    HelpDeskUser.sharedInstance.postTutoring(user,student: HelpDeskUser.sharedInstance.user, subject: "physics"){ (success: Bool, error: NSError?) -> Void in
+                        if success {
+                            print("success uploading request")
+                        } else {
+                            print(error?.description)
+                        }
+                    }
+                }
+            } else {
+                // handle error
+                print(error?.localizedDescription)
+            }
+        }*/
+        
+        //HelpDeskUser.sharedInstance.refreshData()
+        //print("test")
+    
+        
+        
+        
         
         loadAppointments()
 
@@ -68,12 +118,11 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         query.limit = 20
         query.orderByDescending("_created_at")
         
-        print("Loading Posts")
+        //print("Loading Posts")
         // fetch data asynchronously
         query.findObjectsInBackgroundWithBlock { (appointments: [PFObject]?, error: NSError?) -> Void in
             if let appointments = appointments {
-                print("Found \(appointments.count) posts")
-                // do something with the array of object returned by the call
+                //print("Found \(appointments.count) posts")
                 self.appointments = appointments
                 self.tableView.reloadData()
             } else {

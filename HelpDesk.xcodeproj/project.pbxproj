@@ -31,6 +31,7 @@
 		FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */; };
 		FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */; };
 		FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */; };
+		FCEDC8B31CB876230088E787 /* Tutoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDC8B21CB876230088E787 /* Tutoring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMakerViewController.swift; sourceTree = "<group>"; };
 		FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileViewController.swift; sourceTree = "<group>"; };
+		FCEDC8B21CB876230088E787 /* Tutoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutoring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			children = (
 				F25A8B901CA53496000CED30 /* Message.swift */,
 				4CB6D9971CAB494C00060BBC /* HelpDeskUser.swift */,
+				FCEDC8B21CB876230088E787 /* Tutoring.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */,
 				4CB6D9981CAB494C00060BBC /* HelpDeskUser.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* AppointmentsTableViewCell.swift in Sources */,
+				FCEDC8B31CB876230088E787 /* Tutoring.swift in Sources */,
 				FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */,
 				4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */,
 				F25A8B911CA53496000CED30 /* Message.swift in Sources */,
