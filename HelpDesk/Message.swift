@@ -27,7 +27,7 @@ class Message: NSObject {
 //            //text = dictionary["text"] as? String
 //        }
 
-    class func saveMessage(text: String?, receiver: PFUser, count: Int) -> PFObject {
+    class func saveMessage(text: String?, receiver: PFUser) -> PFObject {
         // Create Parse object PFObject
         let message = PFObject(className: "Message") 
         
@@ -35,7 +35,6 @@ class Message: NSObject {
         message["text"] = text
         message["sender"] = PFUser.currentUser()! as PFUser
         message["receiver"] = receiver as PFUser
-        message["count"] = count as Int
         message["isSeen"] = false as Bool
  
         return message

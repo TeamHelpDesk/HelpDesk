@@ -28,8 +28,8 @@ class TextCell: UITableViewCell {
             //let formatter = NSDateFormatter()
             //formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
             //createdAt = formatter.dat(createdAtString!)
-            //let time = NSCalendar.currentCalendar().components([.Month, .Day, .Hour, .Minute], fromDate: message!.createdAt!)
-            //timeLabel.text = "\(time.month)/\(time.day) \(time.hour):\(time.minute)"
+            let time = NSCalendar.currentCalendar().components([.Month, .Day, .Hour, .Minute], fromDate: message!.createdAt!)
+            timeLabel.text = "\(time.month)/\(time.day) \(time.hour):\(time.minute)"
             timeLabel.hidden = true
             seenLabel.hidden = true
             self.messageLabel.text = message.valueForKey("text") as? String
@@ -40,9 +40,6 @@ class TextCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        //self.isSeen = message!["isSeen"] as? Bool
-        //self.receiver = message!["receiver"] as? PFUser
-        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
