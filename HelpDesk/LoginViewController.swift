@@ -32,10 +32,24 @@ class LoginViewController: UIViewController {
         
         print("The username field contains: \(usernameField.text)")
         PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!){ (user: PFUser?, error: NSError?) -> Void in
+            
             if(user != nil){
+                if(HelpDeskUser.sharedInstance.loggedOut){
+                    //Someone logged out
+                    HelpDeskUser.sharedInstance.refreshData()
+                }
+                else {
+                    //First time login
+                    _ = HelpDeskUser()
+                }
+                
+                
+                
                 self.performSegueWithIdentifier("loginSegue", sender: nil)
                 print("You logged in with username \(self.usernameField.text)")
             }
+                
+            
             else{
               print(error?.localizedDescription)
             }

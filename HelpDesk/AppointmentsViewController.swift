@@ -48,7 +48,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         */
         
         
-        /*var userQuery : PFQuery?
+       /* var userQuery : PFQuery?
         userQuery = PFUser.query()
         userQuery?.whereKey("username", equalTo: "Username")
         userQuery!.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
@@ -62,12 +62,27 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                             print(error?.description)
                         }
                     }
+                    HelpDeskUser.sharedInstance.postTutoring(user,student: HelpDeskUser.sharedInstance.user, subject: "physics"){ (success: Bool, error: NSError?) -> Void in
+                        if success {
+                            print("success uploading request")
+                        } else {
+                            print(error?.description)
+                        }
+                    }
+                    HelpDeskUser.sharedInstance.postTutoring(HelpDeskUser.sharedInstance.user, student : user, subject: "physics"){ (success: Bool, error: NSError?) -> Void in
+                        if success {
+                            print("success uploading request")
+                        } else {
+                            print(error?.description)
+                        }
+                    }
                 }
             } else {
                 // handle error
                 print(error?.localizedDescription)
             }
-        }*/
+        }
+        */
         
         //HelpDeskUser.sharedInstance.refreshData()
         //print("test")

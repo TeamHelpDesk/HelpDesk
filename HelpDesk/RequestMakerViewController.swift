@@ -28,7 +28,7 @@ class RequestMakerViewController: UIViewController {
     
     @IBAction func onSubmit(sender: AnyObject) {
         
-        postAppointmentRequest(self.className, message: messageField.text, sender: PFUser.currentUser(), recipient: PFUser.currentUser()) { (success: Bool, error: NSError?) -> Void in
+        postTutoringRequest(self.className, message: messageField.text) { (success: Bool, error: NSError?) -> Void in
             if success {
                 print("success uploading request")
             } else {
@@ -37,18 +37,61 @@ class RequestMakerViewController: UIViewController {
         }
     }
     
-    func postAppointmentRequest(className: String?, message: String?, sender: PFUser?, recipient: PFUser?, completion: PFBooleanResultBlock?) {
+    func postTutoringRequest(className: String?, message: String?, completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
-        let post = PFObject(className: "TutorRequests")
+        
+        let userQuery = PFUser.query()
+        //The Request is sent to all users
+        //Should be sent to all tutors of the class (who aren't already tutoring the user maybe?)
+        userQuery?.whereKey("username", notEqualTo: (PFUser.currentUser()?.username)!)
+        userQuery!.limit = 20
+        userQuery!.findObjectsInBackgroundWithBlock { (tutors: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                
+                for tutor in tutors! {
+                    let post = PFObject(className: "Tutoring")
+                    post["type"] =  "request"
+                    post["subject"] =  className ?? "(No class selected)"
+                    post["message"] =  message ?? "(No message)"
+                    post["tutor"] =  tutor
+                    post["student"] = HelpDeskUser.sharedInstance.user
+                
+                    tutor.fetchIfNeededInBackgroundWithBlock {
+                        (object: PFObject?, error:NSError?) -> Void in
+                        if error == nil {
+                            post["tutorname"] = object!["username"]
+                        }
+                    }
+                
+                
+                    post["studentname"] = HelpDeskUser.sharedInstance.username
+                    post.saveInBackgroundWithBlock(completion)
+                }
+                
+                
+                
+                
+                
+            } else {
+                // handle error
+                print(error?.localizedDescription)
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
         
         // Add relevant fields to the object
-        post["className"] =  className ?? "(No class selected)"
-        post["message"] =  message ?? "(No message)"
-        post["studentName"] = sender!.username as String!
-        post["recipient"] = recipient!.username as String!
+        
+        //post["studentName"] = sender!.username as String!
+        //post["recipient"] = recipient!.username as String!
         
         // Save object (following function will save the object in Parse asynchronously)
-        post.saveInBackgroundWithBlock(completion)
+        
     }
 
     /*

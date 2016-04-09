@@ -44,9 +44,9 @@ UITableViewDataSource{
  
         let request = requests![indexPath.row]
             
-        let className = request["className"] as! String
+        let className = request["subject"] as! String
         let message = request["message"] as! String
-        let studentName = request["studentName"] as! String
+        let studentName = request["studentname"] as! String
 
             
         cell.className = className
@@ -63,7 +63,9 @@ UITableViewDataSource{
     
     
     func loadRequests(){
-        let query = PFQuery(className: "TutorRequests")
+        let query = PFQuery(className: "Tutoring")
+        query.whereKey("type", equalTo: "request")
+        query.whereKey("tutorname", equalTo: HelpDeskUser.sharedInstance.username)
         query.limit = 20
         query.orderByDescending("_created_at")
         

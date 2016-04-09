@@ -65,6 +65,8 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
                     let profUpload = self.getPFFileFromImage(self.profilePic.image)
                     newUser.addObject(profUpload!, forKey: "profPicture")
                     newUser.saveInBackground()
+                    //(Don't Delete)
+                    //Also Login at Sign Up? Remember to instantiate Singleton if so
                 } else {
                     print(error?.localizedDescription)
                     if error?.code == 202{
