@@ -11,33 +11,32 @@ import Parse
 
 class Message: NSObject {
     
-
     
-//    init() {
-//        // Create Parse object PFObject
-//        let message = PFObject(className: "Message") as PFObject
-//        
-//        // Add relevant fields to the object
-//        message["text"] = text
-//        message["sender"] = PFUser.currentUser()
-//        message["receiver"] = receiver
-//        
-//        
-//            //user = User(dictionary: dictionary["user"] as! NSDictionary)
-//            //text = dictionary["text"] as? String
-//        }
-
-    class func saveMessage(text: String?, receiver: PFUser, count: Int) -> PFObject {
+    
+    //    init() {
+    //        // Create Parse object PFObject
+    //        let message = PFObject(className: "Message") as PFObject
+    //
+    //        // Add relevant fields to the object
+    //        message["text"] = text
+    //        message["sender"] = PFUser.currentUser()
+    //        message["receiver"] = receiver
+    //
+    //
+    //            //user = User(dictionary: dictionary["user"] as! NSDictionary)
+    //            //text = dictionary["text"] as? String
+    //        }
+    
+    class func saveMessage(text: String?, receiver: PFUser) -> PFObject {
         // Create Parse object PFObject
-        let message = PFObject(className: "Message") as PFObject
+        let message = PFObject(className: "Message")
         
         // Add relevant fields to the object
         message["text"] = text
         message["sender"] = PFUser.currentUser()! as PFUser
         message["receiver"] = receiver as PFUser
-        message["count"] = count as Int
         message["isSeen"] = false as Bool
- 
+        
         return message
         //user = User(dictionary: dictionary["user"] as! NSDictionary)
         //text = dictionary["text"] as? String
@@ -52,4 +51,3 @@ class Message: NSObject {
         message.saveEventually(completion)
     }
 }
-
