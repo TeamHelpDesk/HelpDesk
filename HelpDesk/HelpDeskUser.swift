@@ -17,19 +17,20 @@ class HelpDeskUser: NSObject {
     var user: PFUser!
     
     var username: String!
+    var loggedOut = false
     
     var tutorings: [PFObject]?
     var students: [PFUser]?
     var tutors: [PFUser]?
     var people: [PFUser]?
     
-    var loggedOut = false
+    var tutoredCourses: [String]?
     
     var isTutor: Bool?
     
-    var tutoringsCopy: [Tutoring]?
+    //var tutoringsCopy: [Tutoring]?
     
-    var tutoredClasses: [PFObject]?
+    
     
     override init() {
         //print("Initialized Singleton")
@@ -76,7 +77,7 @@ class HelpDeskUser: NSObject {
     }
     
     func refreshData(){
-        
+        print("Refreshing Data")
         self.user = PFUser.currentUser()
         if let user = user{
             //print("Refreshed User Data!")
@@ -96,7 +97,6 @@ class HelpDeskUser: NSObject {
     }
     
     func refreshTutorings(){ //SHOULD I HAVE A BOOLEAN PARAMETER TO MAKE REFRESHING THE LOCAL ARRAYS OPTIONAL?
-        print("Refreshing Tutorings")
         let isStudentQuery = PFQuery(className : "Tutoring")
         let isTutorQuery = PFQuery(className : "Tutoring")
         
@@ -113,7 +113,7 @@ class HelpDeskUser: NSObject {
             if error == nil {
 
                 for tutoring in tutorings! {
-                    print("\(tutoring["tutorname"]) is tutoring \(tutoring["studentname"]) in \(tutoring["subject"])")
+                    //print("\(tutoring["tutorname"]) is tutoring \(tutoring["studentname"]) in \(tutoring["subject"])")
                     
                 }
                 self.refreshPeople(tutorings!)
@@ -147,10 +147,10 @@ class HelpDeskUser: NSObject {
                 print ("Error: Tutoring does not contain HelpDeskUser")
             }
         }
-        //SEND NSNOTIFICATION HERE
-        self.printStudents()
-        self.printTutors()
-        self.printPeople()
+        //SEND NSNOTIFICATION HERE?
+        //self.printStudents()
+        //self.printTutors()
+        //self.printPeople()
     }
 
     

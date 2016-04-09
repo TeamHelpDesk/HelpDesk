@@ -31,6 +31,7 @@
 		FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */; };
 		FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */; };
 		FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */; };
+		FC47C1FD1CB9A66A00966D71 /* CourseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */; };
 		FCEDC8B31CB876230088E787 /* Tutoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDC8B21CB876230088E787 /* Tutoring.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tutorRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMakerViewController.swift; sourceTree = "<group>"; };
 		FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileViewController.swift; sourceTree = "<group>"; };
+		FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseFunctions.swift; sourceTree = "<group>"; };
 		FCEDC8B21CB876230088E787 /* Tutoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutoring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 		4CD670201C9249D500741696 /* HelpDesk */ = {
 			isa = PBXGroup;
 			children = (
+				FC47C1FB1CB9A63B00966D71 /* Tests */,
 				F25A8B8F1CA53483000CED30 /* Models */,
 				4C78706D1CA2151C005A109D /* ViewControllers */,
 				4CD670211C9249D600741696 /* AppDelegate.swift */,
@@ -223,6 +226,14 @@
 				FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */,
 			);
 			name = Profiles;
+			sourceTree = "<group>";
+		};
+		FC47C1FB1CB9A63B00966D71 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +379,7 @@
 				F25A8B951CA5350F000CED30 /* TextCell.swift in Sources */,
 				FC3B955E1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift in Sources */,
 				FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */,
+				FC47C1FD1CB9A66A00966D71 /* CourseFunctions.swift in Sources */,
 				F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */,
 				4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */,
 				4CB6D9A31CADE6D200060BBC /* NotifcationsTableViewCell.swift in Sources */,

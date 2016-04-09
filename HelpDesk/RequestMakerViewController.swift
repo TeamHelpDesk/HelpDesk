@@ -12,7 +12,7 @@ import Parse
 class RequestMakerViewController: UIViewController {
 
     
-    var className : String?
+    var className = "physics"
     
     @IBOutlet weak var messageField: UITextField!
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class RequestMakerViewController: UIViewController {
         
         postTutoringRequest(self.className, message: messageField.text) { (success: Bool, error: NSError?) -> Void in
             if success {
-                print("success uploading request")
+                //print("success uploading request")
             } else {
                 print(error?.description)
             }
@@ -48,26 +48,39 @@ class RequestMakerViewController: UIViewController {
         userQuery!.findObjectsInBackgroundWithBlock { (tutors: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 
+                var count = 0
+
                 for tutor in tutors! {
-                    let post = PFObject(className: "Tutoring")
-                    post["type"] =  "request"
-                    post["subject"] =  className ?? "(No class selected)"
-                    post["message"] =  message ?? "(No message)"
-                    post["tutor"] =  tutor
-                    post["student"] = HelpDeskUser.sharedInstance.user
-                
-                    tutor.fetchIfNeededInBackgroundWithBlock {
-                        (object: PFObject?, error:NSError?) -> Void in
-                        if error == nil {
-                            post["tutorname"] = object!["username"]
+                    
+                    let tutoredCourses = tutor["tutoredCourses"] as? [String] ?? [String]()
+                    
+                    if(tutoredCourses.contains(className!)) {
+                        count += 1
+                        
+                        let post = PFObject(className: "Tutoring")
+                        post["type"] =  "request"
+                        post["subject"] =  className ?? "(No class selected)"
+                        post["message"] =  message ?? "(No message)"
+                        post["tutor"] =  tutor
+                        post["student"] = HelpDeskUser.sharedInstance.user
+                        
+                        tutor.fetchIfNeededInBackgroundWithBlock {
+                            (object: PFObject?, error:NSError?) -> Void in
+                            if error == nil {
+                                post["tutorname"] = object!["username"]
+                            }
                         }
+                        
+                        
+                        post["studentname"] = HelpDeskUser.sharedInstance.username
+                        post.saveInBackgroundWithBlock(completion)
                     }
-                
-                
-                    post["studentname"] = HelpDeskUser.sharedInstance.username
-                    post.saveInBackgroundWithBlock(completion)
+                    
+                    
                 }
                 
+                print("sent requests to \(count) tutors for \(className)")
+
                 
                 
                 
