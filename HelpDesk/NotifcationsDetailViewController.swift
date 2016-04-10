@@ -55,10 +55,10 @@ class NotifcationsDetailViewController: UIViewController {
         // Add relevant fields to the object
         post["time"] =  time
         post["location"] = location // Pointer column type that points to PFUser
-        post["sender"] = tutor
-        post["recipient"] = student
+        post["tutor"] = tutor
+        post["student"] = student
         post["topics"] = topics
-        post["duration"] = duration
+        post["duration"] = String(duration)
         post["subject"] = subject
         
         // Save object (following function will save the object in Parse asynchronously)

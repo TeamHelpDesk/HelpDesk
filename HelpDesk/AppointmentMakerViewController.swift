@@ -20,6 +20,7 @@ class AppointmentMakerViewController: UIViewController {
     var isTutor:Bool!
     var strDate: String?
     var tutoring: PFObject?
+    var tutor: PFUser?
     var tutorname: String?
     var subject: String?
     var hasPickedTutor = false
@@ -28,6 +29,8 @@ class AppointmentMakerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePickerChanged(datePicker)
+    
         // Do any additional setup after loading the view.
     }
 
@@ -55,6 +58,7 @@ class AppointmentMakerViewController: UIViewController {
                     let tutoring = tutorings![data]
                     self!.tutorname = (tutoring["tutorname"] as! String)
                     self!.subject = (tutoring["subject"] as! String)
+                    self!.tutor = (tutoring["tutor"] as! PFUser)
                     let str = "\(self!.tutorname!) (\(self!.subject!))"
                     self!.chosenTutorLabel.text = str
                     self!.hasPickedTutor = true
@@ -77,19 +81,19 @@ class AppointmentMakerViewController: UIViewController {
         print(strDate)
     }
     
-    func postAppointmentRequest(time: String?, location: String?, sender: PFUser?, recipient: PFUser?, topics: String?, withCompletion completion: PFBooleanResultBlock?) {
+    func postAppointmentRequest(time: String?, location: String?, student: PFUser?, tutor: PFUser?, topics: String?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
         let post = PFObject(className: "Notifications")
         
         // Add relevant fields to the object
         post["time"] =  time
         post["location"] = location // Pointer column type that points to PFUser
-        post["sender"] = sender!.username as String!
-        post["recipient"] = recipient!.username as String!
+        post["sender"] = HelpDeskUser.sharedInstance.username as String!
+        post["recipient"] = tutorname as String!
         post["topics"] = topics
         post["duration"] = "120"
         post["subject"] = self.subject
-        post["message"] = "Appointment request from \(sender!.username)"
+        post["message"] = "Appointment request from \(student!.username)"
         post["type"] = "appointment"
             
         // Save object (following function will save the object in Parse asynchronously)
@@ -99,7 +103,7 @@ class AppointmentMakerViewController: UIViewController {
     
     @IBAction func onSubmit(sender: AnyObject) {
         if(hasPickedTutor){
-            postAppointmentRequest(strDate, location: locField.text, sender: PFUser.currentUser(), recipient: PFUser.currentUser(), topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
+            postAppointmentRequest(strDate, location: locField.text, student: PFUser.currentUser(), tutor: tutor, topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
                 if success {
                     print("success uploading appointment request")
                 } else {
