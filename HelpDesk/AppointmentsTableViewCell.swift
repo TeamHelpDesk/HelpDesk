@@ -31,7 +31,7 @@ class AppointmentsTableViewCell: UITableViewCell {
     }
     
     @IBAction func onCancel(sender: AnyObject) {
-        postNotif("cancel", message: "\(PFUser.currentUser()?.username!) cancelled their appointment" ) { (success: Bool, error: NSError?) -> Void in
+        postNotif("cancel", message: "\(HelpDeskUser.sharedInstance.username!) cancelled their appointment" ) { (success: Bool, error: NSError?) -> Void in
             if success {
                 print("success sending late")
             } else {

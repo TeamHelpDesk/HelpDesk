@@ -93,7 +93,7 @@ class AppointmentMakerViewController: UIViewController {
         post["topics"] = topics
         post["duration"] = "120"
         post["subject"] = self.subject
-        post["message"] = "Appointment request from \(student!.username)"
+        post["message"] = "Appointment request from \(student!.username!)"
         post["type"] = "appointment"
             
         // Save object (following function will save the object in Parse asynchronously)
