@@ -33,6 +33,8 @@
 		FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */; };
 		FC47C1FD1CB9A66A00966D71 /* CourseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */; };
 		FC47C1FF1CB9B3E100966D71 /* TutoringFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1FE1CB9B3E100966D71 /* TutoringFunctions.swift */; };
+		FCEBBE451CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBBE441CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift */; };
+		FCEBBE471CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBBE461CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift */; };
 		FCEDC8B31CB876230088E787 /* Tutoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDC8B21CB876230088E787 /* Tutoring.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileViewController.swift; sourceTree = "<group>"; };
 		FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseFunctions.swift; sourceTree = "<group>"; };
 		FC47C1FE1CB9B3E100966D71 /* TutoringFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutoringFunctions.swift; sourceTree = "<group>"; };
+		FCEBBE441CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentTutorPickerViewController.swift; sourceTree = "<group>"; };
+		FCEBBE461CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentTutorSelectTableViewCell.swift; sourceTree = "<group>"; };
 		FCEDC8B21CB876230088E787 /* Tutoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutoring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +126,8 @@
 				FC044AB21CA21765001E4CD0 /* AppointmentsViewController.swift */,
 				FC044AB41CA217E0001E4CD0 /* AppointmentsTableViewCell.swift */,
 				4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */,
+				FCEBBE441CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift */,
+				FCEBBE461CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift */,
 			);
 			name = Appointments;
 			sourceTree = "<group>";
@@ -393,11 +399,13 @@
 				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
 				4CB6D99E1CAB58FD00060BBC /* UserTabBarViewController.swift in Sources */,
 				FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */,
+				FCEBBE451CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift in Sources */,
 				4CB6D9981CAB494C00060BBC /* HelpDeskUser.swift in Sources */,
 				FC044AB51CA217E0001E4CD0 /* AppointmentsTableViewCell.swift in Sources */,
 				FCEDC8B31CB876230088E787 /* Tutoring.swift in Sources */,
 				FC3B955C1CB54542008B6A09 /* tutorRequestsViewController.swift in Sources */,
 				4C93C7B61CADF79D00BD2A6F /* SignUpViewController.swift in Sources */,
+				FCEBBE471CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift in Sources */,
 				F25A8B911CA53496000CED30 /* Message.swift in Sources */,
 				4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */,
 				4CD670221C9249D600741696 /* AppDelegate.swift in Sources */,

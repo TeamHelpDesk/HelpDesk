@@ -63,39 +63,31 @@ UITableViewDataSource{
         cell.acceptButton.addTarget(self, action: #selector(tutorRequestsViewController.onAccept(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             
         cell.declineButton.tag = indexPath.row
-
-            
-            
             
         return cell
-        
         
     }
     
     @IBAction func onAccept(sender: AnyObject) {
-        let cell : tutorRequestsTableViewCell?
+        //Uncomment if the cell is needed
+        //let cell : tutorRequestsTableViewCell?
         
         if let button = sender as? UIButton {
             if let superview = button.superview {
                 if (superview.superview as? tutorRequestsTableViewCell != nil){
-                    cell = superview.superview as? tutorRequestsTableViewCell
-                    //print("accepted")
+                    //cell = superview.superview as? tutorRequestsTableViewCell
+
+                    //Update Parse
                     let request = requests![sender.tag]
                     request["type"] = NSNull()
                     request["message"] = NSNull()
                     request.saveInBackground()
                     
-                    //Delete Request from the view and the array
-                    //
+                    //Update Table View
                     requests?.removeAtIndex(sender.tag)
                     tableView.reloadData()
                     
-                    
-                    
-                    
-                    
-            
-                    
+                    //Add a Notification?
                 }
             }
         }
@@ -103,19 +95,23 @@ UITableViewDataSource{
     }
     
     @IBAction func onDecline(sender: AnyObject) {
-        let cell : tutorRequestsTableViewCell?
+        //Uncomment if the cell is needed
+        //let cell : tutorRequestsTableViewCell?
         
         if let button = sender as? UIButton {
             if let superview = button.superview {
                 if (superview.superview as? tutorRequestsTableViewCell != nil){
-                    cell = superview.superview as? tutorRequestsTableViewCell
-                    //print("declined")
+                    //cell = superview.superview as? tutorRequestsTableViewCell
+
+                    //Update Parse
                     let request = requests![sender.tag]
                     request.deleteInBackground()
                     
+                    //Update Table View
                     requests?.removeAtIndex(sender.tag)
                     tableView.reloadData()
-                    
+                 
+                    //Add a Notificaiton?
                 }
             }
         }
@@ -123,6 +119,7 @@ UITableViewDataSource{
     func loadRequests(){
         let query = PFQuery(className: "Tutoring")
         query.whereKey("type", equalTo: "request")
+        //Why does this code call init()
         query.whereKey("tutorname", equalTo: HelpDeskUser.sharedInstance.username)
         query.limit = 20
         query.orderByDescending("_created_at")

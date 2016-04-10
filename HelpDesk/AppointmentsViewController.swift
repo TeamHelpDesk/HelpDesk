@@ -27,7 +27,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         //HelpDeskUser.sharedInstance.refreshData()
         //CourseFunctions().addCourses()
         //CourseFunctions().assignAllCourses()
-        TutoringFunctions().makeRandomTutorings()
+        //TutoringFunctions().makeRandomTutorings()
         
         
         loadAppointments()
@@ -91,8 +91,8 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "makeAppointment"){
-            let nextView = segue.destinationViewController as? AppointmentMakerViewController
-            nextView!.isTutor = self.isTutor
+            //let nextView = segue.destinationViewController as? AppointmentMakerViewController
+            //nextView!.isTutor = self.isTutor
         }
     }
 

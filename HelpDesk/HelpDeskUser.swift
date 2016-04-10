@@ -33,11 +33,12 @@ class HelpDeskUser: NSObject {
     
     
     override init() {
-        //print("Initialized Singleton")
+        print("Initialized Singleton")
         super.init()
         self.user = PFUser.currentUser()
         loggedOut = false
         refreshData()
+        sleep(5)
         
     }
     
@@ -111,9 +112,10 @@ class HelpDeskUser: NSObject {
         
         isPersonQuery.findObjectsInBackgroundWithBlock { (tutorings: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-
+                self.tutorings = [PFObject]()
                 for tutoring in tutorings! {
                     //print("\(tutoring["tutorname"]) is tutoring \(tutoring["studentname"]) in \(tutoring["subject"])")
+                    self.tutorings?.append(tutoring)
                     
                 }
                 self.refreshPeople(tutorings!)
@@ -147,6 +149,7 @@ class HelpDeskUser: NSObject {
                 print ("Error: Tutoring does not contain HelpDeskUser")
             }
         }
+        print("Done Refreshing Data")
         //SEND NSNOTIFICATION HERE?
         //self.printStudents()
         //self.printTutors()

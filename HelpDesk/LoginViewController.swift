@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
                 }
                 else {
                     //First time login
-                    _ = HelpDeskUser()
+                    _ = HelpDeskUser.sharedInstance
                 }
                 
                 

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("homeNav") as! UITabBarController
             window?.rootViewController = vc
-            _ = HelpDeskUser()
+            _ = HelpDeskUser.sharedInstance
         }
         
         NSNotificationCenter.defaultCenter().addObserverForName("UserDidLogout", object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in
