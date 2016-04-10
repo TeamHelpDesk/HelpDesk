@@ -23,17 +23,27 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
     
-        let user = PFUser.currentUser() as! PFObject
-        if let picFile = user["profPicture"] as? PFFile {
-            picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    self.profilePic.image = UIImage(data:imageData!)
-                }
-                else {
-                    print("Error Fetching Profile Pic")
+        
+        
+        
+        let user = HelpDeskUser.sharedInstance.user as! PFUser
+  
+        let picObject = user["profPicture"] as? [PFFile]
+
+        if picObject != nil{
+            print("found pic object")
+            if let picFile = picObject![0] as? PFFile {
+                picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        self.profilePic.image = UIImage(data:imageData!)
+                    }
+                    else {
+                        print("Error Fetching Profile Pic")
+                    }
                 }
             }
         }
+        
         else{
             print("No Profile Picture Found")
         }
@@ -75,7 +85,8 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
     @IBAction func onSave(sender: AnyObject) {
         let user = PFUser.currentUser()! as PFObject
         let profUpload = self.getPFFileFromImage(self.profilePic.image)
-        user.addObject(profUpload!, forKey: "profPicture")
+        user["profPicture"] = NSNull()
+        user["profPicture"] = profUpload!
         user.saveInBackground()
         
         
