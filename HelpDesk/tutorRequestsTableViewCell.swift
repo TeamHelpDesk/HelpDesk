@@ -15,6 +15,11 @@ class tutorRequestsTableViewCell: UITableViewCell {
     @IBOutlet weak var classLabel: UILabel!
     
     @IBOutlet weak var messageLabel: UILabel!
+    
+    @IBOutlet weak var acceptButton: UIButton!
+    
+    @IBOutlet weak var declineButton: UIButton!
+    
     var className : String?
     var message : String?
     var studentName : String?

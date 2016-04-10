@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -353,10 +353,26 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69B-9C-cX6">
+                                                    <rect key="frame" x="244" y="11" width="49" height="30"/>
+                                                    <state key="normal" title="Accept"/>
+                                                    <connections>
+                                                        <action selector="onAccept:" destination="QS8-Bl-HBX" eventType="touchUpInside" id="Kn2-4u-aUc"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4p-gd-t4O">
+                                                    <rect key="frame" x="243" y="47" width="52" height="30"/>
+                                                    <state key="normal" title="Decline"/>
+                                                    <connections>
+                                                        <action selector="onDecline:" destination="QS8-Bl-HBX" eventType="touchUpInside" id="7Gg-Nq-ene"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="acceptButton" destination="69B-9C-cX6" id="V4T-23-5JE"/>
                                             <outlet property="classLabel" destination="7Wb-46-Stc" id="p9U-vg-Fuo"/>
+                                            <outlet property="declineButton" destination="P4p-gd-t4O" id="hgO-wL-7dH"/>
                                             <outlet property="messageLabel" destination="uTL-LZ-cD0" id="dp6-gv-tLO"/>
                                             <outlet property="studentLabel" destination="Yxr-cg-aLP" id="yr3-GJ-m2o"/>
                                         </connections>

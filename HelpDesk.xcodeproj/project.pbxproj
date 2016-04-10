@@ -32,6 +32,7 @@
 		FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */; };
 		FC3B95651CB5F222008B6A09 /* CurrentUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */; };
 		FC47C1FD1CB9A66A00966D71 /* CourseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */; };
+		FC47C1FF1CB9B3E100966D71 /* TutoringFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1FE1CB9B3E100966D71 /* TutoringFunctions.swift */; };
 		FCEDC8B31CB876230088E787 /* Tutoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDC8B21CB876230088E787 /* Tutoring.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMakerViewController.swift; sourceTree = "<group>"; };
 		FC3B95641CB5F222008B6A09 /* CurrentUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileViewController.swift; sourceTree = "<group>"; };
 		FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseFunctions.swift; sourceTree = "<group>"; };
+		FC47C1FE1CB9B3E100966D71 /* TutoringFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutoringFunctions.swift; sourceTree = "<group>"; };
 		FCEDC8B21CB876230088E787 /* Tutoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutoring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */,
+				FC47C1FE1CB9B3E100966D71 /* TutoringFunctions.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				F25A8B931CA534EC000CED30 /* TutorCell.swift in Sources */,
 				4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */,
 				4CB6D9A31CADE6D200060BBC /* NotifcationsTableViewCell.swift in Sources */,
+				FC47C1FF1CB9B3E100966D71 /* TutoringFunctions.swift in Sources */,
 				4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */,
 				F25A8B8C1CA53435000CED30 /* TutorListViewController.swift in Sources */,
 				FC044AB31CA21765001E4CD0 /* AppointmentsViewController.swift in Sources */,

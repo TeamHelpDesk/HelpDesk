@@ -27,6 +27,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         //HelpDeskUser.sharedInstance.refreshData()
         //CourseFunctions().addCourses()
         //CourseFunctions().assignAllCourses()
+        TutoringFunctions().makeRandomTutorings()
         
         
         loadAppointments()

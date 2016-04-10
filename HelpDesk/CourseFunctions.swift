@@ -55,31 +55,6 @@ class CourseFunctions: NSObject {
     }
     
     
-    //Code to test the the HelpDeskUser Object (Delete when it works for sure)
-    //let helpdeskuser = HelpDeskUser()
-    //print(helpdeskuser.username)
-    //print(HelpDeskUser.sharedInstance.username)
-    
-    /*
-     var userQuery : PFQuery?
-     userQuery = PFUser.query()
-     userQuery?.includeKey("username")
-     userQuery?.whereKey("username", notEqualTo: (HelpDeskUser.sharedInstance.username)!)
-     userQuery!.limit = 20
-     userQuery!.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
-     if error == nil {
-     let users = users! as? [PFUser]
-     for user in users! {
-     
-     HelpDeskUser.sharedInstance.addTutor(user)
-     }
-     } else {
-     // handle error
-     print(error?.localizedDescription)
-     }
-     }
-     */
-    
     
     /* var userQuery : PFQuery?
      userQuery = PFUser.query()
