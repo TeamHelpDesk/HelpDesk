@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C7122171CBB46A00070FE28 /* AppointmentMakerMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7122161CBB46A00070FE28 /* AppointmentMakerMapViewController.swift */; };
+		4C71221A1CBC97A90070FE28 /* NotificationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7122191CBC97A90070FE28 /* NotificationMapViewController.swift */; };
 		4C78706A1CA20C6D005A109D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C7870691CA20C6D005A109D /* Main.storyboard */; };
 		4C8EFA501CA1C8AC00E36CD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */; };
 		4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		233D2DE2D0DA7A8D6F8B6588 /* Pods-HelpDesk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.release.xcconfig"; sourceTree = "<group>"; };
+		4C7122161CBB46A00070FE28 /* AppointmentMakerMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentMakerMapViewController.swift; sourceTree = "<group>"; };
+		4C7122191CBC97A90070FE28 /* NotificationMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationMapViewController.swift; sourceTree = "<group>"; };
 		4C7870691CA20C6D005A109D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C8EFA4F1CA1C8AC00E36CD0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifcationsDetailViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */,
 				4CB6D9A21CADE6D200060BBC /* NotifcationsTableViewCell.swift */,
 				4C93C7AE1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift */,
+				4C7122191CBC97A90070FE28 /* NotificationMapViewController.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 				4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */,
 				FCEBBE441CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift */,
 				FCEBBE461CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift */,
+				4C7122161CBB46A00070FE28 /* AppointmentMakerMapViewController.swift */,
 			);
 			name = Appointments;
 			sourceTree = "<group>";
@@ -393,11 +399,13 @@
 				4C93C7AF1CADEF1A00BD2A6F /* NotifcationsDetailViewController.swift in Sources */,
 				4CB6D9A31CADE6D200060BBC /* NotifcationsTableViewCell.swift in Sources */,
 				FC47C1FF1CB9B3E100966D71 /* TutoringFunctions.swift in Sources */,
+				4C71221A1CBC97A90070FE28 /* NotificationMapViewController.swift in Sources */,
 				4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */,
 				F25A8B8C1CA53435000CED30 /* TutorListViewController.swift in Sources */,
 				FC044AB31CA21765001E4CD0 /* AppointmentsViewController.swift in Sources */,
 				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
 				4CB6D99E1CAB58FD00060BBC /* UserTabBarViewController.swift in Sources */,
+				4C7122171CBB46A00070FE28 /* AppointmentMakerMapViewController.swift in Sources */,
 				FC3B95601CB5787A008B6A09 /* RequestMakerViewController.swift in Sources */,
 				FCEBBE451CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift in Sources */,
 				4CB6D9981CAB494C00060BBC /* HelpDeskUser.swift in Sources */,

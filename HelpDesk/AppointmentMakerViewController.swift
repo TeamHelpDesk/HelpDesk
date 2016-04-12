@@ -24,15 +24,17 @@ class AppointmentMakerViewController: UIViewController {
     var tutorname: String?
     var subject: String?
     var hasPickedTutor = false
-
-    
+    var location: String?
+    var mapUsed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locField.text = ""
         datePickerChanged(datePicker)
     
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,15 +97,29 @@ class AppointmentMakerViewController: UIViewController {
         post["subject"] = self.subject
         post["message"] = "Appointment request from \(student!.username!)"
         post["type"] = "appointment"
+        post["mapUsed"] = mapUsed
             
         // Save object (following function will save the object in Parse asynchronously)
         post.saveInBackgroundWithBlock(completion)
     }
-
+    
+    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+        let source = segue.sourceViewController as! AppointmentMakerMapViewController
+        self.location = "\(source.annotation.coordinate)"
+        //print(location)
+        locField.text = "Pin Placed"
+    }
     
     @IBAction func onSubmit(sender: AnyObject) {
+        if(locField.text != "Pin Placed"){
+            location = locField.text
+        }
+        else{
+            mapUsed = true
+        }
+        print(location)
         if(hasPickedTutor){
-            postAppointmentRequest(strDate, location: locField.text, student: PFUser.currentUser(), tutor: tutor, topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
+            postAppointmentRequest(strDate, location: self.location, student: PFUser.currentUser(), tutor: tutor, topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
                 if success {
                     print("success uploading appointment request")
                 } else {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -280,12 +280,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqX-tN-FQj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3804" y="-1142"/>
+            <point key="canvasLocation" x="3842" y="-1296"/>
         </scene>
         <!--Appointment Maker View Controller-->
         <scene sceneID="5Ho-aJ-UEU">
             <objects>
-                <viewController id="N3p-dW-lWE" customClass="AppointmentMakerViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApptMaker" id="N3p-dW-lWE" customClass="AppointmentMakerViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3kK-d7-IcC"/>
                         <viewControllerLayoutGuide type="bottom" id="pMh-nK-7Wc"/>
@@ -343,6 +343,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifB-o0-Iqf">
                                 <rect key="frame" x="20" y="231" width="280" height="30"/>
                                 <state key="normal" title="Or use map to set location"/>
+                                <connections>
+                                    <segue destination="onb-Ya-pvA" kind="push" id="cfj-Yh-my9"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="goJ-Yg-jrr">
                                 <rect key="frame" x="20" y="331" width="280" height="119"/>
@@ -365,6 +368,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQH-6G-QTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3448" y="-785"/>
+        </scene>
+        <!--Appointment Maker Map View Controller-->
+        <scene sceneID="E31-k9-lYE">
+            <objects>
+                <viewController id="onb-Ya-pvA" customClass="AppointmentMakerMapViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hSQ-Q3-1kX"/>
+                        <viewControllerLayoutGuide type="bottom" id="f4v-cO-WqT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GTc-Xs-xMb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zBG-XL-Uvd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xxK-ql-y3c" appends="YES" id="dYA-pb-8lC"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="5Bp-WY-NTD"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="zBG-XL-Uvd" id="XQw-IX-aCG"/>
+                        <segue destination="QVe-3J-sYW" kind="unwind" identifier="unwindToApptMaker" unwindAction="unwindToVC:" id="KRt-3S-ag7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K64-Zu-YD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QVe-3J-sYW" userLabel="Exit" sceneMemberID="exit"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="xxK-ql-y3c">
+                    <connections>
+                        <action selector="onPress:" destination="onb-Ya-pvA" id="95z-3D-A4G"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="4272" y="-785"/>
         </scene>
         <!--Requests-->
         <scene sceneID="J8g-GB-3BN">
@@ -446,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSH-aZ-42d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1947" y="797"/>
+            <point key="canvasLocation" x="1947" y="843"/>
         </scene>
         <!--Tutor List View Controller-->
         <scene sceneID="Cmf-uA-HtR">
@@ -656,6 +699,13 @@
                                     <action selector="onDecline:" destination="JFU-Lo-eFB" eventType="touchUpInside" id="THB-yE-WpL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQQ-n1-jC5">
+                                <rect key="frame" x="232" y="158" width="68" height="30"/>
+                                <state key="normal" title="View Map"/>
+                                <connections>
+                                    <segue destination="agM-x5-t3s" kind="push" identifier="toNotifMap" id="2D7-aZ-okQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -665,11 +715,39 @@
                         <outlet property="locationLabel" destination="Jdn-11-I6n" id="Rt9-sW-uJK"/>
                         <outlet property="timeLabel" destination="U5f-xa-NHe" id="kIe-pg-lXQ"/>
                         <outlet property="topicsLabel" destination="xLs-Mj-eeH" id="ahs-H1-aHB"/>
+                        <outlet property="viewMapButton" destination="NQQ-n1-jC5" id="wjq-am-zgx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fh7-Zo-R8Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3448" y="797"/>
+        </scene>
+        <!--Notification Map View Controller-->
+        <scene sceneID="k94-90-wYR">
+            <objects>
+                <viewController id="agM-x5-t3s" customClass="NotificationMapViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bgo-oZ-yGx"/>
+                        <viewControllerLayoutGuide type="bottom" id="5bX-3w-lzR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="elA-XI-KjG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8k-7K-Vn6">
+                                <rect key="frame" x="-5" y="0.0" width="325" height="568"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FUN-2Z-rOB"/>
+                    <connections>
+                        <outlet property="mapView" destination="a8k-7K-Vn6" id="xui-Ob-ai9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Fh-7p-Ivr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3448" y="1467"/>
         </scene>
         <!--Request Maker View Controller-->
         <scene sceneID="0Vj-hm-Gnh">

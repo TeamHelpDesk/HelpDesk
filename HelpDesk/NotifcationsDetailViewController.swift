@@ -17,10 +17,13 @@ class NotifcationsDetailViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var topicsLabel: UILabel!
+    @IBOutlet weak var viewMapButton: UIButton!
     var student: String!
     var tutor: String!
     var duration: Int!
     var subject: String!
+    var mapUsed: Bool!
+    var location: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,14 @@ class NotifcationsDetailViewController: UIViewController {
             tutor = notification["recipient"] as? String
             duration = notification["duration"] as? Int
             subject = notification["subject"] as? String
+            mapUsed = notification?["mapUsed"] as? Bool
+            if(mapUsed == true){
+                locationLabel.text = "Click Button to"
+                location = notification["location"] as? String
+                print(location)
+            } else {
+                viewMapButton.alpha = 0
+            }
         }
         else{
             eventTitleLabel.text = notification["message"] as? String
@@ -76,16 +87,16 @@ class NotifcationsDetailViewController: UIViewController {
     }
 
     @IBAction func onDecline(sender: AnyObject) {
-    
+
+        
     }
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let nextView = segue.destinationViewController as? NotificationMapViewController
+        nextView?.coordinate = self.location
     }
-    */
 
 }
