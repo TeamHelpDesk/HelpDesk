@@ -20,6 +20,11 @@ UITableViewDataSource{
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(tutorRequestsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
         loadRequests()
         // Do any additional setup after loading the view.
     }
@@ -141,7 +146,13 @@ UITableViewDataSource{
     }
     
     
-    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        
+        
+        loadRequests()
+        refreshControl.endRefreshing()
+        
+    }
     
     
     

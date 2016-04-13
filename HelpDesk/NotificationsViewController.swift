@@ -21,6 +21,10 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         tableView.delegate = self
         tableView.dataSource = self
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(NotificationsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
         loadNotifications()
         
         // Do any additional setup after loading the view.
@@ -103,9 +107,14 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                 print(error?.localizedDescription)
             }
         }
+    }
+    
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
         
         
-        
+        loadNotifications()
+        refreshControl.endRefreshing()
         
     }
     

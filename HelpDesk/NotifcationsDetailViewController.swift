@@ -26,17 +26,24 @@ class NotifcationsDetailViewController: UIViewController {
     var location: String!
     
     override func viewDidLoad() {
+        //notification.fetchIfNeededInBackground()
+        //print(notification["type"])
+        
+        self.student = notification["student"] as! String
+        self.tutor = notification["tutor"] as! String
+        self.duration = notification["duration"] as? Int ?? 69
+        self.subject = notification["subject"] as! String
+        self.location = notification["location"] as? String ?? "<NO_LOCATION>"
+        self.mapUsed = notification?["mapUsed"] as? Bool
+
+        
+        let type = notification["type"] as? String
         super.viewDidLoad()
-        if(notification["type"] as? String == "appointmentRequest"){
-            eventTitleLabel.text = "Tutoring session with \(notification["sender"])"
+        if(type == "appointmentRequest"){
+            eventTitleLabel.text = "Tutoring session with \(student)"
             timeLabel.text = notification["time"] as? String
-            locationLabel.text = notification["location"] as? String
+            locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
-            student = notification["student"] as? String ?? "NO STUDENT"
-            tutor = notification["tutor"] as? String ?? "NO STUDENT"
-            duration = notification["duration"] as? Int
-            subject = notification["subject"] as? String
-            mapUsed = notification?["mapUsed"] as? Bool
             if(mapUsed == true){
                 locationLabel.text = "Click Button to"
             } else {
@@ -44,12 +51,26 @@ class NotifcationsDetailViewController: UIViewController {
                 viewMapButton.alpha = 0
             }
         }
-        else{
-            eventTitleLabel.text = notification["message"] as? String
-            timeLabel.text = ""
-            locationLabel.text = ""
-            topicsLabel.text = ""
+        else if(type == "cancelledByStudent"){
+            eventTitleLabel.text = "Appointment cancelled by \(student)"
+            timeLabel.text = notification["time"] as? String
+            locationLabel.text = location
+            topicsLabel.text = notification["topics"] as? String
         }
+        else if(type == "cancelledByStudent"){
+            eventTitleLabel.text = "Appointment cancelled by \(tutor)"
+            timeLabel.text = "was \(notification["time"] as? String)"
+            locationLabel.text = "was \(location)"
+            topicsLabel.text = "was \(notification["topics"] as? String)"
+        }
+        else{
+            print("type not recognized: \(type)")
+            eventTitleLabel.text = notification["message"] as? String
+            timeLabel.text = "???"
+            locationLabel.text = "???"
+            topicsLabel.text = "???"
+        }
+        
         // Do any additional setup after loading the view.
     }
 

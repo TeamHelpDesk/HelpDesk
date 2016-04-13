@@ -23,7 +23,10 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         tableView.dataSource = self
         
 
-        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(AppointmentsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        //Utility Functions (Do not delete)
         //HelpDeskUser.sharedInstance.refreshData()
         //CourseFunctions().addCourses()
         //CourseFunctions().assignAllCourses()
@@ -119,13 +122,14 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                 print(error?.localizedDescription)
             }
         }
+    }
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        
 
-        
-        
-        
-        
-        
-        
+        loadAppointments()
+        refreshControl.endRefreshing()
+
     }
 
     // MARK: - Navigation
