@@ -91,12 +91,12 @@ class AppointmentMakerViewController: UIViewController {
         
         // Add relevant fields to the object
         post["time"] =  time
-        post["sender"] = HelpDeskUser.sharedInstance.username as String!
-        post["recipient"] = tutorname as String!
+        post["student"] = HelpDeskUser.sharedInstance.username as String!
+        post["tutor"] = tutorname as String!
         post["topics"] = topics
         post["subject"] = self.subject
         post["message"] = "Appointment request from \(student!.username!)"
-        post["type"] = "appointment"
+        post["type"] = "appointmentRequest"
         post["mapUsed"] = mapUsed
         
         if(mapUsed == true){

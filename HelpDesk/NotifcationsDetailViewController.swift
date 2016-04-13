@@ -27,13 +27,13 @@ class NotifcationsDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(notification["type"] as? String == "appointment"){
+        if(notification["type"] as? String == "appointmentRequest"){
             eventTitleLabel.text = "Tutoring session with \(notification["sender"])"
             timeLabel.text = notification["time"] as? String
             locationLabel.text = notification["location"] as? String
             topicsLabel.text = notification["topics"] as? String
-            student = notification["sender"] as? String
-            tutor = notification["recipient"] as? String
+            student = notification["student"] as? String ?? "NO STUDENT"
+            tutor = notification["tutor"] as? String ?? "NO STUDENT"
             duration = notification["duration"] as? Int
             subject = notification["subject"] as? String
             mapUsed = notification?["mapUsed"] as? Bool
@@ -72,6 +72,11 @@ class NotifcationsDetailViewController: UIViewController {
         post["subject"] = subject
         
         // Save object (following function will save the object in Parse asynchronously)
+        
+        
+        notification["type"] = "appointment"
+        notification.saveInBackgroundWithBlock(completion)
+        
         post.saveInBackgroundWithBlock(completion)
     }
     

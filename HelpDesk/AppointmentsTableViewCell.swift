@@ -20,6 +20,7 @@ class AppointmentsTableViewCell: UITableViewCell {
     var appDate: String?
     var appTime: String?
     var appLocation: String?
+    var appointment: PFObject?
     
     
     
@@ -33,7 +34,7 @@ class AppointmentsTableViewCell: UITableViewCell {
     @IBAction func onCancel(sender: AnyObject) {
         postNotif("cancel", message: "\(HelpDeskUser.sharedInstance.username!) cancelled their appointment" ) { (success: Bool, error: NSError?) -> Void in
             if success {
-                print("success sending late")
+                print("success cancelling appointment")
             } else {
                 print(error?.description)
             }
@@ -42,15 +43,26 @@ class AppointmentsTableViewCell: UITableViewCell {
     
     
     func postNotif(type: String?, message: String?, withCompletion completion: PFBooleanResultBlock?) {
-        // Create Parse object PFObject
-        let post = PFObject(className: "Notifications")
         
-        // Add relevant fields to the object
-        post["message"] = message
-        post["type"] = type
+        //let post = PFObject(className: "Notifications")
+        //post["message"] = message
+        //post["type"] = type
+        //post.saveInBackgroundWithBlock(completion)
+
+        
+        if(appointment!["tutor"] as! String == HelpDeskUser.sharedInstance.username){
+            appointment!["type"] = "cancelledByTutor"
+        }
+        else if (appointment!["student"] as! String == HelpDeskUser.sharedInstance.username) {
+            appointment!["type"] = "cancelledByStudent"
+        }
+        else {
+            print("ERROR NO TUTOR/STUDENT")
+        }
+        
+        appointment?.saveInBackgroundWithBlock(completion)
         
         // Save object (following function will save the object in Parse asynchronously)
-        post.saveInBackgroundWithBlock(completion)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

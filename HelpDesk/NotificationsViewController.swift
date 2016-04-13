@@ -45,14 +45,15 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         
         //let sender = cell.notification["sender"] as! String
         
+        //CHANGE THIS
         cell.titleLabel.text = cell.notification["message"] as? String
         
         return cell
     }
     
     func loadNotifications(){
-        let query = PFQuery(className: "Notifications")
-        query.limit = 20
+        /*let query = PFQuery(className: "Notifications")
+        //query.limit = 20
         query.orderByDescending("_created_at")
         // fetch data asynchronously
         query.findObjectsInBackgroundWithBlock { (notifications: [PFObject]?, error: NSError?) -> Void in
@@ -63,7 +64,48 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                 print("Error finding posts")
                 print(error?.localizedDescription)
             }
+        }*/
+        
+        
+        let isStudentQuery = PFQuery(className : "Notifications")
+        let isTutorQuery = PFQuery(className : "Notifications")
+        let tutorCancelledQuery = PFQuery(className : "Notifications")
+        let studentCancelledQuery = PFQuery(className : "Notifications")
+        
+        //userQuery?.includeKey("username")
+        //print(HelpDeskUser.sharedInstance.username)
+        isTutorQuery.whereKey("tutor", equalTo: HelpDeskUser.sharedInstance.username )
+        isTutorQuery.whereKey("type", equalTo: "appointmentRequest")
+        
+        studentCancelledQuery.whereKey("tutor", equalTo: HelpDeskUser.sharedInstance.username )
+        studentCancelledQuery.whereKey("type", equalTo: "cancelledByStudent")
+
+
+        isStudentQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
+        isStudentQuery.whereKey("type", equalTo: "appointmentRequest")
+
+        tutorCancelledQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
+        tutorCancelledQuery.whereKey("type", equalTo: "cancelledByTutor")
+
+        //userQuery!.limit = 20
+        
+        let isPersonQuery = PFQuery.orQueryWithSubqueries([isStudentQuery, isTutorQuery, studentCancelledQuery, tutorCancelledQuery])
+        
+        isPersonQuery.findObjectsInBackgroundWithBlock { (notifications: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                self.notifications = [PFObject]()
+                for notification in notifications! {
+                    self.notifications?.append(notification)
+                }
+                self.tableView.reloadData()
+                //self.refreshPeople(tutorings!)
+            } else {
+                print(error?.localizedDescription)
+            }
         }
+        
+        
+        
         
     }
     

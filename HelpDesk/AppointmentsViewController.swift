@@ -51,24 +51,34 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("studentAppointmentCell", forIndexPath: indexPath) as! AppointmentsTableViewCell
         
         let appointment = appointments![indexPath.row]
-        
         let tutor = appointment["tutor"] as! String
+        let student = appointment["student"] as! String
         let time = appointment["time"] as! String
         let index = time.characters.indexOf(",")
-        
+
         cell.appLocation = appointment["location"] as? String
-        cell.appName = "Tutoring with \(tutor)"
-       
+        cell.appointment = appointment
         cell.appDate = time.substringToIndex(index!) ?? "<Missing Date>"
         cell.appTime = time.substringFromIndex(index!.advancedBy(2)) ?? "<Missing Time>"
+        if(student == HelpDeskUser.sharedInstance.username) {
+            cell.appName = "Getting tutored by \(tutor)"
+        }
+        else if (tutor == HelpDeskUser.sharedInstance.username) {
+            cell.appName = "Tutoring \(student)"
+        }
+        else {
+            print("ERROR: USER IS NOT STUDENT OR TUTOR IN APPOINTMENT")
+        }
+
         cell.refreshContent()
+    
         return cell
         
         
     }
     
     func loadAppointments(){
-        let query = PFQuery(className: "Appointment")
+        /*let query = PFQuery(className: "Appointment")
         query.limit = 20
         query.orderByDescending("_created_at")
         
@@ -83,7 +93,39 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                 print("Error finding posts")
                 print(error?.localizedDescription)
             }
+        }*/
+        let isStudentQuery = PFQuery(className : "Notifications")
+        let isTutorQuery = PFQuery(className : "Notifications")
+        
+        //userQuery?.includeKey("username")
+        print(HelpDeskUser.sharedInstance.username)
+        isTutorQuery.whereKey("tutor", equalTo: HelpDeskUser.sharedInstance.username )
+        isStudentQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
+        //userQuery!.limit = 20
+        
+        
+        let isPersonQuery = PFQuery.orQueryWithSubqueries([isStudentQuery, isTutorQuery])
+        isPersonQuery.whereKey("type", equalTo: "appointment")
+        
+        isPersonQuery.findObjectsInBackgroundWithBlock { (appointments: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                self.appointments = [PFObject]()
+                for appointment in appointments! {
+                    self.appointments?.append(appointment)
+                }
+                self.tableView.reloadData()
+                //self.refreshPeople(tutorings!)
+            } else {
+                print(error?.localizedDescription)
+            }
         }
+
+        
+        
+        
+        
+        
+        
     }
 
     // MARK: - Navigation
