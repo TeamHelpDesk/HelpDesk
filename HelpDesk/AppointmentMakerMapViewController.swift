@@ -15,6 +15,8 @@ class AppointmentMakerMapViewController: UIViewController, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     var locationManager : CLLocationManager!
     var annotation = MKPointAnnotation()
+    var lat: Double!
+    var long: Double!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,8 @@ class AppointmentMakerMapViewController: UIViewController, CLLocationManagerDele
         let touchPoint = sender.locationInView(mapView)
         let coordinate = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
         annotation.coordinate = coordinate
+        lat = coordinate.latitude
+        long = coordinate.longitude
         annotation.title = "Meeting Location"
         mapView.addAnnotation(annotation)
         let alert = UIAlertController(title: "Location Set", message: "Is this where you want to set your meeting location?", preferredStyle: .Alert)

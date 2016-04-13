@@ -15,7 +15,6 @@ class NotificationMapViewController: UIViewController , CLLocationManagerDelegat
     @IBOutlet weak var mapView: MKMapView!
     var locationManager : CLLocationManager!
     var coordinate: CLLocationCoordinate2D!
-    var annotation: MKPointAnnotation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +31,8 @@ class NotificationMapViewController: UIViewController , CLLocationManagerDelegat
         let region = MKCoordinateRegionMake(coordinate, span)
         mapView.setRegion(region, animated: false)
         
-        self.annotation.coordinate = coordinate
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = self.coordinate
         annotation.title = "Meeting Location"
         mapView.addAnnotation(annotation)
     }

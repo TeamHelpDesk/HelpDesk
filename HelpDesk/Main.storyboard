@@ -217,7 +217,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="9Q5-mW-Uxm"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="profileImage" selectedImage="profileImage" id="9Q5-mW-Uxm"/>
                     <navigationItem key="navigationItem" id="k9e-r9-06L"/>
                     <connections>
                         <outlet property="profilePic" destination="Ndr-ZI-et5" id="oBK-hg-o3D"/>
@@ -482,7 +482,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="wt4-4O-k58"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="requestImage" selectedImage="requestImage" id="wt4-4O-k58"/>
                     <connections>
                         <outlet property="tableView" destination="Nf1-9h-KGA" id="fQi-V5-kSu"/>
                     </connections>
@@ -818,7 +818,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="notification" rowHeight="74" id="2hy-WV-7QU" customClass="NotifcationsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="74"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2hy-WV-7QU" id="5xp-vf-uvV">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="73"/>
@@ -987,7 +987,7 @@
         <scene sceneID="5If-GA-kdZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mC1-UB-k4Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="A3c-hC-2yt"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="apptImage" selectedImage="apptImage" id="A3c-hC-2yt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kq4-qt-KI8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1006,7 +1006,7 @@
         <scene sceneID="qvt-q3-trV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YDD-hf-4Bm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="c6v-v6-DEI"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="notifImage" selectedImage="notifImage" id="c6v-v6-DEI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wCq-nF-kf4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1024,8 +1024,8 @@
         <!--Item-->
         <scene sceneID="1r4-qX-ExB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kRF-j3-5ZG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Tiy-96-8ip"/>
+                <navigationController storyboardIdentifier="MessagingNavController" automaticallyAdjustsScrollViewInsets="NO" id="kRF-j3-5ZG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="chatImage" selectedImage="chatImage" id="Tiy-96-8ip"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XZw-ZN-y6u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1041,6 +1041,13 @@
             <point key="canvasLocation" x="2504" y="29"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="apptImage" width="24" height="24"/>
+        <image name="chatImage" width="24" height="24"/>
+        <image name="notifImage" width="24" height="24"/>
+        <image name="profileImage" width="24" height="24"/>
+        <image name="requestImage" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ko3-SQ-NrM"/>
     </inferredMetricsTieBreakers>

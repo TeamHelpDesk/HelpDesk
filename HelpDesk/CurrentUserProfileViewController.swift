@@ -26,13 +26,13 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         
         
         
-        let user = HelpDeskUser.sharedInstance.user as! PFUser
+        let user = HelpDeskUser.sharedInstance.user
   
-        let picObject = user["profPicture"] as? [PFFile]
+        let picObject = user!["profPicture"] as? [PFFile]
 
         if picObject != nil{
             print("found pic object")
-            if let picFile = picObject![0] as? PFFile {
+            if let picFile = picObject?[0] {
                 picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
                         self.profilePic.image = UIImage(data:imageData!)

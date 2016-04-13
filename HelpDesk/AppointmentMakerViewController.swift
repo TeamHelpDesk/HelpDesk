@@ -26,6 +26,8 @@ class AppointmentMakerViewController: UIViewController {
     var hasPickedTutor = false
     var location: String?
     var mapUsed = false
+    var lat: Double?
+    var long: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,35 +91,35 @@ class AppointmentMakerViewController: UIViewController {
         
         // Add relevant fields to the object
         post["time"] =  time
-        post["location"] = location // Pointer column type that points to PFUser
         post["sender"] = HelpDeskUser.sharedInstance.username as String!
         post["recipient"] = tutorname as String!
         post["topics"] = topics
-        post["duration"] = "120"
         post["subject"] = self.subject
         post["message"] = "Appointment request from \(student!.username!)"
         post["type"] = "appointment"
         post["mapUsed"] = mapUsed
-            
+        
+        if(mapUsed == true){
+            post["lattitude"] = self.lat
+            post["longitude"] = self.long
+        } else {
+            post["location"] = locField.text
+        }
+        // Pointer column type that points to PFUser
         // Save object (following function will save the object in Parse asynchronously)
         post.saveInBackgroundWithBlock(completion)
     }
     
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
         let source = segue.sourceViewController as! AppointmentMakerMapViewController
-        self.location = "\(source.annotation.coordinate)"
+        self.lat = source.lat
+        self.long = source.long
+        mapUsed = true
         //print(location)
         locField.text = "Pin Placed"
     }
     
     @IBAction func onSubmit(sender: AnyObject) {
-        if(locField.text != "Pin Placed"){
-            location = locField.text
-        }
-        else{
-            mapUsed = true
-        }
-        print(location)
         if(hasPickedTutor){
             postAppointmentRequest(strDate, location: self.location, student: PFUser.currentUser(), tutor: tutor, topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
                 if success {

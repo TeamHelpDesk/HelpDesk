@@ -39,9 +39,8 @@ class NotifcationsDetailViewController: UIViewController {
             mapUsed = notification?["mapUsed"] as? Bool
             if(mapUsed == true){
                 locationLabel.text = "Click Button to"
-                location = notification["location"] as? String
-                print(location)
             } else {
+                location = notification["location"] as? String
                 viewMapButton.alpha = 0
             }
         }
@@ -96,7 +95,8 @@ class NotifcationsDetailViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nextView = segue.destinationViewController as? NotificationMapViewController
-        nextView?.coordinate = self.location
+        let cooridnates = CLLocationCoordinate2DMake(notification["lattitude"] as! Double, notification["longitude"] as! Double)
+        nextView?.coordinate = cooridnates
     }
 
 }

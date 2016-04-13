@@ -24,7 +24,7 @@ class UserTabBarViewController: UITabBarController {
         tabItem0.title = "Appointments"
         tabItem1.title = "Messages"
         tabItem2.title = "Notifications"
-        tabItem3.title = "Request"
+        tabItem3.title = "Requests"
         tabItem4.title = "Profile"
 
         // Do any additional setup after loading the view.
