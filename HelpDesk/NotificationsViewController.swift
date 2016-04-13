@@ -26,6 +26,8 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         tableView.insertSubview(refreshControl, atIndex: 0)
         
         loadNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NotificationsViewController.loadNotifications), name: "RefreshedData", object: nil)
+
         
         // Do any additional setup after loading the view.
     }
@@ -70,7 +72,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }*/
         
-        
+        print("NOTIFICATIONS")
         let isStudentQuery = PFQuery(className : "Notifications")
         let isTutorQuery = PFQuery(className : "Notifications")
         let tutorCancelledQuery = PFQuery(className : "Notifications")
@@ -112,8 +114,8 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
-        
-        loadNotifications()
+        HelpDeskUser.sharedInstance.refreshData()
+        //loadNotifications()
         refreshControl.endRefreshing()
         
     }

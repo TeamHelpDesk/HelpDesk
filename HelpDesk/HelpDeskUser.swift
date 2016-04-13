@@ -151,6 +151,7 @@ class HelpDeskUser: NSObject {
         }
         print("Done Refreshing Data")
         //SEND NSNOTIFICATION HERE?
+        NSNotificationCenter.defaultCenter().postNotificationName("RefreshedData", object: nil)
         //self.printStudents()
         //self.printTutors()
         //self.printPeople()

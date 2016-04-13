@@ -25,6 +25,9 @@ UITableViewDataSource{
         refreshControl.addTarget(self, action: #selector(tutorRequestsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(tutorRequestsViewController.loadRequests), name: "RefreshedData", object: nil)
+
+        
         loadRequests()
         // Do any additional setup after loading the view.
     }
@@ -118,6 +121,8 @@ UITableViewDataSource{
         }
     }
     func loadRequests(){
+        print("REQUESTS")
+
         let query = PFQuery(className: "Tutoring")
         query.whereKey("type", equalTo: "request")
         //Why does this code call init()
@@ -125,11 +130,11 @@ UITableViewDataSource{
         query.limit = 20
         query.orderByDescending("_created_at")
         
-        print("Loading Requests")
+        //print("Loading Requests")
         // fetch data asynchronously
         query.findObjectsInBackgroundWithBlock { (requests: [PFObject]?, error: NSError?) -> Void in
             if let requests = requests {
-                print("Found \(requests.count) Requests")
+                //print("Found \(requests.count) Requests")
                 // do something with the array of object returned by the call
                 self.requests = requests
                 self.tableView.reloadData()
@@ -148,8 +153,8 @@ UITableViewDataSource{
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
-        
-        loadRequests()
+        HelpDeskUser.sharedInstance.refreshData()
+        //loadRequests()
         refreshControl.endRefreshing()
         
     }

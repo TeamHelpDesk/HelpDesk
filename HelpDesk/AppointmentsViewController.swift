@@ -26,12 +26,14 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(AppointmentsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppointmentsViewController.loadAppointments), name: "RefreshedData", object: nil)
+
         //Utility Functions (Do not delete)
         //HelpDeskUser.sharedInstance.refreshData()
         //CourseFunctions().addCourses()
         //CourseFunctions().assignAllCourses()
         //TutoringFunctions().makeRandomTutorings()
-        
+
         
         loadAppointments()
 
@@ -97,15 +99,15 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                 print(error?.localizedDescription)
             }
         }*/
+        print("APPOINTMENTS")
         let isStudentQuery = PFQuery(className : "Notifications")
         let isTutorQuery = PFQuery(className : "Notifications")
         
         //userQuery?.includeKey("username")
-        print(HelpDeskUser.sharedInstance.username)
+        //print(HelpDeskUser.sharedInstance.username)
         isTutorQuery.whereKey("tutor", equalTo: HelpDeskUser.sharedInstance.username )
         isStudentQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
         //userQuery!.limit = 20
-        
         
         let isPersonQuery = PFQuery.orQueryWithSubqueries([isStudentQuery, isTutorQuery])
         isPersonQuery.whereKey("type", equalTo: "appointment")
@@ -127,7 +129,8 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
 
-        loadAppointments()
+        HelpDeskUser.sharedInstance.refreshData()
+        //loadAppointments
         refreshControl.endRefreshing()
 
     }
