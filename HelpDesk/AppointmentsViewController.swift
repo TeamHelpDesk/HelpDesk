@@ -60,6 +60,42 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         let student = appointment["student"] as! String
         let time = appointment["time"] as! String
         let index = time.characters.indexOf(",")
+        var personname : String!
+        var person : PFUser!
+        let userQuery = PFQuery(className: "_User")
+        if(tutor != HelpDeskUser.sharedInstance.username) {
+            personname = tutor
+        }
+        else {
+            personname = student
+        }
+        userQuery.whereKey("username", equalTo: personname)
+        userQuery.getFirstObjectInBackgroundWithBlock { (user: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                person = user as! PFUser
+                
+                let picObject = person["profPicture"] as? [PFFile]
+                
+                if picObject != nil{
+                    //print("found pic object")
+                    if let picFile = picObject?[0] {
+                        picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                            if (error == nil) {
+                                cell.profilePic.image = UIImage(data:imageData!)
+                            }
+                            else {
+                                print("Error Fetching Profile Pic")
+                            }
+                        }
+                    }
+                }
+                
+                
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+
 
         cell.appLocation = appointment["location"] as? String
         cell.appointment = appointment

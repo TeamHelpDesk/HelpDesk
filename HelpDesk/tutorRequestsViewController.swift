@@ -55,7 +55,40 @@ UITableViewDataSource{
         let className = request["subject"] as! String
         let message = request["message"] as! String
         let studentName = request["studentname"] as! String
-
+        var person : PFUser!
+        let userQuery = PFQuery(className: "_User")
+       
+        userQuery.whereKey("username", equalTo: studentName)
+        userQuery.getFirstObjectInBackgroundWithBlock { (user: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                person = user as! PFUser
+                let picObject = person["profPicture"] as? [PFFile]
+                    
+                if picObject != nil{
+                    //print("found pic object")
+                    if let picFile = picObject?[0] {
+                        picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                            if (error == nil) {
+                                cell.profilePic.image = UIImage(data:imageData!)
+                            }
+                            else {
+                                print("Error Fetching Profile Pic")
+                            }
+                        }
+                    }
+                }
+                    
+                    
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+            
+            
+            
+            
+            
+            
             
         cell.className = className
         cell.message = message

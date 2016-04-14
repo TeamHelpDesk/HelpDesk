@@ -20,6 +20,7 @@ class tutorRequestsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var declineButton: UIButton!
     
+    @IBOutlet weak var profilePic: UIImageView!
     var className : String?
     var message : String?
     var studentName : String?

@@ -15,6 +15,7 @@ class AppointmentsTableViewCell: UITableViewCell {
     @IBOutlet weak var appDateLabel: UILabel!
     @IBOutlet weak var appTimeLabel: UILabel!
     @IBOutlet weak var appLocationLabel: UILabel!
+    @IBOutlet weak var profilePic: UIImageView!
     
     var appName: String?
     var appDate: String?

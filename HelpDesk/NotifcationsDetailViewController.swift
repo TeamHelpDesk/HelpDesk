@@ -57,11 +57,11 @@ class NotifcationsDetailViewController: UIViewController {
             locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
         }
-        else if(type == "cancelledByStudent"){
+        else if(type == "cancelledByTutor"){
             eventTitleLabel.text = "Appointment cancelled by \(tutor)"
-            timeLabel.text = "was \(notification["time"] as? String)"
-            locationLabel.text = "was \(location)"
-            topicsLabel.text = "was \(notification["topics"] as? String)"
+            timeLabel.text = notification["time"] as? String
+            locationLabel.text = location
+            topicsLabel.text = notification["topics"] as? String
         }
         else{
             print("type not recognized: \(type)")

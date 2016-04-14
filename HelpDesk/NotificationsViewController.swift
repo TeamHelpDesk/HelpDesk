@@ -46,13 +46,31 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notification", forIndexPath: indexPath) as! NotifcationsTableViewCell
+        let notification = self.notifications![indexPath.row]
+        let type = notification["type"] as! String
         
-        cell.notification = self.notifications![indexPath.row]
+        cell.notification = notification
         
         //let sender = cell.notification["sender"] as! String
         
         //CHANGE THIS
-        cell.titleLabel.text = cell.notification["message"] as? String
+        
+        if(type == "cancelledByStudent"){
+            cell.titleLabel.text = "Appointment cancelled by \(notification["student"])"
+        }
+        else if(type == "cancelledByTutor"){
+            cell.titleLabel.text = "Appointment cancelled by \(notification["tutor"])"
+        }
+        else if(type == "appointmentRequest"){
+            cell.titleLabel.text = "Appointment request from \(notification["student"])"
+        }
+        else {
+            cell.titleLabel.text = "Type \(notification["type"]) not recognized"
+            print("Type \(notification["type"]) not recognized")
+        }
+
+
+        
         
         return cell
     }
@@ -73,7 +91,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         }*/
         
         print("LOAD NOTIFICATIONS")
-        let isStudentQuery = PFQuery(className : "Notifications")
+        //let isStudentQuery = PFQuery(className : "Notifications")
         let isTutorQuery = PFQuery(className : "Notifications")
         let tutorCancelledQuery = PFQuery(className : "Notifications")
         let studentCancelledQuery = PFQuery(className : "Notifications")
@@ -87,20 +105,21 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         studentCancelledQuery.whereKey("type", equalTo: "cancelledByStudent")
 
 
-        isStudentQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
-        isStudentQuery.whereKey("type", equalTo: "appointmentRequest")
+        //isStudentQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
+        //isStudentQuery.whereKey("type", equalTo: "appointmentRequest")
 
         tutorCancelledQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
         tutorCancelledQuery.whereKey("type", equalTo: "cancelledByTutor")
 
         //userQuery!.limit = 20
         
-        let isPersonQuery = PFQuery.orQueryWithSubqueries([isStudentQuery, isTutorQuery, studentCancelledQuery, tutorCancelledQuery])
+        let isPersonQuery = PFQuery.orQueryWithSubqueries([isTutorQuery, studentCancelledQuery, tutorCancelledQuery])
         
         isPersonQuery.findObjectsInBackgroundWithBlock { (notifications: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.notifications = [PFObject]()
                 for notification in notifications! {
+                    //print("tutor: \(notification["tutor"])    student: \(notification["student"])    type: \(notification["type"])   username: \(HelpDeskUser.sharedInstance.username)")
                     self.notifications?.append(notification)
                 }
                 self.tableView.reloadData()

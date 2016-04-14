@@ -34,7 +34,7 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         let picObject = user!["profPicture"] as? [PFFile]
 
         if picObject != nil{
-            print("found pic object")
+            //print("found pic object")
             if let picFile = picObject?[0] {
                 picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
