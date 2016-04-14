@@ -15,6 +15,9 @@ class TutorCell: UITableViewCell {
     @IBOutlet weak var senderLabel: UILabel!
     //@IBOutlet weak var messageLabel: UILabel!
     
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var seenLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
     
     var user: PFUser! {
         didSet {
