@@ -13,6 +13,8 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
 
     @IBOutlet weak var profilePic: UIImageView!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
     let vc = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -27,7 +29,8 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         
         
         let user = HelpDeskUser.sharedInstance.user
-  
+        
+        nameLabel.text = HelpDeskUser.sharedInstance.username
         let picObject = user!["profPicture"] as? [PFFile]
 
         if picObject != nil{
