@@ -42,10 +42,7 @@ class LoginViewController: UIViewController {
                     //First time login
                     _ = HelpDeskUser.sharedInstance
                 }
-                
-                
-                
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+            self.performSegueWithIdentifier("loginSegue", sender: nil)
                 print("You logged in with username \(self.usernameField.text)")
             }
                 
