@@ -72,7 +72,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }*/
         
-        print("NOTIFICATIONS")
+        print("LOAD NOTIFICATIONS")
         let isStudentQuery = PFQuery(className : "Notifications")
         let isTutorQuery = PFQuery(className : "Notifications")
         let tutorCancelledQuery = PFQuery(className : "Notifications")

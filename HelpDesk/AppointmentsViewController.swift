@@ -99,7 +99,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                 print(error?.localizedDescription)
             }
         }*/
-        print("APPOINTMENTS")
+        print("LOAD APPOINTMENTS")
         let isStudentQuery = PFQuery(className : "Notifications")
         let isTutorQuery = PFQuery(className : "Notifications")
         

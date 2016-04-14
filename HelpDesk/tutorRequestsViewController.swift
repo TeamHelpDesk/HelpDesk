@@ -121,7 +121,7 @@ UITableViewDataSource{
         }
     }
     func loadRequests(){
-        print("REQUESTS")
+        print("LOAD REQUESTS")
 
         let query = PFQuery(className: "Tutoring")
         query.whereKey("type", equalTo: "request")
