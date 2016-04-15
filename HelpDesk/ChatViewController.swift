@@ -112,8 +112,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             } else {
                 messages?.append(message)
             }
-            self.tableView.reloadData()
             Message.sendMessage(message, withCompletion: nil)
+            print("message sent")
+            self.tableView.reloadData()
             textField.text = ""
         }
     }
