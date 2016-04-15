@@ -59,6 +59,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         firstQuery = PFQuery(className: "Message", predicate: cP1)
         firstQuery!.includeKey("receiver")
         firstQuery!.includeKey("sender")
+        firstQuery?.whereKey("isDelivered", equalTo: true)
         firstQuery!.orderByAscending("createdAt")
         firstQuery!.limit = 100
         //         fetch data asynchronously
@@ -141,14 +142,24 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.query?.cancel()
         query?.whereKey("isSeen", equalTo: false)
+        query?.whereKey("isDelivered", equalTo: false)
         // fetch data asynchronously
         query!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
                 if messages?.count != 0 {
-                    self.messages!.appendContentsOf(messages! as [PFObject])
-                    self.tableView.reloadData()
+                    if self.messages == nil {
+                        self.messages = messages
+                    } else {
+                        self.messages!.appendContentsOf(messages! as [PFObject])
+                    }
+                    for message in messages! {
+                        message.setValue(true, forKey: "isDelivered")
+                        message.saveEventually()
+                    }
+                    
                 }
+                self.tableView.reloadData()
                 self.query?.cancel()
             } else {
                 self.query?.cancel()
@@ -172,8 +183,9 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                 if ((message.valueForKey("sender")?.username == PFUser.currentUser()!.username && message.valueForKey("receiver")!.username == chatViewController.contact!.username) || (message.valueForKey("sender")!.username == chatViewController.contact!.username && message.valueForKey("receiver")!.username == PFUser.currentUser()!.username)) {
                     if chatViewController.messages == nil {
                         chatViewController.messages = [message]
-                    } else if !chatViewController.messages.contains(message) {
+                    } else {
                         chatViewController.messages.append(message)
+                        
                     }
                 }
             }

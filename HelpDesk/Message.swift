@@ -36,7 +36,7 @@ class Message: NSObject {
         message["sender"] = PFUser.currentUser()! as PFUser
         message["receiver"] = receiver as PFUser
         message["isSeen"] = false as Bool
-        
+        message["isDelivered"] = false as Bool
         return message
         //user = User(dictionary: dictionary["user"] as! NSDictionary)
         //text = dictionary["text"] as? String
