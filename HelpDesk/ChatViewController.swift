@@ -160,21 +160,23 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! TextCell
         cell.message = messages![indexPath.row] as PFObject
-        if cell.message.valueForKey("receiver")?.username == PFUser.currentUser()!.username {
-            cell.backgroundColor = UIColor.clearColor()
-            cell.messageLabel.textColor = UIColor.blackColor()
-            cell.messageLabel.textAlignment = NSTextAlignment.Left
-            if cell.message.valueForKey("isSeen") as! Bool == false {
-                //self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
-                cell.message.setValue(true, forKey: "isSeen")
-                //cell.message["isSeen"] = true
-                cell.message.saveEventually()
+        if PFUser.currentUser() != nil {
+            if cell.message.valueForKey("receiver")?.username == PFUser.currentUser()!.username {
+                cell.backgroundColor = UIColor.clearColor()
+                cell.messageLabel.textColor = UIColor.blackColor()
+                cell.messageLabel.textAlignment = NSTextAlignment.Left
+                if cell.message.valueForKey("isSeen") as! Bool == false {
+                    //self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
+                    cell.message.setValue(true, forKey: "isSeen")
+                    //cell.message["isSeen"] = true
+                    cell.message.saveEventually()
+                }
+                
+            } else {
+                cell.backgroundColor = UIColor.greenColor()
+                cell.messageLabel.textColor = UIColor.brownColor()
+                cell.messageLabel.textAlignment = NSTextAlignment.Right
             }
-            
-        } else {
-            cell.backgroundColor = UIColor.greenColor()
-            cell.messageLabel.textColor = UIColor.brownColor()
-            cell.messageLabel.textAlignment = NSTextAlignment.Right
         }
         
         return cell

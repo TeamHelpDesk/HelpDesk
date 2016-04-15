@@ -132,6 +132,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                 } else if message.valueForKey("sender")!.username == cell.user.username && message.valueForKey("receiver")!.username == PFUser.currentUser()!.username {
                     cell.message = message
                     cell.timeLabel.hidden = false
+                    //cell.newCount++
                 }
             }
         }
