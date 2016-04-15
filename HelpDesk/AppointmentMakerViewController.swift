@@ -132,5 +132,7 @@ class AppointmentMakerViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
-
+    @IBAction func onClose(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
 }

@@ -92,13 +92,6 @@ class RequestMakerViewController: UIViewController {
             }
         }
         
-        
-        
-        
-        
-        
-        
-        
         // Add relevant fields to the object
         
         //post["studentName"] = sender!.username as String!
@@ -108,6 +101,9 @@ class RequestMakerViewController: UIViewController {
         
     }
 
+    @IBAction func onClose(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
     /*
     // MARK: - Navigation
 
