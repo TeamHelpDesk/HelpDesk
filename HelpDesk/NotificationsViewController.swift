@@ -64,6 +64,9 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         else if(type == "appointmentRequest"){
             cell.titleLabel.text = "Appointment request from \(notification["student"])"
         }
+        else if(type == "declinedRequest"){
+            cell.titleLabel.text = "Appointment declined by \(notification["tutor"])"
+        }
         else {
             cell.titleLabel.text = "Type \(notification["type"]) not recognized"
             print("Type \(notification["type"]) not recognized")
@@ -93,6 +96,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         print("LOAD NOTIFICATIONS")
         //let isStudentQuery = PFQuery(className : "Notifications")
         let isTutorQuery = PFQuery(className : "Notifications")
+        let tutorDeclinedQuery = PFQuery(className : "Notifications")
         let tutorCancelledQuery = PFQuery(className : "Notifications")
         let studentCancelledQuery = PFQuery(className : "Notifications")
         
@@ -100,6 +104,9 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         //print(HelpDeskUser.sharedInstance.username)
         isTutorQuery.whereKey("tutor", equalTo: HelpDeskUser.sharedInstance.username )
         isTutorQuery.whereKey("type", equalTo: "appointmentRequest")
+        
+        tutorDeclinedQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
+        tutorDeclinedQuery.whereKey("type", equalTo: "declinedRequest")
         
         studentCancelledQuery.whereKey("tutor", equalTo: HelpDeskUser.sharedInstance.username )
         studentCancelledQuery.whereKey("type", equalTo: "cancelledByStudent")
@@ -113,7 +120,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
 
         //userQuery!.limit = 20
         
-        let isPersonQuery = PFQuery.orQueryWithSubqueries([isTutorQuery, studentCancelledQuery, tutorCancelledQuery])
+        let isPersonQuery = PFQuery.orQueryWithSubqueries([isTutorQuery, tutorDeclinedQuery, studentCancelledQuery, tutorCancelledQuery])
         
         isPersonQuery.findObjectsInBackgroundWithBlock { (notifications: [PFObject]?, error: NSError?) -> Void in
             if error == nil {

@@ -35,6 +35,7 @@ class RequestMakerViewController: UIViewController {
                 print(error?.description)
             }
         }
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     func postTutoringRequest(className: String?, message: String?, completion: PFBooleanResultBlock?) {

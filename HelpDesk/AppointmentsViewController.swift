@@ -48,6 +48,33 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appointments?.count ?? 0;
     }
+    var selectedRowIndex = -1
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == selectedRowIndex {
+            return 251
+        }
+        return 115
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if self.selectedRowIndex != -1 {
+            self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: self.selectedRowIndex, inSection: 0))?.backgroundColor = UIColor.whiteColor()
+        }
+        
+        if selectedRowIndex != indexPath.row {
+            //table.thereIsCellTapped = true
+            self.selectedRowIndex = indexPath.row
+        }
+        else {
+            // there is no cell selected anymore
+            //self.thereIsCellTapped = false
+            self.selectedRowIndex = -1
+        }
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
@@ -101,6 +128,8 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         cell.appointment = appointment
         cell.appDate = time.substringToIndex(index!) ?? "<Missing Date>"
         cell.appTime = time.substringFromIndex(index!.advancedBy(2)) ?? "<Missing Time>"
+        cell.appSubject = appointment["subject"] as? String
+        cell.appTopics = appointment["topics"] as? String
         if(student == HelpDeskUser.sharedInstance.username) {
             cell.appName = "Getting tutored by \(tutor)"
         }
@@ -113,6 +142,10 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
 
         cell.refreshContent()
     
+        
+ 
+        
+        
         return cell
         
         
