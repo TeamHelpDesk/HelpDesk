@@ -25,11 +25,17 @@ class TutorCell: UITableViewCell {
         }
     }
     
-//    var message: PFObject! {
-//        didSet {
-//            self.messageLabel.text = message["text"] as? String
-//        }
-//    }
+    var message: PFObject! {
+        didSet {
+            if message.createdAt != nil {
+                let time = NSCalendar.currentCalendar().components([.Month, .Day, .Hour, .Minute], fromDate: message!.createdAt!)
+                timeLabel.text = "\(time.month)/\(time.day) \(time.hour):\(time.minute)"
+            }
+            //timeLabel.hidden = true
+            seenLabel.hidden = true
+            self.messageLabel.text = message.valueForKey("text") as? String
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

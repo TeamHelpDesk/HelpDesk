@@ -11,23 +11,16 @@ import Parse
 
 class TextCell: UITableViewCell {
     
-    var createdAtString: String!
-    var createdAt: NSDate!
-    var isSeen: Bool!
+    //var createdAtString: String!
+    //var createdAt: NSDate!
+    //var isSeen: Bool!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var seenLabel: UILabel!
     var receiver: PFUser!
     
     var message: PFObject! {
-        
         didSet {
-            //self.messageLabel.text = message!["text"] as? String
-            //print(message["receiver"])
-            //createdAtString = message.createdAt as? String
-            //let formatter = NSDateFormatter()
-            //formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
-            //createdAt = formatter.dat(createdAtString!)
             if message.createdAt != nil {
                 let time = NSCalendar.currentCalendar().components([.Month, .Day, .Hour, .Minute], fromDate: message!.createdAt!)
                 timeLabel.text = "\(time.month)/\(time.day) \(time.hour):\(time.minute)"

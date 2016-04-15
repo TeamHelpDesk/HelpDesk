@@ -17,7 +17,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var messages: [PFObject]!
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
-    var firstQuery: PFQuery?
+    
     var query: PFQuery?
     
     var contact: PFUser?
@@ -29,43 +29,27 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-        let predicate1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
-        let predicate2 = NSPredicate(format: "%K = %@", "sender", contact!)
+//        let predicate1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
+//        let predicate2 = NSPredicate(format: "%K = %@", "sender", contact!)
+//        
+//        let predicate3 = NSPredicate(format: "%K = %@", "receiver", contact!)
+//        let predicate4 = NSPredicate(format: "%K = %@", "sender", PFUser.currentUser()!)
+//        
+//        let cPredicate1 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
+//        let cPredicate2 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate3, predicate4])
+//        
+//        let cPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [cPredicate1, cPredicate2])
         
-        let predicate3 = NSPredicate(format: "%K = %@", "receiver", contact!)
-        let predicate4 = NSPredicate(format: "%K = %@", "sender", PFUser.currentUser()!)
         
-        let cPredicate1 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
-        let cPredicate2 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate3, predicate4])
         
-        let cPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [cPredicate1, cPredicate2])
-        
-        firstQuery = PFQuery(className: "Message", predicate: cPredicate)
-        firstQuery!.includeKey("receiver")
-        firstQuery!.orderByAscending("createdAt")
-        firstQuery!.limit = 100
-        //         fetch data asynchronously
-        firstQuery!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                if messages != nil {
-                    self.messages = messages! as [PFObject]
-                }
-                self.tableView.reloadData()
-            } else {
-                // handle error
-                print(error?.localizedDescription)
-            }
-        }
-        
-        query = PFQuery(className: "Message", predicate: cPredicate1)
-        query!.orderByAscending("createdAt")
-        query!.limit = 15
-        query!.includeKey("receiver")
+//        query = PFQuery(className: "Message", predicate: cPredicate1)
+//        query!.orderByAscending("createdAt")
+//        query!.limit = 15
+//        query!.includeKey("receiver")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
         //onTimer()
         
-        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+//        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         
         // Do any additional setup after loading the view.
     }
@@ -85,6 +69,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func onTimer() {
+        
         
         self.query?.cancel()
         query?.whereKey("isSeen", equalTo: false)
