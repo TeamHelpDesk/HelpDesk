@@ -577,7 +577,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="iSn-Vs-GWY"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="H9R-is-xXo" id="tIG-0F-w6T"/>
                     </connections>
@@ -821,6 +823,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wH-GA-Kx4">
                                 <rect key="frame" x="215" y="130" width="85" height="30"/>
                                 <state key="normal" title="Select Class"/>
+                                <connections>
+                                    <action selector="onSelectClass:" destination="QSe-bD-zt7" eventType="touchUpInside" id="RQo-OP-gMS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Dp-LK-jE6">
                                 <rect key="frame" x="24" y="20" width="39" height="30"/>
@@ -840,6 +845,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jpx-W4-2Yx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3889" y="-230"/>
+        </scene>
+        <!--Requests Class Picker View Controller-->
+        <scene sceneID="yFR-za-hch">
+            <objects>
+                <viewController id="gxP-n6-Ze1" customClass="RequestsClassPickerViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BkI-Gz-pfM"/>
+                        <viewControllerLayoutGuide type="bottom" id="v3a-XK-ygK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ufe-RA-t0Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVa-29-dc6">
+                                <rect key="frame" x="178" y="435" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2dX-88-sTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4274" y="-132"/>
         </scene>
         <!--Notifications View Controller-->
         <scene sceneID="1hP-ff-CPy">

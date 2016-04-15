@@ -35,6 +35,8 @@
 		FC47C1FD1CB9A66A00966D71 /* CourseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */; };
 		FC47C1FF1CB9B3E100966D71 /* TutoringFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1FE1CB9B3E100966D71 /* TutoringFunctions.swift */; };
 		FC4A9E941CBFE0F300CD4A01 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4A9E931CBFE0F300CD4A01 /* Launch Screen.storyboard */; };
+		FC4A9E961CC1808100CD4A01 /* RequestsClassPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4A9E951CC1808100CD4A01 /* RequestsClassPickerTableViewCell.swift */; };
+		FC4A9E981CC180A800CD4A01 /* RequestsClassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4A9E971CC180A800CD4A01 /* RequestsClassPickerViewController.swift */; };
 		FCEBBE451CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBBE441CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift */; };
 		FCEBBE471CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBBE461CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift */; };
 		FCEDC8B31CB876230088E787 /* Tutoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDC8B21CB876230088E787 /* Tutoring.swift */; };
@@ -73,6 +75,8 @@
 		FC47C1FC1CB9A66A00966D71 /* CourseFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseFunctions.swift; sourceTree = "<group>"; };
 		FC47C1FE1CB9B3E100966D71 /* TutoringFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutoringFunctions.swift; sourceTree = "<group>"; };
 		FC4A9E931CBFE0F300CD4A01 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FC4A9E951CC1808100CD4A01 /* RequestsClassPickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsClassPickerTableViewCell.swift; sourceTree = "<group>"; };
+		FC4A9E971CC180A800CD4A01 /* RequestsClassPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsClassPickerViewController.swift; sourceTree = "<group>"; };
 		FCEBBE441CB9FF9C0039CB0A /* AppointmentTutorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentTutorPickerViewController.swift; sourceTree = "<group>"; };
 		FCEBBE461CBA02D30039CB0A /* AppointmentTutorSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentTutorSelectTableViewCell.swift; sourceTree = "<group>"; };
 		FCEDC8B21CB876230088E787 /* Tutoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutoring.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 				FC3B955B1CB54542008B6A09 /* tutorRequestsViewController.swift */,
 				FC3B955D1CB545FA008B6A09 /* tutorRequestsTableViewCell.swift */,
 				FC3B955F1CB5787A008B6A09 /* RequestMakerViewController.swift */,
+				FC4A9E951CC1808100CD4A01 /* RequestsClassPickerTableViewCell.swift */,
+				FC4A9E971CC180A800CD4A01 /* RequestsClassPickerViewController.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -402,7 +408,9 @@
 				4C71221A1CBC97A90070FE28 /* NotificationMapViewController.swift in Sources */,
 				4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */,
 				F25A8B8C1CA53435000CED30 /* TutorListViewController.swift in Sources */,
+				FC4A9E961CC1808100CD4A01 /* RequestsClassPickerTableViewCell.swift in Sources */,
 				FC044AB31CA21765001E4CD0 /* AppointmentsViewController.swift in Sources */,
+				FC4A9E981CC180A800CD4A01 /* RequestsClassPickerViewController.swift in Sources */,
 				F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */,
 				4CB6D99E1CAB58FD00060BBC /* UserTabBarViewController.swift in Sources */,
 				4C7122171CBB46A00070FE28 /* AppointmentMakerMapViewController.swift in Sources */,

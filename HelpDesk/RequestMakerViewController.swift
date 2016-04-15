@@ -9,7 +9,8 @@
 import UIKit
 import Parse
 
-class RequestMakerViewController: UIViewController {
+class RequestMakerViewController: UIViewController,
+UIPopoverPresentationControllerDelegate {
 
     
     var className = "physics"
@@ -104,6 +105,37 @@ class RequestMakerViewController: UIViewController {
     @IBAction func onClose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
     }
+    
+    
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController!) -> UIModalPresentationStyle {
+        return .None
+    }
+    
+    @IBAction func onSelectClass(sender: AnyObject) {
+        let menuViewController =  RequestsClassPickerViewController()
+        menuViewController.modalPresentationStyle = .Popover
+        menuViewController.preferredContentSize = CGSizeMake(200, 300)
+        let popoverMenuViewController = menuViewController.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = sender as! UIView
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: 100,
+            y: 100,
+            width: 1,
+            height: 1)
+        presentViewController(
+            menuViewController,
+            animated: true,
+            completion: nil)
+    }
+    
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
