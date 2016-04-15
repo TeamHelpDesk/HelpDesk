@@ -77,6 +77,9 @@ class AppointmentMakerMapViewController: UIViewController, CLLocationManagerDele
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onClose(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
 
     /*
     // MARK: - Navigation
