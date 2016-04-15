@@ -16,12 +16,17 @@ class AppointmentsTableViewCell: UITableViewCell {
     @IBOutlet weak var appTimeLabel: UILabel!
     @IBOutlet weak var appLocationLabel: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var appSubjectLabel: UILabel!
+    @IBOutlet weak var appTopicsLabel: UILabel!
     
     var appName: String?
     var appDate: String?
     var appTime: String?
+    var appSubject : String?
+    var appTopics : String?
     var appLocation: String?
     var appointment: PFObject?
+    
     
     
     
@@ -35,7 +40,7 @@ class AppointmentsTableViewCell: UITableViewCell {
     @IBAction func onCancel(sender: AnyObject) {
         postNotif("cancel", message: "\(HelpDeskUser.sharedInstance.username!) cancelled their appointment" ) { (success: Bool, error: NSError?) -> Void in
             if success {
-                print("success cancelling appointment")
+                //print("success cancelling appointment")
             } else {
                 print(error?.description)
             }
@@ -77,6 +82,8 @@ class AppointmentsTableViewCell: UITableViewCell {
         appDateLabel.text = appDate
         appTimeLabel.text = appTime
         appLocationLabel.text = appLocation
+        appSubjectLabel.text = appSubject
+        appTopicsLabel.text = appTopics
     }
 
 }

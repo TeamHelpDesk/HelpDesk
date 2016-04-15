@@ -63,6 +63,12 @@ class NotifcationsDetailViewController: UIViewController {
             locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
         }
+        else if(type == "declinedRequest"){
+            eventTitleLabel.text = "Appointment declined by \(tutor)"
+            timeLabel.text = notification["time"] as? String
+            locationLabel.text = location
+            topicsLabel.text = notification["topics"] as? String
+        }
         else{
             print("type not recognized: \(type)")
             eventTitleLabel.text = notification["message"] as? String
@@ -95,25 +101,27 @@ class NotifcationsDetailViewController: UIViewController {
         // Save object (following function will save the object in Parse asynchronously)
         
         
-        notification["type"] = "appointment"
-        notification.saveInBackgroundWithBlock(completion)
+        
         
         post.saveInBackgroundWithBlock(completion)
     }
     
     @IBAction func onAccept(sender: AnyObject) {
-        postAppointment(timeLabel.text, location: locationLabel.text, tutor: self.tutor, student: self.student, topics: self.tutor, duration: self.duration, subject: self.subject) { (success: Bool, error: NSError?) -> Void in
+        /*postAppointment(timeLabel.text, location: locationLabel.text, tutor: self.tutor, student: self.student, topics: self.tutor, duration: self.duration, subject: self.subject) { (success: Bool, error: NSError?) -> Void in
             if success {
                 print("success uploading appointment")
             } else {
                 print(error?.description)
             }
-        }
+        }*/
+        notification["type"] = "appointment"
+        notification.saveInBackground()
     }
 
     @IBAction func onDecline(sender: AnyObject) {
 
-        
+        notification["type"] = "declinedRequest"
+        notification.saveInBackground()
     }
 
     // MARK: - Navigation
