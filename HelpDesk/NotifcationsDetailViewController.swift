@@ -129,7 +129,7 @@ class NotifcationsDetailViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nextView = segue.destinationViewController as? NotificationMapViewController
-        let cooridnates = CLLocationCoordinate2DMake(notification["lattitude"] as! Double, notification["longitude"] as! Double)
+        let cooridnates = CLLocationCoordinate2DMake(notification["latitude"] as! Double, notification["longitude"] as! Double)
         nextView?.coordinate = cooridnates
     }
 

@@ -44,7 +44,6 @@ class AppointmentTutorPickerViewController: UIViewController, UITableViewDataSou
         
         let tutoring = tutorings![indexPath.row]
     
-        
         cell.tutor = (tutoring["tutorname"] as! String)
         cell.subject = (tutoring["subject"] as! String)
         

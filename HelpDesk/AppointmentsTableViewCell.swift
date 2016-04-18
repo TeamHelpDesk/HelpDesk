@@ -18,6 +18,9 @@ class AppointmentsTableViewCell: UITableViewCell {
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var appSubjectLabel: UILabel!
     @IBOutlet weak var appTopicsLabel: UILabel!
+    @IBOutlet weak var subjectPic: UIImageView!
+    @IBOutlet weak var viewOnMap: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var appName: String?
     var appDate: String?
@@ -26,13 +29,31 @@ class AppointmentsTableViewCell: UITableViewCell {
     var appTopics : String?
     var appLocation: String?
     var appointment: PFObject?
-    
-    
-    
+    var mapUsed: Bool?
+    var lat: Double?
+    var long: Double?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        if(mapUsed == false){
+            viewOnMap.alpha = 0
+        }
         // Initialization code
+        profilePic.layer.borderWidth = 1
+        profilePic.layer.borderColor = UIColor.blueColor().CGColor
+        profilePic.layer.cornerRadius = profilePic.frame.height/2
+        profilePic.clipsToBounds = true
+        subjectPic.layer.borderWidth = 1
+        subjectPic.layer.borderColor = UIColor.blueColor().CGColor
+        subjectPic.layer.cornerRadius = profilePic.frame.height/2
+        subjectPic.clipsToBounds = true
+        
+        viewOnMap.layer.cornerRadius = 5
+        viewOnMap.clipsToBounds = true
+        cancelButton.layer.cornerRadius = 5
+        cancelButton.clipsToBounds = true
+        
         refreshContent()
         
     }
@@ -85,5 +106,6 @@ class AppointmentsTableViewCell: UITableViewCell {
         appSubjectLabel.text = appSubject
         appTopicsLabel.text = appTopics
     }
+    
 
 }

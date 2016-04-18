@@ -16,6 +16,10 @@ class AppointmentMakerViewController: UIViewController {
     @IBOutlet weak var locField: UITextField!
     @IBOutlet weak var topicsField: UITextView!
     @IBOutlet weak var chosenTutorLabel: UILabel!
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var tutorButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var isTutor:Bool!
     var strDate: String?
@@ -33,9 +37,26 @@ class AppointmentMakerViewController: UIViewController {
         super.viewDidLoad()
         locField.text = ""
         datePickerChanged(datePicker)
-    
+        datePicker.minuteInterval = 10
+        topicsField.layer.cornerRadius = 5
+        topicsField.clipsToBounds = true
+        mapButton.layer.cornerRadius = 5
+        mapButton.clipsToBounds = true
+        tutorButton.layer.cornerRadius = 5
+        tutorButton.clipsToBounds = true
+        submitButton.layer.cornerRadius = 5
+        submitButton.clipsToBounds = true
+        backButton.layer.cornerRadius = 5
+        backButton.clipsToBounds = true
+        
         // Do any additional setup after loading the view.
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+    }
+
     
 
     override func didReceiveMemoryWarning() {
@@ -100,7 +121,7 @@ class AppointmentMakerViewController: UIViewController {
         post["mapUsed"] = mapUsed
         
         if(mapUsed == true){
-            post["lattitude"] = self.lat
+            post["latitude"] = self.lat
             post["longitude"] = self.long
         } else {
             post["location"] = locField.text
