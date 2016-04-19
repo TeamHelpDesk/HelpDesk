@@ -108,13 +108,13 @@ class HelpDeskUser: NSObject {
 
         
         let isPersonQuery = PFQuery.orQueryWithSubqueries([isStudentQuery, isTutorQuery])
-        isPersonQuery.whereKeyDoesNotExist("type")
+        isPersonQuery.whereKey("type", notEqualTo: "request")
         
         isPersonQuery.findObjectsInBackgroundWithBlock { (tutorings: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.tutorings = [PFObject]()
                 for tutoring in tutorings! {
-                    //print("\(tutoring["tutorname"]) is tutoring \(tutoring["studentname"]) in \(tutoring["subject"])")
+                    print("\(tutoring["tutorname"]) is tutoring \(tutoring["studentname"]) in \(tutoring["subject"])")
                     self.tutorings?.append(tutoring)
                     
                 }

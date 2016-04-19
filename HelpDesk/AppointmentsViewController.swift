@@ -57,7 +57,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.selectedRowIndex != -1 {
-            self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: self.selectedRowIndex, inSection: 0))?.backgroundColor = UIColor.whiteColor()
+            //self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: self.selectedRowIndex, inSection: 0))?.backgroundColor = UIColor.whiteColor()
         }
         
         if selectedRowIndex != indexPath.row {
@@ -85,8 +85,10 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         let student = appointment["student"] as! String
         let time = appointment["time"] as! String
         let index = time.characters.indexOf(",")
+        let subject = appointment["subject"] as! String
         var personname : String!
         var person : PFUser!
+        
         let userQuery = PFQuery(className: "_User")
         if(tutor != HelpDeskUser.sharedInstance.username) {
             personname = tutor
@@ -114,7 +116,30 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                         }
                     }
                 }
-                cell.subjectPic.image = UIImage(named: "science")
+                
+                
+                //cell.subjectPic.image = UIImage(named: "science")
+
+                
+                let image = UIImage(named: subject)
+                
+                print("\(image?.size.height) \(image?.size.width)")
+                let size = CGSizeApplyAffineTransform(image!.size, CGAffineTransformMakeScale(0.35, 0.35))
+                let hasAlpha = true
+                let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+                
+                UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+                image!.drawInRect(CGRect(origin: CGPointZero, size: size))
+                
+                let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                cell.subjectPic.contentMode = UIViewContentMode.Center
+                cell.subjectPic.image = scaledImage
+
+                
+                
+                
             } else {
                 print(error?.localizedDescription)
             }
@@ -133,7 +158,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         cell.appointment = appointment
         cell.appDate = time.substringToIndex(index!) ?? "<Missing Date>"
         cell.appTime = time.substringFromIndex(index!.advancedBy(2)) ?? "<Missing Time>"
-        cell.appSubject = appointment["subject"] as? String
+        cell.appSubject = subject
         cell.appTopics = appointment["topics"] as? String
         if(student == HelpDeskUser.sharedInstance.username) {
             cell.appName = "Getting tutored by \(tutor)"
