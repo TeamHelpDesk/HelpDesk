@@ -14,6 +14,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
     
     var appointments : [PFObject]?
     var isTutor: Bool!
+    var selectedRowIndex = -1
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -26,7 +27,8 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         refreshControl.addTarget(self, action: #selector(AppointmentsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppointmentsViewController.loadAppointments), name: "RefreshedData", object: nil)
-        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 115.0
         //Utility Functions (Do not delete)
         //HelpDeskUser.sharedInstance.refreshData()
         //CourseFunctions().addCourses()
@@ -46,13 +48,13 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appointments?.count ?? 0;
     }
-    var selectedRowIndex = -1
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == selectedRowIndex {
-            return 251
+            return UITableViewAutomaticDimension
         }
-        return 115
+        //change this
+        return 151
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -142,6 +144,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                 
                 cell.subjectPic.contentMode = UIViewContentMode.Center
                 cell.subjectPic.image = scaledImage
+                cell.subjectPic.backgroundColor = UIColor.grayColor()
 
                 
                 

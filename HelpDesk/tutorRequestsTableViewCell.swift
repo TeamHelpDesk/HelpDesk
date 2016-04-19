@@ -21,6 +21,10 @@ class tutorRequestsTableViewCell: UITableViewCell {
     @IBOutlet weak var declineButton: UIButton!
     
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var subjectPic: UIImageView!
+    @IBOutlet weak var bottomConstrainL: NSLayoutConstraint!
+    
+    @IBOutlet weak var bottomConstraintR: NSLayoutConstraint!
     var className : String?
     var message : String?
     var studentName : String?
@@ -40,6 +44,15 @@ class tutorRequestsTableViewCell: UITableViewCell {
         studentLabel.text = studentName
         classLabel.text = className
         messageLabel.text = message
+        
+        profilePic.layer.borderWidth = 1
+        profilePic.layer.borderColor = UIColor.blueColor().CGColor
+        profilePic.layer.cornerRadius = profilePic.frame.height/2
+        profilePic.clipsToBounds = true
+        subjectPic.layer.borderWidth = 1
+        subjectPic.layer.borderColor = UIColor.blueColor().CGColor
+        subjectPic.layer.cornerRadius = profilePic.frame.height/2
+        subjectPic.clipsToBounds = true
 
     }
 

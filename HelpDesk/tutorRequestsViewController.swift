@@ -15,6 +15,7 @@ UITableViewDataSource{
     var requests : [PFObject]?
     
     @IBOutlet weak var tableView: UITableView!
+    var selectedRowIndex = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,9 @@ UITableViewDataSource{
         tableView.insertSubview(refreshControl, atIndex: 0)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(tutorRequestsViewController.loadRequests), name: "RefreshedData", object: nil)
-
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 300.0
         
         loadRequests()
         // Do any additional setup after loading the view.
@@ -39,6 +42,51 @@ UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return requests?.count ?? 0;
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        print(indexPath.row)
+        
+
+        
+        if indexPath.row == selectedRowIndex {
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) as? tutorRequestsTableViewCell {
+                //cell.bottomConstrainL.active = true
+                // cell.bottomConstraintR.active = true
+            }
+            return UITableViewAutomaticDimension
+        }
+        else{
+            
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) as? tutorRequestsTableViewCell {
+                //cell.bottomConstrainL.active = false
+                //cell.bottomConstraintR.active = false
+            }
+            return 103
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if self.selectedRowIndex != -1 {
+            //self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: self.selectedRowIndex, inSection: 0))?.backgroundColor = UIColor.whiteColor()
+        }
+        
+        if selectedRowIndex != indexPath.row {
+            //table.thereIsCellTapped = true
+            self.selectedRowIndex = indexPath.row
+            
+        }
+        else {
+            // there is no cell selected anymore
+            //self.thereIsCellTapped = false
+            self.selectedRowIndex = -1
+        }
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! tutorRequestsTableViewCell
+        //cell.cancelButton.backgroundColor = UIColor.redColor()
+        //cell.viewOnMap.backgroundColor = UIColor.blueColor()
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -92,7 +140,7 @@ UITableViewDataSource{
             
         cell.className = className
         cell.message = message
-        cell.studentName = studentName
+        cell.studentName = "\(studentName) requested a tutor"
  
         cell.refreshContent()
             
