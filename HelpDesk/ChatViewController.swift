@@ -112,11 +112,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.message.fetchInBackground()
             if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
                 cell.seenLabel.text = "Seen"
+                cell.seenLabel.hidden = false
                 timer2!.invalidate()
-            } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("receiver")!.username == contact!.username {
+            } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
                 cell.seenLabel.text = "Delivered"
+                cell.seenLabel.hidden = false
             }
-            cell.seenLabel.hidden = false
+            cell.timeLabel.hidden = false
         }
     }
     
@@ -160,7 +162,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
             cell.seenLabel.text = "Seen"
             cell.seenLabel.hidden = false
-        } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("receiver")!.username == contact!.username {
+        } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
             cell.seenLabel.text = "Delivered"
             cell.seenLabel.hidden = false
             timer2 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer2", userInfo: cell, repeats: true)
