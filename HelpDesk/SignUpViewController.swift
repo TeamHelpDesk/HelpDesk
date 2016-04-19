@@ -63,8 +63,10 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
             newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                 if success {
                     let profUpload = self.getPFFileFromImage(self.profilePic.image)
-                    newUser.addObject(profUpload!, forKey: "profPicture")
-                    newUser.saveInBackground()
+                    //newUser.addObject(profUpload!, forKey: "profPicture")
+                    newUser.setValue(profUpload, forKey: "profPicture")
+                    //newUser.saveInBackground()
+                    newUser.saveEventually()
                     //(Don't Delete)
                     //Also Login at Sign Up? Remember to instantiate Singleton if so
                 } else {

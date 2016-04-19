@@ -31,12 +31,10 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         let user = HelpDeskUser.sharedInstance.user
         
         nameLabel.text = HelpDeskUser.sharedInstance.username
-        let picObject = user!["profPicture"] as? [PFFile]
+        let picObject = user!["profPicture"] as? PFFile
 
-        if picObject != nil{
-            //print("found pic object")
-            if let picFile = picObject?[0] {
-                picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+        if picObject != nil {
+                picObject!.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
                         self.profilePic.image = UIImage(data:imageData!)
                     }
@@ -44,7 +42,6 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
                         print("Error Fetching Profile Pic")
                     }
                 }
-            }
         }
         
         else{
@@ -89,7 +86,7 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         let user = PFUser.currentUser()! as PFObject
         let profUpload = self.getPFFileFromImage(self.profilePic.image)
         user["profPicture"] = NSNull()
-        user["profPicture"] = profUpload!
+        user["profPicture"] = profUpload! as PFFile
         user.saveInBackground()
         
         
