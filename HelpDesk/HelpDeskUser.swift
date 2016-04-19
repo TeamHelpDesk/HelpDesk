@@ -108,7 +108,7 @@ class HelpDeskUser: NSObject {
 
         
         let isPersonQuery = PFQuery.orQueryWithSubqueries([isStudentQuery, isTutorQuery])
-        isPersonQuery.whereKeyDoesNotExist("type")
+        isPersonQuery.whereKey("type", notEqualTo: "request")
         
         isPersonQuery.findObjectsInBackgroundWithBlock { (tutorings: [PFObject]?, error: NSError?) -> Void in
             if error == nil {

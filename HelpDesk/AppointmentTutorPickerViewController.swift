@@ -29,7 +29,13 @@ class AppointmentTutorPickerViewController: UIViewController, UITableViewDataSou
         self.tableView.dataSource = self
         tableView.registerClass(AppointmentTutorSelectTableViewCell.self, forCellReuseIdentifier: "tutorSelectCell")
         self.view.addSubview(self.tableView)
-        tutorings = HelpDeskUser.sharedInstance.tutorings
+        let allTutorings = HelpDeskUser.sharedInstance.tutorings
+        self.tutorings = [PFObject]()
+        for tutoring in allTutorings!  {
+            if tutoring["studentname"] as! String == HelpDeskUser.sharedInstance.username {
+                self.tutorings?.append(tutoring)
+            }
+        }
         tableView.reloadData()
         
         // Do any additional setup after loading the view.

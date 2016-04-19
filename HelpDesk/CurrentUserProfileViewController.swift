@@ -59,7 +59,8 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
     func imagePickerController(picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        profilePic.image = originalImage
+        self.profilePic.image = originalImage
+        print(originalImage.description)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -83,7 +84,6 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
     }
 
     @IBAction func onSave(sender: AnyObject) {
-        let user = PFUser.currentUser()! as PFObject
         let profUpload = self.getPFFileFromImage(self.profilePic.image)
         user["profPicture"] = NSNull()
         user["profPicture"] = profUpload! as PFFile
