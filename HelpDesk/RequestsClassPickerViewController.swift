@@ -9,9 +9,9 @@
 import UIKit
 import Parse
 
-protocol ModalViewControllerDelegate
+protocol CourseSelectDelegate
 {
-    func sendValue(var value : String)
+    func sendValue(value : String)
 }
 
 class RequestsClassPickerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -20,7 +20,7 @@ class RequestsClassPickerViewController: UIViewController, UITableViewDelegate, 
     var tableViewWidth : Int?
     var tableViewHeight : Int?
     var courses : [String]?
-    var delegate:ModalViewControllerDelegate!
+    var delegate:CourseSelectDelegate!
 
 
     
@@ -31,10 +31,8 @@ class RequestsClassPickerViewController: UIViewController, UITableViewDelegate, 
         tableView = UITableView(frame: CGRect(x: 0,y: 0,width: tableViewWidth!,height: tableViewHeight!), style: UITableViewStyle.Plain)
         self.tableView.delegate      =   self
         self.tableView.dataSource    =   self
-        
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(self.tableView)
-        //self.tableView.reloadData()
         loadCourses()
     }
 
@@ -43,15 +41,13 @@ class RequestsClassPickerViewController: UIViewController, UITableViewDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        print("At numrowssection")
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courses?.count ?? 0
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        print("At cellforrowatindexpath")
 
         let cell = RequestsClassPickerTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         

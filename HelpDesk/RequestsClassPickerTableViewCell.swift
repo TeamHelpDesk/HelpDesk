@@ -35,7 +35,6 @@ class RequestsClassPickerTableViewCell: UITableViewCell {
         print("in table view cell")
         label.center = CGPointMake(100, 15)
         label.textAlignment = NSTextAlignment.Center
-        //label.text = "I'm a test label"
         self.addSubview(label)
         // Configure the view for the selected state
     }

@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class RequestMakerViewController: UIViewController,
-UIPopoverPresentationControllerDelegate, ModalViewControllerDelegate {
+UIPopoverPresentationControllerDelegate, CourseSelectDelegate {
 
     
     var className = "physics"
@@ -110,7 +110,7 @@ UIPopoverPresentationControllerDelegate, ModalViewControllerDelegate {
     
     
     func adaptivePresentationStyleForPresentationController(
-        controller: UIPresentationController!) -> UIModalPresentationStyle {
+        controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
     }
     
@@ -121,7 +121,7 @@ UIPopoverPresentationControllerDelegate, ModalViewControllerDelegate {
         let popoverMenuViewController = menuViewController.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self
-        popoverMenuViewController?.sourceView = (self.view as! UIView)
+        popoverMenuViewController?.sourceView = (self.view as UIView)
         popoverMenuViewController?.sourceRect = CGRect(
             x: UIScreen.mainScreen().bounds.width/2 ,
             y: UIScreen.mainScreen().bounds.height/2 ,
