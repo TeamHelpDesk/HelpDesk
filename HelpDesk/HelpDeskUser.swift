@@ -114,7 +114,7 @@ class HelpDeskUser: NSObject {
             if error == nil {
                 self.tutorings = [PFObject]()
                 for tutoring in tutorings! {
-                    print("\(tutoring["tutorname"]) is tutoring \(tutoring["studentname"]) in \(tutoring["subject"])")
+                    //print("\(tutoring["tutorname"]) is tutoring \(tutoring["studentname"]) in \(tutoring["subject"])")
                     self.tutorings?.append(tutoring)
                     
                 }

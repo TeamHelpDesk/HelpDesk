@@ -123,7 +123,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                 
                 let image = UIImage(named: subject)
                 
-                print("\(image?.size.height) \(image?.size.width)")
+                //print("\(image?.size.height) \(image?.size.width)")
                 let size = CGSizeApplyAffineTransform(image!.size, CGAffineTransformMakeScale(0.35, 0.35))
                 let hasAlpha = true
                 let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
