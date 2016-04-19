@@ -10,12 +10,17 @@ import UIKit
 import Parse
 import ParseUI
 
-class AppointmentMakerViewController: UIViewController {
+class AppointmentMakerViewController: UIViewController, UIPopoverPresentationControllerDelegate,
+TutorSelectDelegate {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var locField: UITextField!
     @IBOutlet weak var topicsField: UITextView!
     @IBOutlet weak var chosenTutorLabel: UILabel!
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var tutorButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var isTutor:Bool!
     var strDate: String?
@@ -33,14 +38,31 @@ class AppointmentMakerViewController: UIViewController {
         super.viewDidLoad()
         locField.text = ""
         datePickerChanged(datePicker)
-    
+        datePicker.minuteInterval = 10
+        topicsField.layer.cornerRadius = 5
+        topicsField.clipsToBounds = true
+        mapButton.layer.cornerRadius = 5
+        mapButton.clipsToBounds = true
+        tutorButton.layer.cornerRadius = 5
+        tutorButton.clipsToBounds = true
+        submitButton.layer.cornerRadius = 5
+        submitButton.clipsToBounds = true
+        backButton.layer.cornerRadius = 5
+        backButton.clipsToBounds = true
+        
         // Do any additional setup after loading the view.
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+    }
+
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        datePicker.addTarget(self, action: #selector(AppointmentMakerViewController.datePickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
         // Dispose of any resources that can be recreated.
     }
@@ -48,29 +70,39 @@ class AppointmentMakerViewController: UIViewController {
     
     @IBAction func onChooseTutor(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("showTutors", sender: sender)
+        
+        let menuViewController =  AppointmentTutorPickerViewController()
+        menuViewController.modalPresentationStyle = .Popover
+        menuViewController.preferredContentSize = CGSizeMake(200, 300)
+        let popoverMenuViewController = menuViewController.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = (self.view as UIView)
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: UIScreen.mainScreen().bounds.width/2 ,
+            y: UIScreen.mainScreen().bounds.height/2 ,
+            width: 0,
+            height: 0)
+        print("\(UIScreen.mainScreen().bounds.width)  \(UIScreen.mainScreen().bounds.height)")
+        //menuViewController.tableViewWidth = 200
+        //menuViewController.tableViewHeight = 300
+        menuViewController.delegate = self;
+        presentViewController(
+            menuViewController,
+            animated: true,
+            completion: nil)
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showTutors" {
-            let vc = segue.destinationViewController as! AppointmentTutorPickerViewController
-            vc.onDataAvailable = {[weak self]
-                (data) in
-                if let weakSelf = self {
-                    let tutorings = HelpDeskUser.sharedInstance.tutorings
-                    let tutoring = tutorings![data]
-                    self!.tutorname = (tutoring["tutorname"] as! String)
-                    self!.subject = (tutoring["subject"] as! String)
-                    self!.tutor = (tutoring["tutor"] as! PFUser)
-                    let str = "\(self!.tutorname!) (\(self!.subject!))"
-                    self!.chosenTutorLabel.text = str
-                    self!.hasPickedTutor = true
-                }
-            }
 
-        }
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
     }
+    
+    
+
+    
     
     
     
@@ -100,7 +132,7 @@ class AppointmentMakerViewController: UIViewController {
         post["mapUsed"] = mapUsed
         
         if(mapUsed == true){
-            post["lattitude"] = self.lat
+            post["latitude"] = self.lat
             post["longitude"] = self.long
         } else {
             post["location"] = locField.text
@@ -134,5 +166,18 @@ class AppointmentMakerViewController: UIViewController {
     
     @IBAction func onClose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    func sendValue(value: Int) {
+        let tutorings = HelpDeskUser.sharedInstance.tutorings
+        let tutoring = tutorings![value]
+        self.tutorname = (tutoring["tutorname"] as! String)
+        self.subject = (tutoring["subject"] as! String)
+        self.tutor = (tutoring["tutor"] as! PFUser)
+        let str = "\(self.tutorname!) (\(self.subject!))"
+        self.chosenTutorLabel.text = str
+        self.hasPickedTutor = true
+        //selectedClassName = value;
+        //selectedCourse.text = value;
     }
 }

@@ -9,21 +9,28 @@
 import UIKit
 import Parse
 
+protocol TutorSelectDelegate
+{
+    func sendValue(value : Int)
+}
+
 class AppointmentTutorPickerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
-    @IBOutlet weak var tableView: UITableView!
+    var tableView : UITableView = UITableView()
     var tutorings : [PFObject]?
-    var onDataAvailable : ((data: Int) -> ())?
+    var delegate:TutorSelectDelegate!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        
+        tableView = UITableView(frame: CGRect(x: 0,y: 0,width: 200,height: 300), style: UITableViewStyle.Plain)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        tableView.registerClass(AppointmentTutorSelectTableViewCell.self, forCellReuseIdentifier: "tutorSelectCell")
+        self.view.addSubview(self.tableView)
         tutorings = HelpDeskUser.sharedInstance.tutorings
-        
+        tableView.reloadData()
         
         // Do any additional setup after loading the view.
     }
@@ -44,47 +51,25 @@ class AppointmentTutorPickerViewController: UIViewController, UITableViewDataSou
         
         let tutoring = tutorings![indexPath.row]
     
-        
         cell.tutor = (tutoring["tutorname"] as! String)
         cell.subject = (tutoring["subject"] as! String)
-        
-        cell.refresh()
-        
+                
         return cell
         
         
     }
-    
-    func loadAppointments(){
-        let query = PFQuery(className: "Appointment")
-        query.limit = 20
-        query.orderByDescending("_created_at")
-        
-        //print("Loading Posts")
-        // fetch data asynchronously
-        query.findObjectsInBackgroundWithBlock { (appointments: [PFObject]?, error: NSError?) -> Void in
-            if let appointments = appointments {
-                //print("Found \(appointments.count) posts")
-                self.tutorings = appointments
-                self.tableView.reloadData()
-            } else {
-                print("Error finding posts")
-                print(error?.localizedDescription)
-            }
-        }
-    }
+
     
     func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
         
-        sendData(indexPath.row)
+        delegate?.sendValue(indexPath.row)
         self.dismissViewControllerAnimated(true, completion: {})
     }
 
-    func sendData(data: Int) {
-        // Whenever you want to send data back to viewController1, check
-        // if the closure is implemented and then call it if it is
-        self.onDataAvailable?(data: data)
-    }
+
+    
+    
+
     /*
     // MARK: - Navigation
 

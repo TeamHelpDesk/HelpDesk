@@ -22,19 +22,17 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         tableView.delegate = self
         tableView.dataSource = self
         
-
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(AppointmentsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppointmentsViewController.loadAppointments), name: "RefreshedData", object: nil)
-
+        
         //Utility Functions (Do not delete)
         //HelpDeskUser.sharedInstance.refreshData()
         //CourseFunctions().addCourses()
         //CourseFunctions().assignAllCourses()
         //TutoringFunctions().makeRandomTutorings()
 
-        
         loadAppointments()
 
         // Do any additional setup after loading the view.
@@ -116,15 +114,22 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                         }
                     }
                 }
-                
-                
+                cell.subjectPic.image = UIImage(named: "science")
             } else {
                 print(error?.localizedDescription)
             }
         }
 
-
-        cell.appLocation = appointment["location"] as? String
+        if((appointment["mapUsed"] as? Bool) == false){
+            cell.appLocation = appointment["location"] as? String
+            cell.mapUsed = false
+        } else{
+            cell.appLocation = "Check Map"
+            cell.mapUsed = true
+            cell.lat = appointment["lattitude"] as? Double
+            cell.long = appointment["longitude"] as? Double
+        }
+        
         cell.appointment = appointment
         cell.appDate = time.substringToIndex(index!) ?? "<Missing Date>"
         cell.appTime = time.substringFromIndex(index!.advancedBy(2)) ?? "<Missing Time>"
@@ -142,32 +147,11 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
 
         cell.refreshContent()
     
-        
- 
-        
-        
         return cell
-        
-        
     }
     
     func loadAppointments(){
-        /*let query = PFQuery(className: "Appointment")
-        query.limit = 20
-        query.orderByDescending("_created_at")
-        
-        //print("Loading Posts")
-        // fetch data asynchronously
-        query.findObjectsInBackgroundWithBlock { (appointments: [PFObject]?, error: NSError?) -> Void in
-            if let appointments = appointments {
-                //print("Found \(appointments.count) posts")
-                self.appointments = appointments
-                self.tableView.reloadData()
-            } else {
-                print("Error finding posts")
-                print(error?.localizedDescription)
-            }
-        }*/
+
         print("LOAD APPOINTMENTS")
         let isStudentQuery = PFQuery(className : "Notifications")
         let isTutorQuery = PFQuery(className : "Notifications")
@@ -203,14 +187,17 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         refreshControl.endRefreshing()
 
     }
+    
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "makeAppointment"){
-            //let nextView = segue.destinationViewController as? AppointmentMakerViewController
-            //nextView!.isTutor = self.isTutor
+        if(segue.identifier == "viewApptMap"){
+            let cell = sender as? AppointmentsTableViewCell
+            let nextView = segue.destinationViewController as? NotificationMapViewController
+            let cooridnates = CLLocationCoordinate2DMake(cell!.lat!, cell!.long!)
+            nextView?.coordinate = cooridnates
         }
     }
 

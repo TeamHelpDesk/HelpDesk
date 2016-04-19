@@ -10,11 +10,13 @@ import UIKit
 import Parse
 
 class RequestMakerViewController: UIViewController,
-UIPopoverPresentationControllerDelegate {
+UIPopoverPresentationControllerDelegate, CourseSelectDelegate {
 
     
     var className = "physics"
+    var selectedClassName : String?
     
+    @IBOutlet weak var selectedCourse: UILabel!
     @IBOutlet weak var messageField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,12 +58,12 @@ UIPopoverPresentationControllerDelegate {
                     
                     let tutoredCourses = tutor["tutoredCourses"] as? [String] ?? [String]()
                     
-                    if(tutoredCourses.contains(className!)) {
+                    if(tutoredCourses.contains(className!) && self.selectedClassName != nil) {
                         count += 1
                         
                         let post = PFObject(className: "Tutoring")
                         post["type"] =  "request"
-                        post["subject"] =  className ?? "(No class selected)"
+                        post["subject"] =  self.selectedClassName ?? "(No class selected)"
                         post["message"] =  message ?? "(No message)"
                         post["tutor"] =  tutor
                         post["student"] = HelpDeskUser.sharedInstance.user
@@ -81,7 +83,7 @@ UIPopoverPresentationControllerDelegate {
                     
                 }
                 
-                print("sent requests to \(count) tutors for \(className)")
+                print("sent requests to \(count) tutors for \(self.selectedClassName)")
 
                 
                 
@@ -108,7 +110,7 @@ UIPopoverPresentationControllerDelegate {
     
     
     func adaptivePresentationStyleForPresentationController(
-        controller: UIPresentationController!) -> UIModalPresentationStyle {
+        controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
     }
     
@@ -119,12 +121,16 @@ UIPopoverPresentationControllerDelegate {
         let popoverMenuViewController = menuViewController.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         popoverMenuViewController?.delegate = self
-        popoverMenuViewController?.sourceView = sender as! UIView
+        popoverMenuViewController?.sourceView = (self.view as UIView)
         popoverMenuViewController?.sourceRect = CGRect(
-            x: 100,
-            y: 100,
-            width: 1,
-            height: 1)
+            x: UIScreen.mainScreen().bounds.width/2 ,
+            y: UIScreen.mainScreen().bounds.height/2 ,
+            width: 0,
+            height: 0)
+        print("\(UIScreen.mainScreen().bounds.width)  \(UIScreen.mainScreen().bounds.height)")
+        menuViewController.tableViewWidth = 200
+        menuViewController.tableViewHeight = 300
+        menuViewController.delegate = self;
         presentViewController(
             menuViewController,
             animated: true,
@@ -132,7 +138,11 @@ UIPopoverPresentationControllerDelegate {
     }
     
     
-    
+    func sendValue(value: String) {
+        
+        selectedClassName = value;
+        selectedCourse.text = value;
+    }
     
     
     

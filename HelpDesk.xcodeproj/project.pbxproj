@@ -19,7 +19,7 @@
 		4CB6D9A51CADE73C00060BBC /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D9A41CADE73C00060BBC /* NotificationsViewController.swift */; };
 		4CCCEE671CA430BF00CAAC72 /* AppointmentMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */; };
 		4CD670221C9249D600741696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD670211C9249D600741696 /* AppDelegate.swift */; };
-		4CD670291C9249D600741696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD670281C9249D600741696 /* Assets.xcassets */; };
+		4CDE5E511CC4149500CC48E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CDE5E501CC4149500CC48E2 /* Assets.xcassets */; };
 		E5EC35BD392A63B900CBDA2B /* Pods_HelpDesk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A927D09E192FD8FE34820E0 /* Pods_HelpDesk.framework */; };
 		F25A8B8C1CA53435000CED30 /* TutorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B8B1CA53435000CED30 /* TutorListViewController.swift */; };
 		F25A8B8E1CA53447000CED30 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25A8B8D1CA53447000CED30 /* ChatViewController.swift */; };
@@ -57,8 +57,8 @@
 		4CCCEE661CA430BF00CAAC72 /* AppointmentMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentMakerViewController.swift; sourceTree = "<group>"; };
 		4CD6701E1C9249D500741696 /* HelpDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD670211C9249D600741696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CD670281C9249D600741696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CD6702D1C9249D600741696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CDE5E501CC4149500CC48E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A927D09E192FD8FE34820E0 /* Pods_HelpDesk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelpDesk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0AC212BF5962AB27CF18B3 /* Pods-HelpDesk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.debug.xcconfig"; sourceTree = "<group>"; };
 		F25A8B8B1CA53435000CED30 /* TutorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListViewController.swift; sourceTree = "<group>"; };
@@ -202,8 +202,8 @@
 				F25A8B8F1CA53483000CED30 /* Models */,
 				4C78706D1CA2151C005A109D /* ViewControllers */,
 				4CD670211C9249D600741696 /* AppDelegate.swift */,
-				4CD670281C9249D600741696 /* Assets.xcassets */,
 				4C7870691CA20C6D005A109D /* Main.storyboard */,
+				4CDE5E501CC4149500CC48E2 /* Assets.xcassets */,
 				4CD6702D1C9249D600741696 /* Info.plist */,
 				FC4A9E931CBFE0F300CD4A01 /* Launch Screen.storyboard */,
 			);
@@ -321,8 +321,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C78706A1CA20C6D005A109D /* Main.storyboard in Resources */,
+				4CDE5E511CC4149500CC48E2 /* Assets.xcassets in Resources */,
 				FC4A9E941CBFE0F300CD4A01 /* Launch Screen.storyboard in Resources */,
-				4CD670291C9249D600741696 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
