@@ -151,22 +151,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func loadAppointments(){
-        /*let query = PFQuery(className: "Appointment")
-        query.limit = 20
-        query.orderByDescending("_created_at")
-        
-        //print("Loading Posts")
-        //fetch data asynchronously
-        query.findObjectsInBackgroundWithBlock { (appointments: [PFObject]?, error: NSError?) -> Void in
-            if let appointments = appointments {
-                //print("Found \(appointments.count) posts")
-                self.appointments = appointments
-                self.tableView.reloadData()
-            } else {
-                print("Error finding posts")
-                print(error?.localizedDescription)
-            }
-        }*/
+
         print("LOAD APPOINTMENTS")
         let isStudentQuery = PFQuery(className : "Notifications")
         let isTutorQuery = PFQuery(className : "Notifications")
