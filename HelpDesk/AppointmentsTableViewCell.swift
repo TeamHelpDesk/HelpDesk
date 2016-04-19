@@ -40,6 +40,8 @@ class AppointmentsTableViewCell: UITableViewCell {
             viewOnMap.alpha = 0
         }
         // Initialization code
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+
         profilePic.layer.borderWidth = 1
         profilePic.layer.borderColor = UIColor.blueColor().CGColor
         profilePic.layer.cornerRadius = profilePic.frame.height/2

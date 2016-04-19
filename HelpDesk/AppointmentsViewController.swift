@@ -63,12 +63,18 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         if selectedRowIndex != indexPath.row {
             //table.thereIsCellTapped = true
             self.selectedRowIndex = indexPath.row
+
         }
         else {
             // there is no cell selected anymore
             //self.thereIsCellTapped = false
             self.selectedRowIndex = -1
         }
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AppointmentsTableViewCell
+        cell.cancelButton.backgroundColor = UIColor.redColor()
+        cell.viewOnMap.backgroundColor = UIColor.blueColor()
+
         tableView.beginUpdates()
         tableView.endUpdates()
     }
