@@ -18,28 +18,29 @@ class TutorCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var seenLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
+    var newCount: Int = 0
     
     var user: PFUser! {
         didSet {
             self.senderLabel.text = user.username! as String
-            let picObject = user!["profPicture"] as? [PFFile]
-            if picObject != nil{
-                //print("found pic object")
-                if let picFile = picObject?[0] {
-                    picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-                        if (error == nil) {
-                            self.profileImage.image = UIImage(data:imageData!)
-                        }
-                        else {
-                            print("Error Fetching Profile Pic")
-                        }
-                    }
-                }
-            }
-                
-            else{
-                print("No Profile Picture Found")
-            }
+//            let picObject = user!["profPicture"] as? [PFFile]
+//            if picObject != nil{
+//                //print("found pic object")
+//                if let picFile = picObject?[0] {
+//                    picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+//                        if (error == nil) {
+//                            self.profileImage.image = UIImage(data:imageData!)
+//                        }
+//                        else {
+//                            print("Error Fetching Profile Pic")
+//                        }
+//                    }
+//                }
+//            }
+//                
+//            else{
+//                print("No Profile Picture Found")
+//            }
         }
     }
     

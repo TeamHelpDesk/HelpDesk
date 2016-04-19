@@ -21,6 +21,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var query: PFQuery?
     
     var contact: PFUser?
+    var timer1: NSTimer?
+    var timer2: NSTimer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +105,21 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Add code to be run periodically
     }
     
+    func onTimer2() {
+        if timer2?.valid == true {
+            var cell = timer2!.userInfo as! TextCell
+            
+            cell.message.fetchInBackground()
+            if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
+                cell.seenLabel.text = "Seen"
+                timer2!.invalidate()
+            } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("receiver")!.username == contact!.username {
+                cell.seenLabel.text = "Delivered"
+            }
+            cell.seenLabel.hidden = false
+        }
+    }
+    
     @IBAction func onSend(sender: AnyObject) {
         if textField.text != "" {
             self.query?.cancel()
@@ -146,6 +163,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("receiver")!.username == contact!.username {
             cell.seenLabel.text = "Delivered"
             cell.seenLabel.hidden = false
+            timer2 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer2", userInfo: cell, repeats: true)
         }
     }
     

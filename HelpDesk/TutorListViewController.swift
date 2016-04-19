@@ -22,6 +22,8 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     var query : PFQuery?
     
     var contact : PFUser?
+    var timer1: NSTimer?
+    var timer2: NSTimer?
     
     override func viewWillAppear(animated: Bool) {
         tableView.delegate = self
@@ -81,8 +83,8 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         query!.limit = 100
         query!.includeKey("receiver")
         query!.includeKey("sender")
-        
-        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+
+        timer1 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,20 +123,36 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         if messages != nil {
             for message in messages {
                 if message.valueForKey("sender")?.username == PFUser.currentUser()!.username && message.valueForKey("receiver")!.username == cell.user.username {
+                    
                     cell.message = message
                     if cell.message.valueForKey("isSeen") as! Bool == true {
                         cell.seenLabel.text = "Seen"
                     } else {
                         cell.seenLabel.text = "Delivered"
+                        timer2 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer2", userInfo: cell, repeats: true)
                     }
                     cell.timeLabel.hidden = false
                     cell.seenLabel.hidden = false
                 } else if message.valueForKey("sender")!.username == cell.user.username && message.valueForKey("receiver")!.username == PFUser.currentUser()!.username {
                     cell.message = message
                     cell.timeLabel.hidden = false
-                    //cell.newCount++
+                    if message.valueForKey("isSeen") as! Bool == false {
+                        cell.newCount += 1
+                        if cell.newCount != 0 {
+                            print("new count")
+                            var notification = UILocalNotification()
+                            notification.alertBody = "You have received \(cell.newCount) messages from \(cell.user.username)" // text that will be displayed in the notification
+                            notification.fireDate = nil
+                            notification.alertAction = "open"
+                            notification.applicationIconBadgeNumber = cell.newCount
+                            notification.soundName = UILocalNotificationDefaultSoundName // play default sound
+                            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                        }
+                    }
+                    
                 }
             }
+            cell.newCount = 0
         }
         return cell
     }
@@ -169,6 +187,20 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         // Add code to be run periodically
+    }
+    
+    func onTimer2() {
+        if timer2?.valid == true {
+            var cell = timer2!.userInfo as! TutorCell
+            
+            cell.message.fetchInBackground()
+            if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
+                cell.seenLabel.text = "Seen"
+                timer2!.invalidate()
+            } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("receiver")!.username == contact!.username {
+                cell.seenLabel.text = "Delivered"
+            }
+        }
     }
     
     // MARK: - Navigation
