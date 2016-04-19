@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class CurrentUserProfileViewController: UIViewController, UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var profilePic: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,22 +19,24 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         vc.delegate = self
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-    
+        
         
         
         
         let user = HelpDeskUser.sharedInstance.user
         
         nameLabel.text = HelpDeskUser.sharedInstance.username
-        let picObject = user!["profPicture"] as? PFFile
-
-        if picObject != nil {
-                picObject!.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+        let picObject = user!["profPicture"] as? [PFFile]
+        
+        if picObject != nil{
+            //print("found pic object")
+            if let picFile = picObject?[0] {
+                picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
                         self.profilePic.image = UIImage(data:imageData!)
                     }
@@ -42,15 +44,16 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
                         print("Error Fetching Profile Pic")
                     }
                 }
+            }
         }
-        
+            
         else{
             print("No Profile Picture Found")
         }
-    
-    
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,32 +79,35 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         return nil
     }
     
-   
+    
     @IBAction func onSelect(sender: AnyObject) {
         
         self.presentViewController(vc, animated: true, completion: nil)
         
     }
-
+    
     @IBAction func onSave(sender: AnyObject) {
         let profUpload = self.getPFFileFromImage(self.profilePic.image)
-        user["profPicture"] = NSNull()
-        user["profPicture"] = profUpload! as PFFile
-        user.saveInBackground()
-        
+        var profileArray = [PFFile]()
+        profileArray.append(profUpload!)
+        PFUser.currentUser()!["profPicture"] = profileArray
+        PFUser.currentUser()?.saveInBackgroundWithBlock({ (result : Bool, error : NSError?) in
+            if !result {
+                print ("DID NOT SAVE PIC: \(error!.description)")
+            }
+        })
         
     }
     @IBAction func onLogout(sender: AnyObject) {
         HelpDeskUser.sharedInstance.logout()
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
