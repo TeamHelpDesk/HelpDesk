@@ -22,6 +22,8 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.layer.backgroundColor = UIColor.blueColor().CGColor
+        tableView.backgroundColor = UIColor.blueColor()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(AppointmentsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -54,7 +56,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
             return UITableViewAutomaticDimension
         }
         //change this
-        return 151
+        return 100
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -180,7 +182,9 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         }
 
         cell.refreshContent()
-    
+        
+        cell.layer.borderWidth = 4
+        cell.layer.borderColor = UIColor.blueColor().CGColor
         return cell
     }
     
