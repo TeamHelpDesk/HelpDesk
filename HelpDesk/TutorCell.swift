@@ -37,8 +37,8 @@ class TutorCell: UITableViewCell {
                     }
                 }
             }
-                
-            else{
+            else {
+                self.profileImage.image = nil
                 print("No profile picture")
             }
         }
@@ -50,7 +50,6 @@ class TutorCell: UITableViewCell {
                 let time = NSCalendar.currentCalendar().components([.Month, .Day, .Hour, .Minute], fromDate: message!.createdAt!)
                 timeLabel.text = "\(time.month)/\(time.day) \(time.hour):\(time.minute)"
             }
-            //timeLabel.hidden = true
             seenLabel.hidden = true
             self.messageLabel.text = message.valueForKey("text") as? String
         }
@@ -64,9 +63,7 @@ class TutorCell: UITableViewCell {
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
-    
 }
 
