@@ -20,6 +20,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var timer1: NSTimer?
     var timer2: NSTimer?
     @IBOutlet weak var navigation: UINavigationBar!
+    @IBOutlet weak var fieldParentView: UIView!
+    var initialY: CGFloat!
+    var offset: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         navigation.topItem?.title = contact?.username
+        
         let predicate1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
         let predicate2 = NSPredicate(format: "%K = %@", "sender", contact!)
         let cPredicate1 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
@@ -35,9 +39,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         query!.orderByAscending("createdAt")
         query!.limit = 15
         query!.includeKey("receiver")
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
+        initialY = fieldParentView.frame.origin.y
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -52,6 +58,39 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func didTap(sender: AnyObject) {
+        view.endEditing(true)
+    }
+    
+    func keyboardWillShow(notification: NSNotification!) {
+        
+        if let userInfo = notification.userInfo {
+//            let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+//            
+//            offset = -frame.origin.y
+//            fieldParentView.frame.origin.y = initialY + offset
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
+            let duration:NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            if endFrame?.origin.y >= UIScreen.mainScreen().bounds.size.height {
+                self.keyboardHeightLayoutConstraint?.constant = 0.0
+            } else {
+                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+            }
+            UIView.animateWithDuration(duration,
+                                       delay: NSTimeInterval(0),
+                                       options: animationCurve,
+                                       animations: { self.view.layoutIfNeeded() },
+                                       completion: nil)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification!) {
+        fieldParentView.frame.origin.y = initialY
     }
     
     func onTimer() {
