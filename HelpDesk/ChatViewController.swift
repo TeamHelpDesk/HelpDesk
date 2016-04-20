@@ -158,7 +158,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.messageLabel.textColor = UIColor.blackColor()
                 cell.messageLabel.textAlignment = NSTextAlignment.Left
                 if cell.message.valueForKey("isSeen") as! Bool == false {
-                    self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
+                    //self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
                     cell.message.setValue(true, forKey: "isSeen")
                     cell.message.saveEventually()
                 }
