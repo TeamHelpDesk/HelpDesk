@@ -19,6 +19,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var contact: PFUser?
     var timer1: NSTimer?
     var timer2: NSTimer?
+    @IBOutlet weak var navigation: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-        
+        navigation.topItem?.title = contact?.username
         let predicate1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
         let predicate2 = NSPredicate(format: "%K = %@", "sender", contact!)
         let cPredicate1 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
@@ -115,8 +116,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    @IBAction func onSignOut() {
-        PFUser.logOut()
+    @IBAction func onExit(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: {})
     }
     

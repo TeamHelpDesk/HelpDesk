@@ -30,6 +30,10 @@ class TutorCell: UITableViewCell {
                     picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
                             self.profileImage.image = UIImage(data:imageData!)
+                            self.profileImage.layer.borderWidth = 1
+                            self.profileImage.layer.borderColor = UIColor.blueColor().CGColor
+                            self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+                            self.profileImage.clipsToBounds = true
                         }
                         else {
                             print("Error Fetching Profile Pic")
