@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -164,9 +164,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ndr-ZI-et5">
-                                <rect key="frame" x="110" y="57" width="100" height="100"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year (?)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUN-2A-UYI">
                                 <rect key="frame" x="130" y="236" width="58" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -214,6 +211,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ndr-ZI-et5">
+                                <rect key="frame" x="98" y="28" width="125" height="125"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -973,15 +973,15 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="notification" rowHeight="74" id="2hy-WV-7QU" customClass="NotifcationsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="notification" rowHeight="74" id="2hy-WV-7QU" customClass="NotifcationsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2hy-WV-7QU" id="5xp-vf-uvV">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notification Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbs-VV-KmW">
-                                                    <rect key="frame" x="8" y="8" width="279" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="279" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1018,7 +1018,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="mC1-UB-k4Q" kind="relationship" relationship="viewControllers" id="ljO-nu-qNj"/>
+                        <segue destination="qpT-3W-88y" kind="relationship" relationship="viewControllers" id="Z9A-I6-c8P"/>
                         <segue destination="kRF-j3-5ZG" kind="relationship" relationship="viewControllers" id="fK1-n2-VcW"/>
                         <segue destination="YDD-hf-4Bm" kind="relationship" relationship="viewControllers" id="3y4-42-eGd"/>
                         <segue destination="QS8-Bl-HBX" kind="relationship" relationship="viewControllers" id="nNx-tn-k4h"/>
@@ -1041,12 +1041,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FN4-i6-Ro8">
-                                <rect key="frame" x="20" y="102" width="280" height="30"/>
-                                <state key="normal" title="Make New Appointment"/>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="270" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-VE-gqA">
-                                <rect key="frame" x="0.0" y="110" width="320" height="409"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="453"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentAppointmentCell" rowHeight="270" id="cDz-pK-UbJ" customClass="AppointmentsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
@@ -1173,7 +1169,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itI-Ic-qwW">
-                                <rect key="frame" x="0.0" y="72" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Make New Appointment"/>
                                 <connections>
@@ -1183,6 +1179,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="apptImage" selectedImage="apptImage" id="L75-9v-8zR"/>
                     <navigationItem key="navigationItem" id="OwD-Sq-OLE"/>
                     <connections>
                         <outlet property="tableView" destination="3hF-VE-gqA" id="AqB-eh-BjG"/>
@@ -1210,25 +1207,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nmo-9I-VHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="29"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="5If-GA-kdZ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mC1-UB-k4Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="apptImage" selectedImage="apptImage" id="A3c-hC-2yt"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kq4-qt-KI8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="qpT-3W-88y" kind="relationship" relationship="rootViewController" id="LKX-IK-EW7"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qce-9p-jgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2504" y="-785"/>
         </scene>
         <!--Item-->
         <scene sceneID="qvt-q3-trV">

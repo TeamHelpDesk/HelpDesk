@@ -69,6 +69,11 @@ class NotifcationsDetailViewController: UIViewController {
             locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
         }
+        else if(type == "acceptedRequest"){
+            eventTitleLabel.text = "Appointment accepted by \(tutor)"
+            timeLabel.text = notification["time"] as? String
+            locationLabel.text = location
+        }
         else{
             print("type not recognized: \(type)")
             eventTitleLabel.text = notification["message"] as? String
@@ -85,25 +90,15 @@ class NotifcationsDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func postAppointment(time: String?, location: String?, tutor: String?, student: String?, topics: String?, duration: Int?, subject: String?, withCompletion completion: PFBooleanResultBlock?) {
+    func postStudentNotification(notification : PFObject) {
         // Create Parse object PFObject
-        let post = PFObject(className: "Appointment")
+        let post = PFObject(className: "Notifications")
         
-        // Add relevant fields to the object
-        post["time"] =  time
-        post["location"] = location // Pointer column type that points to PFUser
-        post["tutor"] = tutor
-        post["student"] = student
-        post["topics"] = topics
-        post["duration"] = String(duration)
-        post["subject"] = subject
-        
-        // Save object (following function will save the object in Parse asynchronously)
-        
-        
-        
-        
-        post.saveInBackgroundWithBlock(completion)
+        for key in notification.allKeys {
+            post[key] = notification[key]
+        }
+        post["type"] = "acceptedRequest"
+        post.saveInBackground()
     }
     
     @IBAction func onAccept(sender: AnyObject) {
@@ -116,6 +111,7 @@ class NotifcationsDetailViewController: UIViewController {
         }*/
         notification["type"] = "appointment"
         notification.saveInBackground()
+        postStudentNotification(notification)
     }
 
     @IBAction func onDecline(sender: AnyObject) {

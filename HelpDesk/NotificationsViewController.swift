@@ -67,6 +67,9 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         else if(type == "declinedRequest"){
             cell.titleLabel.text = "Appointment declined by \(notification["tutor"])"
         }
+        else if(type == "acceptedRequest"){
+            cell.titleLabel.text = "Appointment accepted by \(notification["tutor"])"
+        }
         else {
             cell.titleLabel.text = "Type \(notification["type"]) not recognized"
             print("Type \(notification["type"]) not recognized")
@@ -99,6 +102,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         let tutorDeclinedQuery = PFQuery(className : "Notifications")
         let tutorCancelledQuery = PFQuery(className : "Notifications")
         let studentCancelledQuery = PFQuery(className : "Notifications")
+        let tutorAcceptedQuery = PFQuery(className : "Notifications")
         
         //userQuery?.includeKey("username")
         //print(HelpDeskUser.sharedInstance.username)
@@ -117,10 +121,13 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
 
         tutorCancelledQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
         tutorCancelledQuery.whereKey("type", equalTo: "cancelledByTutor")
+        
+        tutorAcceptedQuery.whereKey("student", equalTo: HelpDeskUser.sharedInstance.username )
+        tutorAcceptedQuery.whereKey("type", equalTo: "acceptedRequest")
 
         //userQuery!.limit = 20
         
-        let isPersonQuery = PFQuery.orQueryWithSubqueries([isTutorQuery, tutorDeclinedQuery, studentCancelledQuery, tutorCancelledQuery])
+        let isPersonQuery = PFQuery.orQueryWithSubqueries([isTutorQuery, tutorDeclinedQuery, studentCancelledQuery, tutorCancelledQuery, tutorAcceptedQuery])
         
         isPersonQuery.findObjectsInBackgroundWithBlock { (notifications: [PFObject]?, error: NSError?) -> Void in
             if error == nil {

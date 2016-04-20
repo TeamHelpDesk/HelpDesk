@@ -25,7 +25,11 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         
-        
+        profilePic.layer.borderWidth = 1
+        profilePic.layer.borderColor = UIColor.blueColor().CGColor
+        profilePic.layer.cornerRadius = profilePic.frame.height/2
+        profilePic.clipsToBounds = true
+
         
         
         let user = HelpDeskUser.sharedInstance.user
