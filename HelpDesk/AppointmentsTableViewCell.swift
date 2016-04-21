@@ -22,6 +22,9 @@ class AppointmentsTableViewCell: UITableViewCell {
     @IBOutlet weak var viewOnMap: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    
+    
+    
     var appName: String?
     var appDate: String?
     var appTime: String?

@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
     @IBOutlet weak var confirmPassField: UITextField!
     @IBOutlet weak var profilePic: UIImageView!
     
+
     let vc = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -57,30 +58,75 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
 
     @IBAction func onSubmit(sender: AnyObject) {
         if(passField.text == confirmPassField.text){
-            let newUser = PFUser()
-            newUser.username = userField.text
-            newUser.password = passField.text
-            newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                if success {
-                    let profUpload = self.getPFFileFromImage(self.profilePic.image)
-                    newUser.addObject(profUpload!, forKey: "profPicture")
-                    newUser.saveEventually()
-                    //(Don't Delete)
-                    //Also Login at Sign Up? Remember to instantiate Singleton if so
-                } else {
-                    print(error?.localizedDescription)
-                    if error?.code == 202{
-                        print("Username is Taken")
+            
+            
+            let username = userField.text ?? ""
+            let password = passField.text ?? ""
+            let confirmPassword = confirmPassField.text ?? ""
+            let profPic = self.profilePic.image
+            
+            if(username != "" && password != "" && password == confirmPassword && profPic != nil)
+       {
+                let newUser = PFUser()
+                newUser.username = userField.text
+                newUser.password = passField.text
+                newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                    if success {
+                         let profUpload = self.getPFFileFromImage(self.profilePic.image)
+                        newUser.addObject(profUpload!, forKey: "profPicture")
+                        
+                        
+                        newUser.saveEventually()
+                        //(Don't Delete)
+                        //Also Login at Sign Up? Remember to instantiate Singleton if so
+                        let nextScreen = self.storyboard!.instantiateViewControllerWithIdentifier("login") as? LoginViewController
+                        self.presentViewController(nextScreen!, animated: true, completion: nil)
+                    } else {
+                        print(error?.localizedDescription)
+                        if error?.code == 202{
+                            let alert = UIAlertController(title: "Username is Taken", message: "Please Select Another Username", preferredStyle: .Alert)
+                            
+                            let OkAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                                (_)in
+                            })
+                            alert.addAction(OkAction)
+                            self.presentViewController(alert, animated: true, completion: nil)
+                            
+                        }
                     }
                 }
+
+                
+                
+                
             }
-            let nextScreen = storyboard!.instantiateViewControllerWithIdentifier("login") as? LoginViewController
-            self.presentViewController(nextScreen!, animated: true, completion: nil)
+            else {
+                
+                
+                let alert = UIAlertController(title: "Invalid Fields", message: "Please Make Sure All Fields Are Filled Out Correctly", preferredStyle: .Alert)
+                
+                let OkAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                    (_)in
+                })
+                alert.addAction(OkAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+                
+
+            }
+            
+            
+
         } else {
             print("passwords did not match")
         }
         
     }
+    @IBAction func onClose(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    
     
     /*
     // MARK: - Navigation

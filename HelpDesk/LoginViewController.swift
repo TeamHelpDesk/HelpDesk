@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func onLogin(sender: AnyObject) {
         
-        print("The username field contains: \(usernameField.text)")
+        //print("The username field contains: \(usernameField.text)")
         PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!){ (user: PFUser?, error: NSError?) -> Void in
             
             if(user != nil){
@@ -57,6 +57,9 @@ class LoginViewController: UIViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    
+    
     /*
     // MARK: - Navigation
 

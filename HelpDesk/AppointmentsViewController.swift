@@ -96,6 +96,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         let time = appointment["time"] as! String
         let index = time.characters.indexOf(",")
         let subject = appointment["subject"] as! String
+        let location = appointment["location"] as! String
         var personname : String!
         var person : PFUser!
         
@@ -159,13 +160,13 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         if((appointment["mapUsed"] as? Bool) == false){
             cell.appLocation = appointment["location"] as? String
             cell.mapUsed = false
+            cell.viewOnMap.hidden = true
         } else{
-            cell.appLocation = "Check Map"
             cell.mapUsed = true
             cell.lat = appointment["latitude"] as? Double
             cell.long = appointment["longitude"] as? Double
         }
-        
+        cell.appLocation = location
         cell.appointment = appointment
         cell.appDate = time.substringToIndex(index!) ?? "<Missing Date>"
         cell.appTime = time.substringFromIndex(index!.advancedBy(2)) ?? "<Missing Time>"
