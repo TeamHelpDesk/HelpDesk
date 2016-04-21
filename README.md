@@ -2,7 +2,7 @@
 
 **HelpDesk** allows students at Washington Univeristy to connect to tutors and view available help sessions for the classes they are enrolled in.
 
-Time spent: **X** hours spent in total
+Time spent: **So many** hours spent in total
 
 ## User Stories
 
@@ -15,8 +15,6 @@ The following **required** functionality is completed:
 - [X] Tutors and students can message eachother directly.
 - [X] Tutors and students can use an appointment making tool to decide on meet up times, locations (using mobile maps), and topics.
 - [X] Students can use the app to send a "cancelation" notification
-- [ ] Students can confirm when a tutoring session has been completed (to let engineering department know)
-
 
 The following **optional** features are implemented:
 
@@ -34,20 +32,25 @@ Here's a wireframe of the potential app layout:
 ## Parse Server Details
 - User Table:
     -Default parse user table
-- Appointment Table:
-    -Two users (Tutor and Student)
-    -Date
-    -Time
-    -Location
-    -Duration
-- Calendar Table:
-    -Associated user
-    -Appointments
-    -Availble slots
-- Chat Table:
-    -Users (2)
-    -Message
-    -Time Stamp
+    -courses tutored
+- Notifcation:
+    -student
+    -tutor
+    -subject
+    -type
+    -location
+    -mapUsed
+    -time
+    -longitude
+    -latitude
+    -topics
+    -read
+- Messages:
+    -Text
+    -Sender
+    -Receiver
+    -isSeen
+    -isDelivered
 
 ## Video Walkthrough 
 
