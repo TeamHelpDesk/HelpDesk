@@ -65,7 +65,7 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
     
     func imagePickerController(picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let originalImage = info[UIImagePickerControllerEditedImage] as! UIImage
         self.profilePic.image = originalImage
         print(originalImage.description)
         dismissViewControllerAnimated(true, completion: nil)

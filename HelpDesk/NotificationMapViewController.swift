@@ -55,6 +55,9 @@ class NotificationMapViewController: UIViewController , CLLocationManagerDelegat
             mapView.setRegion(region, animated: false)
         }
     }
+    @IBAction func onClose(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
 
     /*
     // MARK: - Navigation
