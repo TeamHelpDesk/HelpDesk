@@ -156,6 +156,11 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
             }
             cell.newCount = 0
         }
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.lightGrayColor().CGColor
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
+        
         return cell
     }
     
