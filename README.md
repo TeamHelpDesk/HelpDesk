@@ -51,6 +51,12 @@ Here's a wireframe of the potential app layout:
     -Receiver
     -isSeen
     -isDelivered
+- Tutoring:
+    -Tutor Name
+    -Student Name
+    -Subject
+    -Type
+    -Message
 
 ## Video Walkthrough 
 
