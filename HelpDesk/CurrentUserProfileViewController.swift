@@ -68,6 +68,15 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         let originalImage = info[UIImagePickerControllerEditedImage] as! UIImage
         self.profilePic.image = originalImage
         dismissViewControllerAnimated(true, completion: nil)
+        let profUpload = self.getPFFileFromImage(self.profilePic.image)
+        var profileArray = [PFFile]()
+        profileArray.append(profUpload!)
+        PFUser.currentUser()!["profPicture"] = profileArray
+        PFUser.currentUser()?.saveInBackgroundWithBlock({ (result : Bool, error : NSError?) in
+            if !result {
+                print ("DID NOT SAVE PIC: \(error!.description)")
+            }
+        })
     }
     
     func getPFFileFromImage(image: UIImage?) -> PFFile? {
@@ -89,18 +98,7 @@ class CurrentUserProfileViewController: UIViewController, UIImagePickerControlle
         
     }
     
-    @IBAction func onSave(sender: AnyObject) {
-        let profUpload = self.getPFFileFromImage(self.profilePic.image)
-        var profileArray = [PFFile]()
-        profileArray.append(profUpload!)
-        PFUser.currentUser()!["profPicture"] = profileArray
-        PFUser.currentUser()?.saveInBackgroundWithBlock({ (result : Bool, error : NSError?) in
-            if !result {
-                print ("DID NOT SAVE PIC: \(error!.description)")
-            }
-        })
-        
-    }
+
     @IBAction func onLogout(sender: AnyObject) {
         HelpDeskUser.sharedInstance.logout()
     }
