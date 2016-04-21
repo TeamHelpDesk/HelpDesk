@@ -33,10 +33,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         navigation.topItem?.title = contact?.username
-        profilePic.layer.borderWidth = 1
-        profilePic.layer.borderColor = UIColor.blueColor().CGColor
-        profilePic.layer.cornerRadius = profilePic.frame.height/2
-        profilePic.clipsToBounds = true
+//        profilePic.layer.borderWidth = 1
+//        profilePic.layer.borderColor = UIColor.blueColor().CGColor
+//        profilePic.layer.cornerRadius = profilePic.frame.height/2
+//        profilePic.clipsToBounds = true
         let predicate1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
         let predicate2 = NSPredicate(format: "%K = %@", "sender", contact!)
         let cPredicate1 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
@@ -53,7 +53,28 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        let picObject = contact!["profPicture"] as? [PFFile]
+        if picObject != nil{
+            //print("found pic object")
+            if let picFile = picObject?[0] {
+                picFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        self.profilePic.image = UIImage(data:imageData!)
+                        self.profilePic.layer.borderWidth = 1
+                        self.profilePic.layer.borderColor = UIColor.blueColor().CGColor
+                        self.profilePic.layer.cornerRadius = self.profilePic.frame.height/2
+                        self.profilePic.clipsToBounds = true
+                    }
+                    else {
+                        print("Error Fetching Profile Pic")
+                    }
+                }
+            }
+        }
+        else {
+            self.profilePic.image = nil
+            print("No profile picture")
+        }
     }
     
     deinit {
@@ -69,6 +90,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func didTap(sender: AnyObject) {
         view.endEditing(true)
     }
+    
     
     func keyboardWillShow(notification: NSNotification!) {
         

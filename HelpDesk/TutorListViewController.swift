@@ -181,10 +181,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
             self.contact = users![indexPath!.row]
             let chatViewController = rSegue.destinationViewController as! ChatViewController
             chatViewController.contact = self.contact
-            if cell.profileImage != nil {
-            chatViewController.profilePic = cell.profileImage as UIImageView
-            chatViewController.profilePic.image = cell.profileImage.image
-            }
             for message in messages! {
                 if ((message.valueForKey("sender")?.username == PFUser.currentUser()!.username && message.valueForKey("receiver")!.username == chatViewController.contact!.username) || (message.valueForKey("sender")!.username == chatViewController.contact!.username && message.valueForKey("receiver")!.username == PFUser.currentUser()!.username)) {
                     if chatViewController.messages == nil {
