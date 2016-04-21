@@ -162,7 +162,7 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         } else{
             cell.appLocation = "Check Map"
             cell.mapUsed = true
-            cell.lat = appointment["lattitude"] as? Double
+            cell.lat = appointment["latitude"] as? Double
             cell.long = appointment["longitude"] as? Double
         }
         
@@ -232,9 +232,12 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "viewApptMap"){
-            let cell = sender as? AppointmentsTableViewCell
+            let cell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!) as! AppointmentsTableViewCell
             let nextView = segue.destinationViewController as? NotificationMapViewController
-            let cooridnates = CLLocationCoordinate2DMake(cell!.lat!, cell!.long!)
+            print(cell.description)
+            print(cell.lat!)
+            print(cell.long!)
+            let cooridnates = CLLocationCoordinate2DMake(cell.lat!, cell.long!)
             nextView?.coordinate = cooridnates
         }
     }

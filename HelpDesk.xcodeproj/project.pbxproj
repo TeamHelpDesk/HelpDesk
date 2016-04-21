@@ -293,7 +293,7 @@
 				TargetAttributes = {
 					4CD6701D1C9249D500741696 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 67XUB76L58;
+						DevelopmentTeam = CW9VK39DWF;
 					};
 				};
 			};
@@ -521,7 +521,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HelpDesk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mmadans.HelpDesk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZachGlick.HelpDesk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -536,7 +536,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HelpDesk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mmadans.HelpDesk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZachGlick.HelpDesk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -130,12 +130,11 @@ TutorSelectDelegate {
         post["message"] = "Appointment request from \(student!.username!)"
         post["type"] = "appointmentRequest"
         post["mapUsed"] = mapUsed
-        
+        post["location"] = locField.text
+
         if(mapUsed == true){
             post["latitude"] = self.lat
             post["longitude"] = self.long
-        } else {
-            post["location"] = locField.text
         }
         // Pointer column type that points to PFUser
         // Save object (following function will save the object in Parse asynchronously)
@@ -147,12 +146,10 @@ TutorSelectDelegate {
         self.lat = source.lat
         self.long = source.long
         mapUsed = true
-        //print(location)
-        locField.text = "Pin Placed"
     }
     
     @IBAction func onSubmit(sender: AnyObject) {
-        if(hasPickedTutor){
+        if(hasPickedTutor && locField.text != ""){
             postAppointmentRequest(strDate, location: self.location, student: PFUser.currentUser(), tutor: tutor, topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
                 if success {
                     print("success uploading appointment request")
@@ -160,8 +157,18 @@ TutorSelectDelegate {
                     print(error?.description)
                 }
             }
+            self.dismissViewControllerAnimated(true, completion: {})
         }
-        self.dismissViewControllerAnimated(true, completion: {})
+        else {
+            let alert = UIAlertController(title: "Missing Appointment Fields", message: "Please Select a Time, Tutor, and Location!", preferredStyle: .Alert)
+           
+            let OkAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                (_)in
+            })
+            alert.addAction(OkAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
     }
     
     @IBAction func onClose(sender: AnyObject) {

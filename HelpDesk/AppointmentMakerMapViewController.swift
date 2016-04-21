@@ -29,17 +29,18 @@ class AppointmentMakerMapViewController: UIViewController, CLLocationManagerDele
         locationManager.distanceFilter = 200
         locationManager.requestWhenInUseAuthorization()
     }
-    /*
+    
     func goToLocation(location: CLLocation) {
         let span = MKCoordinateSpanMake(0.1, 0.1)
         let region = MKCoordinateRegionMake(location.coordinate, span)
         mapView.setRegion(region, animated: false)
-    }*/
+    }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             locationManager.startUpdatingLocation()
         }
+
     }
     
 
@@ -65,8 +66,9 @@ class AppointmentMakerMapViewController: UIViewController, CLLocationManagerDele
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations.count)
         if let location = locations.first {
-            let span = MKCoordinateSpanMake(0.1, 0.1)
+            let span = MKCoordinateSpanMake(0.01, 0.01)
             let region = MKCoordinateRegionMake(location.coordinate, span)
             mapView.setRegion(region, animated: false)
         }
