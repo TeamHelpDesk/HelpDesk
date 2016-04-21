@@ -44,10 +44,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         query!.limit = 15
         query!.includeKey("receiver")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
-        //initialY = fieldParentView.frame.origin.y
+        initialY = fieldParentView.frame.origin.y
 
     }
     
@@ -82,23 +82,58 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             if endFrame?.origin.y >= UIScreen.mainScreen().bounds.size.height {
-                self.keyboardHeightLayoutConstraint?.constant = 0.0
+                self.keyboardHeightLayoutConstraint?.constant = 9.0
             } else {
-                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 9.0
             }
             UIView.animateWithDuration(duration,
                                        delay: NSTimeInterval(0),
                                        options: animationCurve,
                                        animations: { self.view.layoutIfNeeded() },
                                        completion: nil)
+//            self.subjectPic.hidden = true
+//            self.profilePic.hidden = true
+//            self.nameLabel.hidden = true
+//            self.subjectLabel.hidden = true
             
         }
     }
     
-//    func keyboardWillHide(notification: NSNotification!) {
-//        fieldParentView.frame.origin.y = initialY
-//    }
-    
+    func keyboardWillHide(notification: NSNotification!) {
+//        //fieldParentView.frame.origin.y = initialY
+//        fieldParentView.frame.origin.y = initialY + offset
+//        self.subjectPic.hidden = false
+//        self.profilePic.hidden = false
+//        self.nameLabel.hidden = false
+//        self.subjectLabel.hidden = false
+    if let userInfo = notification.userInfo {
+        //            let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        //
+        //            offset = -frame.origin.y
+        //            fieldParentView.frame.origin.y = initialY + offset
+        let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
+        let duration:NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+        let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+        let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
+        let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+        if endFrame?.origin.y >= UIScreen.mainScreen().bounds.size.height {
+            self.keyboardHeightLayoutConstraint?.constant = 9.0
+        } else {
+            self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 9.0
+        }
+        UIView.animateWithDuration(duration,
+            delay: NSTimeInterval(0),
+            options: animationCurve,
+            animations: { self.view.layoutIfNeeded() },
+            completion: nil)
+        //            self.subjectPic.hidden = true
+        //            self.profilePic.hidden = true
+        //            self.nameLabel.hidden = true
+        //            self.subjectLabel.hidden = true
+        
+    }
+    }
+
     func onTimer() {
         self.query?.cancel()
         query?.whereKey("isSeen", equalTo: false)
