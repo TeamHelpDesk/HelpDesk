@@ -28,7 +28,11 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         let p2 = NSPredicate(format: "%K = %@", "sender", PFUser.currentUser()!)
         let cP1 = NSCompoundPredicate(orPredicateWithSubpredicates: [p1, p2])
         userQuery = PFUser.query()
-        userQuery?.whereKey("username", notEqualTo: (PFUser.currentUser()?.username)!)
+        var ids = [String]()
+        for person in HelpDeskUser.sharedInstance.people! {
+            ids.append(person.objectId!)
+        }
+        userQuery?.whereKey("_id", containedIn: ids)
         userQuery!.limit = 20
         userQuery!.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -39,6 +43,14 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                 print(error?.localizedDescription)
             }
         }
+        
+//        let users = HelpDeskUser.sharedInstance.people
+//        var query1 = PFUser.query()
+//        print(self.users?.count)
+//        for user in self.users! {
+//            user.
+//        }
+        
         firstQuery = PFQuery(className: "Message", predicate: cP1)
         firstQuery!.includeKey("receiver")
         firstQuery!.includeKey("sender")
@@ -72,7 +84,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillDisappear(animated: Bool) {
         //query?.cancel()
-        userQuery?.cancel()
+        //userQuery?.cancel()
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,6 +107,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         cell.timeLabel.hidden = true
         cell.messageLabel.text = "No messages."
         if messages != nil {
+            cell.newCount = 0
             for message in messages! {
                 if message.valueForKey("sender")?.username == PFUser.currentUser()!.username && message.valueForKey("receiver")!.username == cell.user.username {
                     cell.message = message
@@ -116,7 +129,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                             var notification = UILocalNotification()
                             notification.alertBody = "You have received \(cell.newCount) messages from \(cell.user.username)" // text that will be displayed in the notification
                             notification.fireDate = nil
-                            notification.alertAction = "open"
+                            notification.alertAction = nil
                             notification.applicationIconBadgeNumber = cell.newCount
                             notification.soundName = UILocalNotificationDefaultSoundName // play default sound
                             UIApplication.sharedApplication().scheduleLocalNotification(notification)

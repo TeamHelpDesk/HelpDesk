@@ -247,7 +247,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if cell.message.valueForKey("receiver")?.username == PFUser.currentUser()!.username {
                 cell.backgroundColor = UIColor.clearColor()
                 cell.messageLabel.textColor = UIColor.blackColor()
-                cell.messageLabel.textAlignment = NSTextAlignment.Left
                 if cell.message.valueForKey("isSeen") as! Bool == false {
                     //self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
                     cell.message.setValue(true, forKey: "isSeen")
@@ -256,7 +255,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             } else {
                 cell.backgroundColor = UIColor.greenColor()
                 cell.messageLabel.textColor = UIColor.brownColor()
-                cell.messageLabel.textAlignment = NSTextAlignment.Right
             }
         }
         return cell

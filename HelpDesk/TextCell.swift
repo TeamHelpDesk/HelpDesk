@@ -28,7 +28,9 @@ class TextCell: UITableViewCell {
             timeLabel.hidden = true
             seenLabel.hidden = true
             self.messageLabel.text = message.valueForKey("text") as? String
-            //print(self.isSeen)
+//            if message.valueForKey("receiver")?.username != PFUser.currentUser()?.username {
+//                messageLabel.textAlignment = NSTextAlignment.Right
+//            }
         }
     }
     
