@@ -23,11 +23,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var fieldParentView: UIView!
     var initialY: CGFloat!
     var offset: CGFloat!
-    @IBOutlet weak var subjectPic: UIImageView!
+
     @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var subjectLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -35,7 +33,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         navigation.topItem?.title = contact?.username
-        
+        profilePic.layer.borderWidth = 1
+        profilePic.layer.borderColor = UIColor.blueColor().CGColor
+        profilePic.layer.cornerRadius = profilePic.frame.height/2
+        profilePic.clipsToBounds = true
         let predicate1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
         let predicate2 = NSPredicate(format: "%K = %@", "sender", contact!)
         let cPredicate1 = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
@@ -91,10 +92,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                        options: animationCurve,
                                        animations: { self.view.layoutIfNeeded() },
                                        completion: nil)
-//            self.subjectPic.hidden = true
-//            self.profilePic.hidden = true
-//            self.nameLabel.hidden = true
-//            self.subjectLabel.hidden = true
             
         }
     }
@@ -102,10 +99,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func keyboardWillHide(notification: NSNotification!) {
 //        //fieldParentView.frame.origin.y = initialY
 //        fieldParentView.frame.origin.y = initialY + offset
-//        self.subjectPic.hidden = false
-//        self.profilePic.hidden = false
-//        self.nameLabel.hidden = false
-//        self.subjectLabel.hidden = false
     if let userInfo = notification.userInfo {
         //            let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         //
@@ -126,10 +119,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             options: animationCurve,
             animations: { self.view.layoutIfNeeded() },
             completion: nil)
-        //            self.subjectPic.hidden = true
-        //            self.profilePic.hidden = true
-        //            self.nameLabel.hidden = true
-        //            self.subjectLabel.hidden = true
         
     }
     }

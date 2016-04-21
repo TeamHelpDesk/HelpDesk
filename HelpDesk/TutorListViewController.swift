@@ -176,11 +176,15 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(rSegue: UIStoryboardSegue, sender: AnyObject?) {
-        if let cell = sender as? UITableViewCell {
+        if let cell = sender as? TutorCell {
             let indexPath = tableView.indexPathForCell(cell)
             self.contact = users![indexPath!.row]
             let chatViewController = rSegue.destinationViewController as! ChatViewController
             chatViewController.contact = self.contact
+            if cell.profileImage != nil {
+            chatViewController.profilePic = cell.profileImage as UIImageView
+            chatViewController.profilePic.image = cell.profileImage.image
+            }
             for message in messages! {
                 if ((message.valueForKey("sender")?.username == PFUser.currentUser()!.username && message.valueForKey("receiver")!.username == chatViewController.contact!.username) || (message.valueForKey("sender")!.username == chatViewController.contact!.username && message.valueForKey("receiver")!.username == PFUser.currentUser()!.username)) {
                     if chatViewController.messages == nil {
