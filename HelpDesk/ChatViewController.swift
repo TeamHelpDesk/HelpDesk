@@ -44,6 +44,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
         initialY = fieldParentView.frame.origin.y
+
     }
     
     override func viewDidAppear(animated: Bool) {
