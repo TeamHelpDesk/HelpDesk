@@ -131,7 +131,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                             print("new count")
                             var notification = UILocalNotification()
                             notification.alertBody = "You have received \(cell.newCount) messages from \(cell.user.username)" // text that will be displayed in the notification
-                            notification.fireDate = nil
+                            notification.fireDate = NSDate(timeIntervalSinceNow: 1)
                             notification.alertAction = nil
                             notification.applicationIconBadgeNumber = cell.newCount
                             notification.soundName = UILocalNotificationDefaultSoundName // play default sound
