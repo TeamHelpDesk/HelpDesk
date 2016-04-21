@@ -23,6 +23,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var fieldParentView: UIView!
     var initialY: CGFloat!
     var offset: CGFloat!
+    @IBOutlet weak var subjectPic: UIImageView!
+    @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var subjectLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +44,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         query!.limit = 15
         query!.includeKey("receiver")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
-        initialY = fieldParentView.frame.origin.y
+        //initialY = fieldParentView.frame.origin.y
 
     }
     
@@ -87,12 +91,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                        options: animationCurve,
                                        animations: { self.view.layoutIfNeeded() },
                                        completion: nil)
+            
         }
     }
     
-    func keyboardWillHide(notification: NSNotification!) {
-        fieldParentView.frame.origin.y = initialY
-    }
+//    func keyboardWillHide(notification: NSNotification!) {
+//        fieldParentView.frame.origin.y = initialY
+//    }
     
     func onTimer() {
         self.query?.cancel()
