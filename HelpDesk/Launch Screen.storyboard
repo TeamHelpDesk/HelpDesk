@@ -41,8 +41,8 @@
                                 <color key="textColor" red="0.0" green="0.048534520759999998" blue="0.78916475789999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="placeholderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Dky-bS-o7c">
-                                <rect key="frame" x="225" y="268" width="150" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Final Image" translatesAutoresizingMaskIntoConstraints="NO" id="Dky-bS-o7c">
+                                <rect key="frame" x="211" y="265" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="1fW-0S-DHc"/>
                                     <constraint firstAttribute="width" constant="150" id="oVi-IA-wOI"/>
@@ -77,6 +77,6 @@
     </scenes>
     <resources>
         <image name="Background" width="640" height="1136"/>
-        <image name="placeholderIcon" width="556" height="504"/>
+        <image name="Final Image" width="650" height="650"/>
     </resources>
 </document>

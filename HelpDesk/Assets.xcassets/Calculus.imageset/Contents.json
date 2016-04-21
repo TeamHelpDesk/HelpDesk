@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "croppedFile2.png",
+      "filename" : "calculus1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "calculus2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "calculus3x.png",
       "scale" : "3x"
     }
   ],
