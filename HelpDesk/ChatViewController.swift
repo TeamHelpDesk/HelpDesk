@@ -179,15 +179,15 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if timer2?.valid == true {
             var cell = timer2!.userInfo as! TextCell
             cell.message.fetchInBackground()
-            if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
+            if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("isDelivered") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
                 cell.seenLabel.text = "Seen"
-                cell.seenLabel.hidden = false
                 timer2!.invalidate()
             } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
                 cell.seenLabel.text = "Delivered"
-                cell.seenLabel.hidden = false
+            } else {
+                cell.seenLabel.text = "Sent"
             }
-            cell.timeLabel.hidden = false
+            cell.seenLabel.hidden = false
         }
     }
     
@@ -223,15 +223,21 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! TextCell
         cell.message = messages![indexPath.row] as PFObject
         cell.message.fetchInBackground()
-        cell.timeLabel.hidden = false
+
         if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
             cell.seenLabel.text = "Seen"
             cell.seenLabel.hidden = false
         } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
             cell.seenLabel.text = "Delivered"
-            cell.seenLabel.hidden = false
             timer2 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer2", userInfo: cell, repeats: true)
+            cell.seenLabel.hidden = false
+        } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == false && cell.message.valueForKey("receiver")!.username == contact!.username {
+            cell.seenLabel.text = "Sent"
+            timer2 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer2", userInfo: cell, repeats: true)
+            cell.seenLabel.hidden = false
         }
+        cell.timeLabel.hidden = false
+        
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {

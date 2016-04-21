@@ -54,7 +54,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         firstQuery = PFQuery(className: "Message", predicate: cP1)
         firstQuery!.includeKey("receiver")
         firstQuery!.includeKey("sender")
-        firstQuery?.whereKey("isDelivered", equalTo: true)
+        //firstQuery?.whereKey("isDelivered", equalTo: true)
         firstQuery!.orderByAscending("createdAt")
         firstQuery!.limit = 100
         //         fetch data asynchronously
@@ -63,6 +63,12 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
             if error == nil {
                 if messages != nil {
                     self.messages = messages! as [PFObject]
+                    for message in messages! {
+                        if message.valueForKey("receiver")!.username == PFUser.currentUser()?.username {
+                            message.setValue(true, forKey: "isDelivered")
+                            message.saveEventually()
+                        }
+                    }
                 }
                 self.tableView.reloadData()
             } else {
@@ -135,7 +141,8 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                             notification.alertAction = nil
                             notification.applicationIconBadgeNumber = cell.newCount
                             notification.soundName = UILocalNotificationDefaultSoundName // play default sound
-                            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                            //UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
                         }
                     }
                 }
@@ -147,8 +154,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func onTimer() {
         self.query?.cancel()
-        query!.includeKey("receiver")
-        query!.includeKey("sender")
         query?.whereKey("isSeen", equalTo: false)
         query?.whereKey("isDelivered", equalTo: false)
         // fetch data asynchronously
@@ -179,7 +184,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     func onTimer2() {
         if timer2?.valid == true {
             var cell = timer2!.userInfo as! TutorCell
-            
             cell.message.fetchInBackground()
             if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("isDelivered") as! Bool == true && cell.message.valueForKey("receiver")!.username == cell.user!.username {
                 cell.seenLabel.text = "Seen"
@@ -189,6 +193,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
             } else {
                 cell.seenLabel.text = "Sent"
             }
+            cell.seenLabel.hidden = false
         }
     }
     
