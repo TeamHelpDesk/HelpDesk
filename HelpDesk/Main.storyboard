@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -194,14 +194,6 @@
                                     <action selector="onSave:" destination="epJ-S8-bKG" eventType="touchUpInside" id="8z7-KL-RAt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQX-0d-Sgs">
-                                <rect key="frame" x="252" y="20" width="48" height="30"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="onLogout:" destination="epJ-S8-bKG" eventType="touchUpInside" id="bh8-jx-K2i"/>
-                                    <segue destination="BYZ-38-t0r" kind="modal" identifier="logoutSegue" id="ko3-SQ-NrM"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDS-HY-Z1q">
                                 <rect key="frame" x="20" y="288" width="280" height="179"/>
                                 <string key="text">This is my bio. And this is filler text. Is a bio really even necessary? I think it could be a useful feature. Maybe bio is the wrong word. Something more like "available times and/or tutored/tutoring classes" would be better. Oh look, I wrote enough filler text.</string>
@@ -212,6 +204,26 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ndr-ZI-et5">
                                 <rect key="frame" x="98" y="96" width="125" height="125"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HelpDesk" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="pyk-vP-K5P">
+                                <rect key="frame" x="0.0" y="28" width="320" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="46"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.048534520759999998" blue="0.78916475789999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="-2"/>
+                            </label>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3U-Zp-vnN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQX-0d-Sgs">
+                                <rect key="frame" x="272" y="79" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="onLogout:" destination="epJ-S8-bKG" eventType="touchUpInside" id="bh8-jx-K2i"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" identifier="logoutSegue" id="ko3-SQ-NrM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -223,6 +235,15 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfr-lb-8gb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HelpDesk" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" id="CvB-0v-52Q">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="46"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.0" green="0.048534520759999998" blue="0.78916475789999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="2" height="-2"/>
+                </label>
             </objects>
             <point key="canvasLocation" x="1947" y="-785"/>
         </scene>
@@ -481,17 +502,25 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="gB8-Bv-jRa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lx1-dj-AWP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="178" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-9h-KGA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="131" width="320" height="388"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tutorRequestCell" rowHeight="178" id="PLs-hr-RUE" customClass="tutorRequestsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="tutorRequestCell" rowHeight="178" id="PLs-hr-RUE" customClass="tutorRequestsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="178"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PLs-hr-RUE" id="lS6-Bn-THH">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuO-1X-nS1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="177"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69B-9C-cX6">
                                                     <rect key="frame" x="59" y="130" width="49" height="30"/>
                                                     <state key="normal" title="Accept"/>
@@ -539,6 +568,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="OdA-FP-XOm" firstAttribute="leading" secondItem="lS6-Bn-THH" secondAttribute="leading" constant="33" id="2W6-zF-eV7"/>
                                                 <constraint firstItem="1ry-F1-AVW" firstAttribute="leading" secondItem="lS6-Bn-THH" secondAttribute="leading" constant="8" id="5Qt-QI-fk9"/>
@@ -564,6 +594,8 @@
                                                 <constraint firstItem="7Wb-46-Stc" firstAttribute="leading" secondItem="OdA-FP-XOm" secondAttribute="trailing" constant="30" id="zQ8-rj-aRP"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="acceptButton" destination="69B-9C-cX6" id="V4T-23-5JE"/>
                                             <outlet property="bottomConstrainL" destination="RfD-3q-vjR" id="uNe-Ot-fok"/>
@@ -578,6 +610,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HelpDesk" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="15Q-kG-3Wg">
+                                <rect key="frame" x="0.0" y="28" width="320" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="46"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.048534520759999998" blue="0.78916475789999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="-2"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -586,6 +626,11 @@
                         <outlet property="tableView" destination="Nf1-9h-KGA" id="fQi-V5-kSu"/>
                     </connections>
                 </viewController>
+                <view alpha="0.60000002384185791" contentMode="scaleToFill" id="cQE-4A-zRe">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSH-aZ-42d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1947" y="843"/>
@@ -1122,6 +1167,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HelpDesk" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="C3P-2e-6Bs">
+                                <rect key="frame" x="0.0" y="28" width="320" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="46"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.048534520759999998" blue="0.78916475789999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="-2"/>
+                            </label>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Rk-Vd-2lt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1172,8 +1229,16 @@
                             <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="HEC-Rz-Czl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HelpDesk" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GmW-UH-Vmq">
+                                <rect key="frame" x="0.0" y="28" width="320" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="46"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.048534520759999998" blue="0.78916475789999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="-2"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="270" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-VE-gqA">
-                                <rect key="frame" x="0.0" y="66" width="320" height="453"/>
+                                <rect key="frame" x="0.0" y="118" width="320" height="401"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentAppointmentCell" rowHeight="270" id="cDz-pK-UbJ" customClass="AppointmentsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
@@ -1305,8 +1370,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMc-yX-iL9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itI-Ic-qwW">
-                                <rect key="frame" x="0.0" y="28" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Make New Appointment"/>
                                 <connections>
