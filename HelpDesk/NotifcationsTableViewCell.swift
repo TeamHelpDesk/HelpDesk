@@ -19,7 +19,10 @@ class NotifcationsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+
         ribbon.layer.cornerRadius = 7
         ribbon.clipsToBounds = true
     }
