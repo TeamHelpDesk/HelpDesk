@@ -25,6 +25,9 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         refreshControl.addTarget(self, action: #selector(NotificationsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        
         loadNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NotificationsViewController.loadNotifications), name: "RefreshedData", object: nil)
 
@@ -57,27 +60,33 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         
         if(type == "cancelledByStudent"){
             cell.titleLabel.text = "Appointment cancelled by \(notification["student"])"
+            cell.ribbon.backgroundColor = UIColor.redColor()
         }
         else if(type == "cancelledByTutor"){
             cell.titleLabel.text = "Appointment cancelled by \(notification["tutor"])"
+            cell.ribbon.backgroundColor = UIColor.redColor()
         }
         else if(type == "appointmentRequest"){
             cell.titleLabel.text = "Appointment request from \(notification["student"])"
+            cell.ribbon.backgroundColor = UIColor.blueColor()
         }
         else if(type == "declinedRequest"){
             cell.titleLabel.text = "Appointment declined by \(notification["tutor"])"
+            cell.ribbon.backgroundColor = UIColor.yellowColor()
         }
         else if(type == "acceptedRequest"){
             cell.titleLabel.text = "Appointment accepted by \(notification["tutor"])"
+            cell.ribbon.backgroundColor = UIColor.greenColor()
         }
         else {
             cell.titleLabel.text = "Type \(notification["type"]) not recognized"
+            cell.ribbon.hidden = true
             print("Type \(notification["type"]) not recognized")
         }
-
-
-        
-        
+        let read = notification["read"] as? Bool ?? false 
+        if(read == true){
+            cell.unreadImage.hidden = true
+        }
         return cell
     }
     
@@ -162,5 +171,6 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         
         let nextView = segue.destinationViewController as? NotifcationsDetailViewController
         nextView?.notification = notification
+        nextView?.view.backgroundColor = cell!.ribbon.backgroundColor
     }
 }

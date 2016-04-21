@@ -18,12 +18,17 @@ class NotifcationsDetailViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var topicsLabel: UILabel!
     @IBOutlet weak var viewMapButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var declineButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     var student: String!
     var tutor: String!
     var duration: Int!
     var subject: String!
     var mapUsed: Bool!
     var location: String!
+    var read: Bool!
     
     override func viewDidLoad() {
         //notification.fetchIfNeededInBackground()
@@ -35,9 +40,14 @@ class NotifcationsDetailViewController: UIViewController {
         self.subject = notification["subject"] as! String
         self.location = notification["location"] as? String ?? "<NO_LOCATION>"
         self.mapUsed = notification["mapUsed"] as? Bool
-
+        self.read = notification["read"] as? Bool ?? false
+        
         if(mapUsed == false){
             viewMapButton.hidden = true
+        }
+        
+        if(read == true){
+            
         }
         
         let type = notification["type"] as? String
@@ -47,29 +57,39 @@ class NotifcationsDetailViewController: UIViewController {
             timeLabel.text = notification["time"] as? String
             locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
+            dismissButton.hidden = true
+            deleteButton.hidden = true
         }
         else if(type == "cancelledByStudent"){
             eventTitleLabel.text = "Appointment cancelled by \(student)"
             timeLabel.text = notification["time"] as? String
             locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
+            acceptButton.hidden = true
+            declineButton.hidden = true
         }
         else if(type == "cancelledByTutor"){
             eventTitleLabel.text = "Appointment cancelled by \(tutor)"
             timeLabel.text = notification["time"] as? String
             locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
+            acceptButton.hidden = true
+            declineButton.hidden = true
         }
         else if(type == "declinedRequest"){
             eventTitleLabel.text = "Appointment declined by \(tutor)"
             timeLabel.text = notification["time"] as? String
             locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
+            acceptButton.hidden = true
+            declineButton.hidden = true
         }
         else if(type == "acceptedRequest"){
             eventTitleLabel.text = "Appointment accepted by \(tutor)"
             timeLabel.text = notification["time"] as? String
             locationLabel.text = location
+            acceptButton.hidden = true
+            declineButton.hidden = true
         }
         else{
             print("type not recognized: \(type)")
@@ -87,6 +107,7 @@ class NotifcationsDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     func postStudentNotification(notification : PFObject) {
         // Create Parse object PFObject
         let post = PFObject(className: "Notifications")
@@ -98,6 +119,12 @@ class NotifcationsDetailViewController: UIViewController {
         post.saveInBackground()
     }
     
+    @IBAction func onClose(sender: AnyObject) {
+        notification["read"] = true
+        notification.saveInBackground()
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+
     @IBAction func onAccept(sender: AnyObject) {
         /*postAppointment(timeLabel.text, location: locationLabel.text, tutor: self.tutor, student: self.student, topics: self.tutor, duration: self.duration, subject: self.subject) { (success: Bool, error: NSError?) -> Void in
             if success {
@@ -111,8 +138,11 @@ class NotifcationsDetailViewController: UIViewController {
         postStudentNotification(notification)
     }
 
+    @IBAction func onDelete(sender: AnyObject) {
+        //delete notification
+    }
+    
     @IBAction func onDecline(sender: AnyObject) {
-
         notification["type"] = "declinedRequest"
         notification.saveInBackground()
     }

@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ParseUI
+import MBProgressHUD
 
 class AppointmentMakerViewController: UIViewController, UIPopoverPresentationControllerDelegate,
 TutorSelectDelegate {
@@ -150,12 +151,14 @@ TutorSelectDelegate {
     
     @IBAction func onSubmit(sender: AnyObject) {
         if(hasPickedTutor && locField.text != ""){
+            //MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             postAppointmentRequest(strDate, location: self.location, student: PFUser.currentUser(), tutor: tutor, topics: topicsField.text) { (success: Bool, error: NSError?) -> Void in
                 if success {
                     print("success uploading appointment request")
                 } else {
                     print(error?.description)
                 }
+               // MBProgressHUD.hideHUDForView(self.view, animated: true)
             }
             self.dismissViewControllerAnimated(true, completion: {})
         }

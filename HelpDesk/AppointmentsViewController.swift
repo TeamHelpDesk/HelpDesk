@@ -184,9 +184,11 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
 
         cell.refreshContent()
         //cell.contentView.alpha = 0.6
-        /*
-        cell.layer.borderWidth = 4
-        cell.layer.borderColor = UIColor.blueColor().CGColor*/
+       
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.lightGrayColor().CGColor
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
         return cell
     }
     

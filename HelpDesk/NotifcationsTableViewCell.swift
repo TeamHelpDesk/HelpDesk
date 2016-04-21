@@ -12,11 +12,16 @@ import Parse
 class NotifcationsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var ribbon: UIView!
+    @IBOutlet weak var unreadImage: UIImageView!
+    var read: Bool?
     var notification: PFObject!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        ribbon.layer.cornerRadius = 7
+        ribbon.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
