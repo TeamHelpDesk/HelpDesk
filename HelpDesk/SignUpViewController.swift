@@ -126,6 +126,11 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
         }
         
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func onClose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
     }
