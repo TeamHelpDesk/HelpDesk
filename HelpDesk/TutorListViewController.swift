@@ -27,13 +27,18 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         let p1 = NSPredicate(format: "%K = %@", "receiver", PFUser.currentUser()!)
         let p2 = NSPredicate(format: "%K = %@", "sender", PFUser.currentUser()!)
         let cP1 = NSCompoundPredicate(orPredicateWithSubpredicates: [p1, p2])
+        
+        //        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //        self.users = appDelegate.users
+        //        tableView.reloadData()
+        
         userQuery = PFUser.query()
         var ids = [String]()
         for person in HelpDeskUser.sharedInstance.people! {
             ids.append(person.objectId!)
         }
         userQuery?.whereKey("_id", containedIn: ids)
-        userQuery!.limit = 20
+        //userQuery!.limit = 20
         userQuery!.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.users = users! as? [PFUser]
@@ -43,9 +48,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                 print(error?.localizedDescription)
             }
         }
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        self.users = appDelegate.users
-//        tableView.reloadData()
+
         firstQuery = PFQuery(className: "Message", predicate: cP1)
         firstQuery!.includeKey("receiver")
         firstQuery!.includeKey("sender")

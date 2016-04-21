@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateViewControllerWithIdentifier("homeNav") as! UITabBarController
             window?.rootViewController = vc
             _ = HelpDeskUser.sharedInstance
+            
         }
         
         NSNotificationCenter.defaultCenter().addObserverForName("UserDidLogout", object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in
@@ -62,7 +63,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
+//    func onTimer() {
+//        userQuery = PFUser.query()
+//        var ids = [String]()
+//        for person in HelpDeskUser.sharedInstance.people! {
+//            ids.append(person.objectId!)
+//        }
+//        userQuery?.whereKey("_id", containedIn: ids)
+//        userQuery!.limit = 20
+//        userQuery!.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                self.users = users! as? [PFUser]
+//            } else {
+//                // handle error
+//                print(error?.localizedDescription)
+//            }
+//        }
+//    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

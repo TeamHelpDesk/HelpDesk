@@ -38,8 +38,6 @@ class HelpDeskUser: NSObject {
         self.user = PFUser.currentUser()
         loggedOut = false
         refreshData()
-        sleep(5)
-        
     }
     
     
