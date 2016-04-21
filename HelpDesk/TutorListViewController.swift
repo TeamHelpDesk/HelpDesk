@@ -136,9 +136,8 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                             notification.alertAction = nil
                             notification.applicationIconBadgeNumber = cell.newCount
                             notification.soundName = UILocalNotificationDefaultSoundName // play default sound
-                            UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ 
-                                <#code#>
-                            })
+//                            UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ 
+//                            })
                             UIApplication.sharedApplication().scheduleLocalNotification(notification)
                             
                         }
