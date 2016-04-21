@@ -113,7 +113,10 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                     cell.message = message
                     if cell.message.valueForKey("isSeen") as! Bool == true {
                         cell.seenLabel.text = "Seen"
-                    } else {
+                    } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == false {
+                        cell.seenLabel.text = "Sent"
+                        timer2 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer2", userInfo: cell, repeats: true)
+                    } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == true {
                         cell.seenLabel.text = "Delivered"
                         timer2 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer2", userInfo: cell, repeats: true)
                     }
@@ -144,6 +147,8 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func onTimer() {
         self.query?.cancel()
+        query!.includeKey("receiver")
+        query!.includeKey("sender")
         query?.whereKey("isSeen", equalTo: false)
         query?.whereKey("isDelivered", equalTo: false)
         // fetch data asynchronously
@@ -176,11 +181,13 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
             var cell = timer2!.userInfo as! TutorCell
             
             cell.message.fetchInBackground()
-            if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("receiver")!.username == contact!.username {
+            if cell.message.valueForKey("isSeen") as! Bool == true && cell.message.valueForKey("isDelivered") as! Bool == true && cell.message.valueForKey("receiver")!.username == cell.user!.username {
                 cell.seenLabel.text = "Seen"
                 timer2!.invalidate()
-            } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("receiver")!.username == contact!.username {
+            } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == true && cell.message.valueForKey("receiver")!.username == cell.user!.username {
                 cell.seenLabel.text = "Delivered"
+            } else {
+                cell.seenLabel.text = "Sent"
             }
         }
     }
