@@ -125,15 +125,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJP-J0-Qco">
-                                <rect key="frame" x="88" y="306" width="144" height="30"/>
-                                <state key="normal" title="Select Profile Picture"/>
-                                <connections>
-                                    <action selector="onSelect:" destination="DuX-2d-pBh" eventType="touchUpInside" id="Wl3-aS-7Qc"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zlw-c9-9Fx">
-                                <rect key="frame" x="103" y="338" width="115" height="115"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="zlw-c9-9Fx">
+                                <rect key="frame" x="103" y="336" width="115" height="115"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBJ-lX-pRG">
                                 <rect key="frame" x="19" y="20" width="39" height="30"/>
@@ -143,11 +136,25 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVf-P9-0Rr">
-                                <rect key="frame" x="136" y="461" width="49" height="30"/>
-                                <state key="normal" title="Submit"/>
+                                <rect key="frame" x="123" y="484" width="74" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.048534520759999998" blue="0.78916475789999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="onSignup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r4T-4s-BJf"/>
                                     <action selector="onSubmit:" destination="DuX-2d-pBh" eventType="touchUpInside" id="Mmq-c4-6hE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJP-J0-Qco">
+                                <rect key="frame" x="121" y="355" width="78" height="78"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSelect:" destination="DuX-2d-pBh" eventType="touchUpInside" id="Wl3-aS-7Qc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1449,6 +1456,7 @@
         <image name="apptImage" width="24" height="24"/>
         <image name="chatImage" width="24" height="24"/>
         <image name="notifImage" width="24" height="24"/>
+        <image name="profile" width="128" height="128"/>
         <image name="profileImage" width="24" height="24"/>
         <image name="requestImage" width="24" height="24"/>
         <image name="unread" width="24" height="24"/>
