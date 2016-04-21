@@ -59,10 +59,6 @@
                                 <rect key="frame" x="60" y="182" width="201" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <connections>
-                                    <action selector="editingBegin:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="mQr-Oc-NFc"/>
-                                    <action selector="editingEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Iu9-Hf-yP1"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQB-HW-8GO">
                                 <rect key="frame" x="60" y="136" width="201" height="30"/>
