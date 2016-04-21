@@ -16,12 +16,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
   
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var login: UIButton!
+    @IBOutlet weak var signup: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         PFUser.logOut()
         self.usernameField.delegate = self
         self.passwordField.delegate = self
+        login.layer.cornerRadius = 6
+        login.clipsToBounds = true
+        signup.layer.cornerRadius = 6
+        signup.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
 

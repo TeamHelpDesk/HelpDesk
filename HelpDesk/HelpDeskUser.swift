@@ -31,7 +31,6 @@ class HelpDeskUser: NSObject {
     //var tutoringsCopy: [Tutoring]?
     
     
-    
     override init() {
         print("Initialized Singleton")
         super.init()

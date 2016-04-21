@@ -136,15 +136,18 @@ class NotifcationsDetailViewController: UIViewController {
         notification["type"] = "appointment"
         notification.saveInBackground()
         postStudentNotification(notification)
+        self.dismissViewControllerAnimated(true, completion: {})
     }
 
     @IBAction func onDelete(sender: AnyObject) {
         //delete notification
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     @IBAction func onDecline(sender: AnyObject) {
         notification["type"] = "declinedRequest"
         notification.saveInBackground()
+        self.dismissViewControllerAnimated(true, completion: {})
     }
 
     // MARK: - Navigation
