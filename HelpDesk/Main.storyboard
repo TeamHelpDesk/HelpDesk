@@ -1106,11 +1106,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="HEC-Rz-Czl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="270" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-VE-gqA">
                                 <rect key="frame" x="0.0" y="66" width="320" height="453"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentAppointmentCell" rowHeight="270" id="cDz-pK-UbJ" customClass="AppointmentsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentAppointmentCell" rowHeight="270" id="cDz-pK-UbJ" customClass="AppointmentsTableViewCell" customModule="HelpDesk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cDz-pK-UbJ" id="837-AS-PVA">
@@ -1217,7 +1220,7 @@
                                                 <constraint firstItem="8YP-Rh-1QE" firstAttribute="top" secondItem="ZRL-CJ-YKC" secondAttribute="bottom" constant="4" id="xZn-ol-4b8"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.46489514799999998" green="1" blue="0.60455002940000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="appDateLabel" destination="gNQ-g5-02l" id="WOS-jA-EZv"/>
                                             <outlet property="appLocationLabel" destination="8YP-Rh-1QE" id="a2X-4H-b6u"/>
@@ -1294,6 +1297,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Background" width="640" height="1136"/>
         <image name="apptImage" width="24" height="24"/>
         <image name="chatImage" width="24" height="24"/>
         <image name="notifImage" width="24" height="24"/>
@@ -1301,7 +1305,7 @@
         <image name="requestImage" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2D7-aZ-okQ"/>
+        <segue reference="gyr-ew-w3n"/>
         <segue reference="fUJ-l1-0BR"/>
     </inferredMetricsTieBreakers>
 </document>

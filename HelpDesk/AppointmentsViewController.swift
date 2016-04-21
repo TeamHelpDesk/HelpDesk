@@ -22,8 +22,8 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.layer.backgroundColor = UIColor.blueColor().CGColor
-        tableView.backgroundColor = UIColor.blueColor()
+        //tableView.layer.backgroundColor = UIColor.blueColor().CGColor
+        //tableView.backgroundColor = UIColor.blueColor()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(AppointmentsViewController.refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -183,9 +183,10 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         }
 
         cell.refreshContent()
-        
+        //cell.contentView.alpha = 0.6
+        /*
         cell.layer.borderWidth = 4
-        cell.layer.borderColor = UIColor.blueColor().CGColor
+        cell.layer.borderColor = UIColor.blueColor().CGColor*/
         return cell
     }
     
