@@ -20,8 +20,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     var contact : PFUser?
     var timer1: NSTimer?
     var timer2: NSTimer?
-    var updateTimer: NSTimer?
-    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     
     override func viewWillAppear(animated: Bool) {
         tableView.delegate = self
@@ -45,7 +43,9 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                 print(error?.localizedDescription)
             }
         }
-        
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        self.users = appDelegate.users
+//        tableView.reloadData()
         firstQuery = PFQuery(className: "Message", predicate: cP1)
         firstQuery!.includeKey("receiver")
         firstQuery!.includeKey("sender")
@@ -79,12 +79,10 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reinstateBackgroundTask"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
         // Do any additional setup after loading the view.
     }
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
+    
     override func viewWillDisappear(animated: Bool) {
         //query?.cancel()
         //userQuery?.cancel()
@@ -118,7 +116,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                     cell.message = message
                     if cell.message.valueForKey("isSeen") as! Bool == true {
                         cell.seenLabel.text = "Seen"
-
+                        
                     } else if cell.message.valueForKey("isSeen") as! Bool == false && cell.message.valueForKey("isDelivered") as! Bool == false {
                         cell.seenLabel.text = "Sent"
                         timer2 = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer2", userInfo: cell, repeats: true)
@@ -141,23 +139,14 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                             }
                             print("new count")
                             var notification = UILocalNotification()
-                            notification.alertBody = "You have received \(cell.newCount) messages from \(cell.user.username)" // text that will be displayed in the notification
-                            notification.fireDate = nil
+                            notification.alertBody = "You have received \(cell.newCount) messages from \(cell.user.username!)" // text that will be displayed in the notification
+                            notification.fireDate = NSDate(timeIntervalSinceNow: 1)
                             notification.alertAction = nil
                             notification.applicationIconBadgeNumber = cell.newCount
                             notification.soundName = UILocalNotificationDefaultSoundName // play default sound
-//                            UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ 
-//                            })
-                            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-                            registerBackgroundTask()
-                            
-                            
-                        } else {
-                            updateTimer?.invalidate()
-                            updateTimer = nil
-                            if backgroundTask != UIBackgroundTaskInvalid {
-                                endBackgroundTask()
-                            }
+                            //                            UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({
+                            //                            })
+                            UIApplication.sharedApplication().scheduleLocalNotification(notification)
                         }
                     }
                 }
@@ -165,30 +154,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
             cell.newCount = 0
         }
         return cell
-    }
-    
-    func sendNotification(notification: UILocalNotification) {
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-    }
-    
-    func reinstateBackgroundTask() {
-        if updateTimer != nil && (backgroundTask == UIBackgroundTaskInvalid) {
-            registerBackgroundTask()
-        }
-    }
-    
-    func registerBackgroundTask() {
-        backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler {
-            [unowned self] in
-            self.endBackgroundTask()
-        }
-        assert(backgroundTask != UIBackgroundTaskInvalid)
-    }
-    
-    func endBackgroundTask() {
-        NSLog("Background task ended.")
-        UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
-        backgroundTask = UIBackgroundTaskInvalid
     }
     
     func onTimer() {

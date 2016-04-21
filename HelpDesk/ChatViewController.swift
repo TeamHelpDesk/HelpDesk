@@ -49,7 +49,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
         initialY = fieldParentView.frame.origin.y
-
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -75,6 +75,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.profilePic.image = nil
             print("No profile picture")
         }
+        
     }
     
     deinit {
@@ -163,6 +164,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                     
                 }
+                
                 self.tableView.reloadData()
                 self.query?.cancel()
             } else {
@@ -173,6 +175,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
         // Add code to be run periodically
+        
     }
     
     func onTimer2() {
@@ -254,7 +257,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.backgroundColor = UIColor.clearColor()
                 cell.messageLabel.textColor = UIColor.blackColor()
                 if cell.message.valueForKey("isSeen") as! Bool == false {
-                    //self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
                     cell.message.setValue(true, forKey: "isSeen")
                     cell.message.saveEventually()
                 }
@@ -263,6 +265,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.messageLabel.textColor = UIColor.brownColor()
             }
         }
+//        if cell.message == messages!.last {
+//            cell.selected = true
+//            self.tableView.scrollToNearestSelectedRowAtScrollPosition(.Bottom, animated: true)
+//        }
         return cell
     }
     

@@ -101,11 +101,10 @@ TutorSelectDelegate {
         return .None
     }
     
-    
-
-    
-    
-    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+  
     
     @IBAction func datePickerChanged(sender: UIDatePicker) {
         let dateFormatter = NSDateFormatter()
