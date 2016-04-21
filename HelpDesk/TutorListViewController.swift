@@ -44,13 +44,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         
-//        let users = HelpDeskUser.sharedInstance.people
-//        var query1 = PFUser.query()
-//        print(self.users?.count)
-//        for user in self.users! {
-//            user.
-//        }
-        
         firstQuery = PFQuery(className: "Message", predicate: cP1)
         firstQuery!.includeKey("receiver")
         firstQuery!.includeKey("sender")
@@ -59,7 +52,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         firstQuery!.limit = 100
         //         fetch data asynchronously
         firstQuery!.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
-            
             if error == nil {
                 if messages != nil {
                     self.messages = messages! as [PFObject]
@@ -134,6 +126,9 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                     if message.valueForKey("isSeen") as! Bool == false {
                         cell.newCount += 1
                         if cell.newCount != 0 {
+                            if cell.newCount > 1 {
+                                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                            }
                             print("new count")
                             var notification = UILocalNotification()
                             notification.alertBody = "You have received \(cell.newCount) messages from \(cell.user.username)" // text that will be displayed in the notification
@@ -141,8 +136,11 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                             notification.alertAction = nil
                             notification.applicationIconBadgeNumber = cell.newCount
                             notification.soundName = UILocalNotificationDefaultSoundName // play default sound
-                            //UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+                            UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ 
+                                <#code#>
+                            })
+                            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                            
                         }
                     }
                 }
