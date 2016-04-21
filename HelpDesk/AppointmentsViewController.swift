@@ -130,7 +130,6 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
                 
                 //cell.subjectPic.image = UIImage(named: "science")
 
-                
                 let image = UIImage(named: subject)
                 
                 //print("\(image?.size.height) \(image?.size.width)")
