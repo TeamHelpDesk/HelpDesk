@@ -21,9 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.initializeWithConfiguration(
             ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
-                configuration.applicationId = "HelpDesk"
-                configuration.clientKey = "asdkasjdkasbjfd"
-                configuration.server = "https://afternoon-shore-56186.herokuapp.com/parse"
+                //configuration.applicationId = "HelpDesk"
+                configuration.applicationId = "HelpDeskDemo"
+                
+                //configuration.clientKey = "asdkasjdkasbjfd"
+                configuration.clientKey = "aefgneskbgksedgrdbgdkrhjtg"
+                
+                //configuration.server = "https://afternoon-shore-56186.herokuapp.com/parse"
+                configuration.server = "https://help-desk-demo.herokuapp.com/parse"
+            
             })
         )
         
