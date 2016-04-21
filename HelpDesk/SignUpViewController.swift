@@ -26,6 +26,12 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         // Do any additional setup after loading the view.
+        profilePic.layer.borderWidth = 1
+        profilePic.layer.borderColor = UIColor.blueColor().CGColor
+        profilePic.layer.cornerRadius = profilePic.frame.height/2
+        profilePic.clipsToBounds = true
+        
+
         
     }
 
@@ -36,7 +42,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
     
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let originalImage = info[UIImagePickerControllerEditedImage] as! UIImage
             profilePic.image = originalImage
             dismissViewControllerAnimated(true, completion: nil)
     }
@@ -70,14 +76,12 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,  
                 let newUser = PFUser()
                 newUser.username = userField.text
                 newUser.password = passField.text
+                let profUpload = self.getPFFileFromImage(self.profilePic.image)
+                var profileArray = [PFFile]()
+                profileArray.append(profUpload!)
+                newUser["profPicture"] = profileArray
                 newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                     if success {
-                         let profUpload = self.getPFFileFromImage(self.profilePic.image)
-                        newUser.addObject(profUpload!, forKey: "profPicture")
-                        
-                        
-                        newUser.saveEventually()
-                        //(Don't Delete)
                         //Also Login at Sign Up? Remember to instantiate Singleton if so
                         let nextScreen = self.storyboard!.instantiateViewControllerWithIdentifier("login") as? LoginViewController
                         self.presentViewController(nextScreen!, animated: true, completion: nil)

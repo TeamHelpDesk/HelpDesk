@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="arp-tB-6DQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -132,7 +132,7 @@
                                     <action selector="onSelect:" destination="DuX-2d-pBh" eventType="touchUpInside" id="Wl3-aS-7Qc"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zlw-c9-9Fx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zlw-c9-9Fx">
                                 <rect key="frame" x="103" y="338" width="115" height="115"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBJ-lX-pRG">
@@ -274,11 +274,11 @@
                                     <constraint firstAttribute="width" constant="107" id="3TT-CO-GxX"/>
                                     <constraint firstAttribute="height" constant="21" id="Adt-bf-Q3f"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(Optional: Drop pin on map)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0nT-JP-xoi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where to Meet?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0nT-JP-xoi">
                                 <rect key="frame" x="20" y="366" width="205" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -290,9 +290,9 @@
                                     <constraint firstAttribute="height" constant="26" id="5Fd-4f-4Gu"/>
                                     <constraint firstAttribute="width" constant="75" id="n9l-w7-cMz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Select">
-                                    <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onChooseTutor:" destination="N3p-dW-lWE" eventType="touchUpInside" id="obl-ge-YTC"/>
@@ -310,7 +310,7 @@
                                     <constraint firstAttribute="width" constant="193" id="ofw-Ve-Eiq"/>
                                     <constraint firstAttribute="height" constant="21" id="qBA-g4-90P"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -321,9 +321,9 @@
                                     <constraint firstAttribute="width" constant="75" id="rf6-wk-fbq"/>
                                     <constraint firstAttribute="height" constant="30" id="ww4-Pg-c2F"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Map">
-                                    <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="onb-Ya-pvA" kind="modal" id="cfj-Yh-my9"/>
@@ -335,7 +335,7 @@
                                     <constraint firstAttribute="height" constant="21" id="7Q2-tI-A5D"/>
                                     <constraint firstAttribute="width" constant="153" id="lIj-EH-tHy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -347,7 +347,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="iQq-o0-vJE"/>
                                     <constraint firstAttribute="width" constant="165" id="qis-DU-qHr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -367,9 +367,9 @@
                                     <constraint firstAttribute="width" constant="82" id="G6g-IR-4kH"/>
                                     <constraint firstAttribute="height" constant="38" id="fbe-nF-iJ0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onClose:" destination="N3p-dW-lWE" eventType="touchUpInside" id="YoI-Kw-vwY"/>
@@ -381,9 +381,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Tb3-1r-6pf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Submit">
-                                    <color key="titleColor" red="0.0" green="0.68627450980392157" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onSubmit:" destination="N3p-dW-lWE" eventType="touchUpInside" id="96N-75-BvN"/>
@@ -494,7 +494,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4272" y="-785"/>
+            <point key="canvasLocation" x="3936" y="-957"/>
         </scene>
         <!--Requests-->
         <scene sceneID="J8g-GB-3BN">
@@ -1443,25 +1443,6 @@
             </objects>
             <point key="canvasLocation" x="3036" y="-785"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Lg3-hp-R65">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="arp-tB-6DQ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="ffY-Lv-gee"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8kv-76-oWn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fUJ-l1-0BR"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nmo-9I-VHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="964" y="29"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Background" width="640" height="1136"/>
@@ -1473,7 +1454,6 @@
         <image name="unread" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ko3-SQ-NrM"/>
         <segue reference="gyr-ew-w3n"/>
     </inferredMetricsTieBreakers>
 </document>
