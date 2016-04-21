@@ -171,22 +171,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year (?)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUN-2A-UYI">
-                                <rect key="frame" x="130" y="236" width="58" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3V-lO-dmM">
                                 <rect key="frame" x="81" y="170" width="159" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email (?)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thE-xM-VMz">
-                                <rect key="frame" x="128" y="207" width="65" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y6-PR-Mgf">
@@ -928,7 +916,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fh7-Zo-R8Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3448" y="797"/>
+            <point key="canvasLocation" x="2916" y="829"/>
         </scene>
         <!--Notification Map View Controller-->
         <scene sceneID="k94-90-wYR">
@@ -1033,7 +1021,7 @@
             </objects>
             <point key="canvasLocation" x="3889" y="-230"/>
         </scene>
-        <!--Notifications View Controller-->
+        <!--Item-->
         <scene sceneID="1hP-ff-CPy">
             <objects>
                 <viewController id="pPz-WH-xjq" customClass="NotificationsViewController" customModule="HelpDesk" customModuleProvider="target" sceneMemberID="viewController">
@@ -1066,7 +1054,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="titleLabel" destination="bbs-VV-KmW" id="Y7R-79-5zY"/>
-                                            <segue destination="JFU-Lo-eFB" kind="push" identifier="notificationSegue" id="kW5-OM-nca"/>
+                                            <segue destination="JFU-Lo-eFB" kind="modal" identifier="notificationSegue" id="kW5-OM-nca"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1074,6 +1062,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="notifImage" selectedImage="notifImage" id="vob-UL-evl"/>
                     <navigationItem key="navigationItem" id="4hJ-On-UkR"/>
                     <connections>
                         <outlet property="tableView" destination="zL2-9V-W8Z" id="FqD-aI-kdD"/>
@@ -1081,7 +1070,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0f-zN-WmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3036" y="797"/>
+            <point key="canvasLocation" x="2504" y="829"/>
         </scene>
         <!--Student-->
         <scene sceneID="jpg-SA-f3b">
@@ -1096,14 +1085,14 @@
                     <connections>
                         <segue destination="qpT-3W-88y" kind="relationship" relationship="viewControllers" id="Z9A-I6-c8P"/>
                         <segue destination="kRF-j3-5ZG" kind="relationship" relationship="viewControllers" id="fK1-n2-VcW"/>
-                        <segue destination="YDD-hf-4Bm" kind="relationship" relationship="viewControllers" id="3y4-42-eGd"/>
+                        <segue destination="pPz-WH-xjq" kind="relationship" relationship="viewControllers" id="CBb-oE-2P4"/>
                         <segue destination="QS8-Bl-HBX" kind="relationship" relationship="viewControllers" id="nNx-tn-k4h"/>
                         <segue destination="epJ-S8-bKG" kind="relationship" relationship="viewControllers" id="i6n-ue-bR4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CG9-zI-0Iz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1947" y="29"/>
+            <point key="canvasLocation" x="1927" y="41"/>
         </scene>
         <!--Appointments-->
         <scene sceneID="WNa-uA-6Na">
@@ -1285,25 +1274,6 @@
             <point key="canvasLocation" x="964" y="29"/>
         </scene>
         <!--Item-->
-        <scene sceneID="qvt-q3-trV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YDD-hf-4Bm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="notifImage" selectedImage="notifImage" id="c6v-v6-DEI"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wCq-nF-kf4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="pPz-WH-xjq" kind="relationship" relationship="rootViewController" id="92S-nh-Ja2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aUf-WF-9RR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2504" y="797"/>
-        </scene>
-        <!--Item-->
         <scene sceneID="1r4-qX-ExB">
             <objects>
                 <navigationController storyboardIdentifier="MessagingNavController" automaticallyAdjustsScrollViewInsets="NO" id="kRF-j3-5ZG" sceneMemberID="viewController">
@@ -1331,7 +1301,7 @@
         <image name="requestImage" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ko3-SQ-NrM"/>
         <segue reference="2D7-aZ-okQ"/>
+        <segue reference="fUJ-l1-0BR"/>
     </inferredMetricsTieBreakers>
 </document>

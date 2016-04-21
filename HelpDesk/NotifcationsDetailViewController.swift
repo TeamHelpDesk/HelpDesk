@@ -34,8 +34,11 @@ class NotifcationsDetailViewController: UIViewController {
         self.duration = notification["duration"] as? Int ?? 69
         self.subject = notification["subject"] as! String
         self.location = notification["location"] as? String ?? "<NO_LOCATION>"
-        self.mapUsed = notification?["mapUsed"] as? Bool
+        self.mapUsed = notification["mapUsed"] as? Bool
 
+        if(mapUsed == false){
+            viewMapButton.hidden = true
+        }
         
         let type = notification["type"] as? String
         super.viewDidLoad()
@@ -44,12 +47,6 @@ class NotifcationsDetailViewController: UIViewController {
             timeLabel.text = notification["time"] as? String
             locationLabel.text = location
             topicsLabel.text = notification["topics"] as? String
-            if(mapUsed == true){
-                locationLabel.text = "Click Button to"
-            } else {
-                location = notification["location"] as? String
-                viewMapButton.alpha = 0
-            }
         }
         else if(type == "cancelledByStudent"){
             eventTitleLabel.text = "Appointment cancelled by \(student)"
