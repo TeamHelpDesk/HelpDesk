@@ -9,23 +9,25 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameField: UITextField!
 
     @IBOutlet weak var passwordField: UITextField!
   
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         PFUser.logOut()
-
+        self.usernameField.delegate = self
+        self.passwordField.delegate = self
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+                // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onLogin(sender: AnyObject) {
@@ -54,12 +56,10 @@ class LoginViewController: UIViewController {
         }
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-    }
     
+
     
-    
+
     /*
     // MARK: - Navigation
 
