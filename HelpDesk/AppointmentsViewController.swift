@@ -32,9 +32,8 @@ class AppointmentsViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 115.0
         //Utility Functions (Do not delete)
-        //HelpDeskUser.sharedInstance.refreshData()
         //CourseFunctions().addCourses()
-        //CourseFunctions().assignAllCourses()
+        CourseFunctions().assignAllCourses()
         //TutoringFunctions().makeRandomTutorings()
 
         loadAppointments()

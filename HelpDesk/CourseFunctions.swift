@@ -14,7 +14,7 @@ class CourseFunctions: NSObject {
     
 
     func addCourses(){
-        let courses = ["physics","compsci","calculus"]
+        let courses = ["Physics","Computer Science","Calculus", "Writing", "Statistics"]
         
         for courseName in courses {
             let post = PFObject(className: "Course")

@@ -51,14 +51,13 @@ UIPopoverPresentationControllerDelegate, CourseSelectDelegate {
         userQuery!.limit = 20
         userQuery!.findObjectsInBackgroundWithBlock { (tutors: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                
                 var count = 0
 
                 for tutor in tutors! {
                     
                     let tutoredCourses = tutor["tutoredCourses"] as? [String] ?? [String]()
                     
-                    if(tutoredCourses.contains(className!) && self.selectedClassName != nil) {
+                    if(self.selectedClassName != nil && tutoredCourses.contains(self.selectedClassName!)) {
                         count += 1
                         
                         let post = PFObject(className: "Tutoring")
