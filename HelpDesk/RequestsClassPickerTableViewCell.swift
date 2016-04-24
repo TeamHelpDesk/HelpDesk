@@ -20,6 +20,7 @@ class RequestsClassPickerTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
        
         label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        label.font = label.font.fontWithSize(12)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
     }

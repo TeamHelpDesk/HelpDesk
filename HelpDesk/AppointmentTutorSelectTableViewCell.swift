@@ -26,10 +26,12 @@ class AppointmentTutorSelectTableViewCell: UITableViewCell {
         print("selected \(tutor) \(subject)")
         tutorLabel.text = tutor
         subjectLabel.text = subject
-        tutorLabel.center = CGPointMake(50, 15)
+        tutorLabel.font = tutorLabel.font.fontWithSize(12)
+        subjectLabel.font = subjectLabel.font.fontWithSize(12)
+        tutorLabel.center = CGPointMake(45, 15)
         tutorLabel.textAlignment = NSTextAlignment.Center
         self.addSubview(tutorLabel)
-        subjectLabel.center = CGPointMake(150, 15)
+        subjectLabel.center = CGPointMake(145, 15)
         subjectLabel.textAlignment = NSTextAlignment.Center
         //label.text = "I'm a test label"
         self.addSubview(subjectLabel)
