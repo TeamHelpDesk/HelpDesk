@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,10 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var users : [PFUser]?
     var userQuery : PFQuery?
 
+    let googleMapsApiKey = "AIzaSyA43avkpx9nU9sHlfm2w8NTknoAByv2Em0"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))  // types are UIUserNotificationType members
+        
+        GMSServices.provideAPIKey(googleMapsApiKey)
         
         Parse.initializeWithConfiguration(
             ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in

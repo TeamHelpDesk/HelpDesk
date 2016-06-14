@@ -44,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		233D2DE2D0DA7A8D6F8B6588 /* Pods-HelpDesk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelpDesk.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelpDesk/Pods-HelpDesk.release.xcconfig"; sourceTree = "<group>"; };
+		4C66723F1D0655D6009962ED /* HelpDesk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelpDesk-Bridging-Header.h"; sourceTree = "<group>"; };
 		4C7122161CBB46A00070FE28 /* AppointmentMakerMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentMakerMapViewController.swift; sourceTree = "<group>"; };
 		4C7122191CBC97A90070FE28 /* NotificationMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationMapViewController.swift; sourceTree = "<group>"; };
 		4C7870691CA20C6D005A109D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		4CD670151C9249D500741696 = {
 			isa = PBXGroup;
 			children = (
+				4C66723F1D0655D6009962ED /* HelpDesk-Bridging-Header.h */,
 				4CD670201C9249D500741696 /* HelpDesk */,
 				4CD6701F1C9249D500741696 /* Products */,
 				468EC153274A534ED14F993E /* Pods */,
@@ -287,7 +289,7 @@
 		4CD670161C9249D500741696 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = TeamHelpDesk;
 				TargetAttributes = {
@@ -517,6 +519,7 @@
 			baseConfigurationReference = CF0AC212BF5962AB27CF18B3 /* Pods-HelpDesk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HelpDesk/Info.plist;
@@ -524,6 +527,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZachGlick.HelpDesk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HelpDesk-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -532,6 +537,7 @@
 			baseConfigurationReference = 233D2DE2D0DA7A8D6F8B6588 /* Pods-HelpDesk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HelpDesk/Info.plist;
@@ -539,6 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZachGlick.HelpDesk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HelpDesk-Bridging-Header.h";
 			};
 			name = Release;
 		};

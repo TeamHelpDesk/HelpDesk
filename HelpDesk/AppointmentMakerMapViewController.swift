@@ -9,49 +9,77 @@
 import UIKit
 import MapKit
 import CoreLocation
+import GoogleMaps
 
-class AppointmentMakerMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class AppointmentMakerMapViewController: UIViewController{
     
-    @IBOutlet weak var mapView: MKMapView!
-    var locationManager : CLLocationManager!
-    var annotation = MKPointAnnotation()
+    //@IBOutlet weak var mapView: MKMapView!
+    let locationManager = CLLocationManager()
+    var marker = GMSMarker()
     var lat: Double!
     var long: Double!
-
+    var mapView: GMSMapView!
+    @IBOutlet weak var closeButton: UIButton!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.mapView.delegate = self
         
-        locationManager = CLLocationManager()
+       let camera = GMSCameraPosition.cameraWithLatitude(40.773376,
+                                                          longitude: -73.949447, zoom: 17)
+    
+        self.mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
+        self.mapView.myLocationEnabled = true
+        mapView.settings.compassButton = true
+        
+        self.view = self.mapView
+        self.view.addSubview(self.closeButton)
+
+        NSLayoutConstraint(item: closeButton,
+                           attribute: .Leading,
+                           relatedBy: .Equal,
+                           toItem: view,
+                           attribute: .LeadingMargin,
+                           multiplier: 1.0,
+                           constant: 10.0).active = true
+        
+        NSLayoutConstraint(item: closeButton,
+                           attribute: .Top,
+                           relatedBy: .Equal,
+                           toItem: view,
+                           attribute: .LeadingMargin,
+                           multiplier: 1.0,
+                           constant: 20.0).active = true
+        
+        let margins = view.layoutMarginsGuide
+        
+        closeButton.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
+        closeButton.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
+ 
+        self.view.bringSubviewToFront(self.closeButton)
+    
+        let press = UILongPressGestureRecognizer(target: self, action: #selector(AppointmentMakerMapViewController.onPress(_:)))
+        self.mapView.userInteractionEnabled = true
+        self.mapView.addGestureRecognizer(press)
+        
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.distanceFilter = 200
         locationManager.requestWhenInUseAuthorization()
     }
     
-    func goToLocation(location: CLLocation) {
+   /* func goToLocation(location: CLLocation) {
         let span = MKCoordinateSpanMake(0.1, 0.1)
         let region = MKCoordinateRegionMake(location.coordinate, span)
         mapView.setRegion(region, animated: false)
-    }
+    }*/
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
-            locationManager.startUpdatingLocation()
-        }
-
-    }
     
-
-    @IBAction func onPress(sender: UILongPressGestureRecognizer) {
-        let touchPoint = sender.locationInView(mapView)
-        let coordinate = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
-        annotation.coordinate = coordinate
+    func onPress(sender: UILongPressGestureRecognizer? = nil) {
+        print("longpress")
+        let coordinate = mapView.camera.target
+        marker.position = coordinate
         lat = coordinate.latitude
         long = coordinate.longitude
-        annotation.title = "Meeting Location"
-        mapView.addAnnotation(annotation)
+        marker.title = "Meeting Location"
+        marker.map = mapView
         let alert = UIAlertController(title: "Location Set", message: "Is this where you want to set your meeting location?", preferredStyle: .Alert)
         let YesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {
             (_)in
@@ -63,15 +91,6 @@ class AppointmentMakerMapViewController: UIViewController, CLLocationManagerDele
         alert.addAction(YesAction)
         alert.addAction(NoAction)
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations.count)
-        if let location = locations.first {
-            let span = MKCoordinateSpanMake(0.01, 0.01)
-            let region = MKCoordinateRegionMake(location.coordinate, span)
-            mapView.setRegion(region, animated: false)
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,5 +111,26 @@ class AppointmentMakerMapViewController: UIViewController, CLLocationManagerDele
         // Pass the selected object to the new view controller.
     }
     */
+    
 
+}
+
+// MARK: - CLLocationManagerDelegate
+extension AppointmentMakerMapViewController: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            mapView.myLocationEnabled = true
+            mapView.settings.myLocationButton = true
+            mapView.settings.compassButton = true
+        }
+    }
+
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            locationManager.stopUpdatingLocation()
+        }
+        
+    }
 }

@@ -5,6 +5,9 @@
       location = "group:Gregg.gpx">
    </FileRef>
    <FileRef
+      location = "group:HelpDesk-Bridging-Header.h">
+   </FileRef>
+   <FileRef
       location = "group:HelpDesk.xcodeproj">
    </FileRef>
    <FileRef

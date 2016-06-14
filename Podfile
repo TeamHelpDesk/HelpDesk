@@ -7,5 +7,7 @@ target 'HelpDesk' do
     pod 'Parse'
     pod 'ParseUI'
     pod 'MBProgressHUD'
+    source 'https://github.com/CocoaPods/Specs.git'
+    pod 'GoogleMaps'
 end
 
